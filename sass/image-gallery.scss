@@ -1,0 +1,268 @@
+// Display Flex
+@mixin display() {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+// Flex Wrap
+@mixin flex-wrap($args) {
+    -ms-flex-wrap: $args;
+    -webkit-flex-wrap: $args;
+    flex-wrap: $args;
+}
+
+// Flex Direction
+@mixin flex-direction($args) {
+    -webkit-flex-direction: $args;
+    flex-direction: $args;
+}
+
+// Align Items
+@mixin align-items($args) {
+    -webkit-align-items: $args;
+    align-items: $args;
+}
+
+// Justify Content
+@mixin justify-content($args) {
+    -webkit-justify-content: $args;
+    justify-content: $args;
+}
+
+// Transition
+@mixin transition($args) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+// Transform
+@mixin transform($args) {
+    -webkit-transform: $args;
+    -moz-transform: $args;
+    -ms-transform: $args;
+    -o-transform: $args;
+    transform: $args;
+}
+
+/*------------------------------------------------------------------
+IMAGE GALLERY
+-------------------------------------------------------------------*/
+.zeus-image-gallery {
+    @include display();
+    @include flex-wrap(wrap);
+    overflow: hidden;
+
+    &.zeus-masonry {
+        &::before {
+            // display: block;
+            visibility: hidden;
+            position: absolute;
+            font-size: 1px;
+        }
+
+        .zeus-gallery-item {
+            width: 100% !important;
+        }
+
+        @media screen and (max-width: 767px) {
+            &[data-mobile-columns="1"][data-columns]::before {
+                content: "1 .zeus-column";
+            }
+
+            &[data-mobile-columns="2"][data-columns]::before {
+                content: "2 .zeus-column";
+            }
+
+            &[data-mobile-columns="3"][data-columns]::before {
+                content: "3 .zeus-column";
+            }
+
+            &[data-mobile-columns="4"][data-columns]::before {
+                content: "4 .zeus-column";
+            }
+
+            &[data-mobile-columns="5"][data-columns]::before {
+                content: "5 .zeus-column";
+            }
+
+            &[data-mobile-columns="6"][data-columns]::before {
+                content: "6 .zeus-column";
+            }
+        }
+
+        @media screen and (min-width: 768px) and (max-width: 1024px) {
+            &[data-tablet-columns="1"][data-columns]::before {
+                content: "1 .zeus-column";
+            }
+
+            &[data-tablet-columns="2"][data-columns]::before {
+                content: "2 .zeus-column";
+            }
+
+            &[data-tablet-columns="3"][data-columns]::before {
+                content: "3 .zeus-column";
+            }
+
+            &[data-tablet-columns="4"][data-columns]::before {
+                content: "4 .zeus-column";
+            }
+
+            &[data-tablet-columns="5"][data-columns]::before {
+                content: "5 .zeus-column";
+            }
+
+            &[data-tablet-columns="6"][data-columns]::before {
+                content: "6 .zeus-column";
+            }
+        }
+
+        @media screen and (min-width: 1025px) {
+            &[data-desktop-columns="1"][data-columns]::before {
+                content: "1 .zeus-column";
+            }
+
+            &[data-desktop-columns="2"][data-columns]::before {
+                content: "2 .zeus-column";
+            }
+
+            &[data-desktop-columns="3"][data-columns]::before {
+                content: "3 .zeus-column";
+            }
+
+            &[data-desktop-columns="4"][data-columns]::before {
+                content: "4 .zeus-column";
+            }
+
+            &[data-desktop-columns="5"][data-columns]::before {
+                content: "5 .zeus-column";
+            }
+
+            &[data-desktop-columns="6"][data-columns]::before {
+                content: "6 .zeus-column";
+            }
+        }
+    }
+
+    .zeus-gallery-overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        @include display();
+        @include flex-direction(column);
+        background-color: rgba(0, 0, 0, 0.4);
+        color: #fff;
+        padding: 30px;
+        text-align: center;
+
+        i,
+        svg {
+            width: 1em;
+            height: 1em;
+            position: relative;
+        }
+    }
+
+    .zeus-gallery-item {
+        position: relative;
+        width: calc(100% / 4);
+        margin: 0;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .zeus-gallery-item-inner {
+        position: relative;
+        overflow: hidden;
+    }
+
+    a.zeus-gallery-item-inner {
+        display: block;
+    }
+
+    .zeus-gallery-item-caption {
+        margin: 0;
+        margin-top: 15px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .zeus-gallery-thumbnail {
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            vertical-align: top;
+        }
+    }
+
+    .zeus-gallery-transition-fade,
+    [class*="zeus-gallery-transition-slide"] {
+        @include transition(0.3s ease-out);
+    }
+
+    .zeus-gallery-transition-fade {
+        opacity: 0;
+    }
+
+    .zeus-gallery-item-inner:hover .zeus-gallery-transition-fade {
+        opacity: 1;
+    }
+
+    [class*="zeus-gallery-transition-slide"] {
+        opacity: 0;
+    }
+
+    .zeus-gallery-transition-slide-top {
+        @include transform(translateY(-100%));
+    }
+
+    .zeus-gallery-transition-slide-bottom {
+        @include transform(translateY(100%));
+    }
+
+    .zeus-gallery-transition-slide-left {
+        @include transform(translateX(-100%));
+    }
+
+    .zeus-gallery-transition-slide-right {
+        @include transform(translateX(100%));
+    }
+
+    .zeus-gallery-transition-slide-top-medium {
+        @include transform(translateY(-50px));
+    }
+
+    .zeus-gallery-transition-slide-bottom-medium {
+        @include transform(translateY(50px));
+    }
+
+    .zeus-gallery-transition-slide-left-medium {
+        @include transform(translateX(-50px));
+    }
+
+    .zeus-gallery-transition-slide-right-medium {
+        @include transform(translateX(50px));
+    }
+
+    .zeus-gallery-item-inner:hover [class*="zeus-gallery-transition-slide"] {
+        opacity: 1;
+        @include transform(translateX(0) translateY(0));
+    }
+}
+
+/*------------------------------------------------------------------
+Responsive
+-------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+    .elementor-widget-zeus-image-gallery .elementor-widget-container {
+        overflow: hidden;
+    }
+}

@@ -1,0 +1,90 @@
+// Animation
+@mixin animation( $args ) {
+    -webkit-animation: $args;
+    -moz-animation: $args;
+    -ms-animation: $args;
+    -o-animation: $args;
+    animation: $args;
+}
+
+/*------------------------------------------------------------------
+Animated Heading
+-------------------------------------------------------------------*/
+.zeus-heading-wrap {
+	.zeus-heading-tag,
+	.zeus-pre-heading,
+	.zeus-animated-heading,
+	.zeus-post-heading,
+	span {
+		display: inline-block;
+	}
+	.zeus-heading-tag {
+		margin: 0;
+	}
+
+	.typed-cursor {
+		opacity: 1;
+		font-weight: 100;
+		@include animation( typed-blink 0.7s infinite );
+	}
+}
+
+@-o-keyframes typed-blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-ms-keyframes typed-blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-moz-keyframes typed-blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes typed-blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes typed-blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

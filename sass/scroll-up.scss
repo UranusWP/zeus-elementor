@@ -1,0 +1,137 @@
+// Transition
+@mixin transition( $args ) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+// Transform
+@mixin transform( $args ) {
+    -webkit-transform: $args;
+    -moz-transform: $args;
+    -ms-transform: $args;
+    -o-transform: $args;
+    transform: $args;
+}
+
+// Box Shadow
+@mixin box-shadow( $args ) {
+    -webkit-box-shadow: $args;
+    -moz-box-shadow: $args;
+    box-shadow: $args;
+}
+
+/*------------------------------------------------------------------
+Scroll Up
+-------------------------------------------------------------------*/
+.zeus-scroll-button {
+    .elementor-align-icon-left {
+        margin-left: 4px;
+    }
+
+    .elementor-align-icon-right {
+        margin-right: 4px;
+    }
+
+    .zeus-button-icon {
+        i, svg {
+            width: 1em;
+            height: 1em;
+        }
+    }
+
+    a {
+        min-width: 40px;
+        min-height: 40px;
+        line-height: 40px;
+        padding: 0;
+    }
+}
+
+.zeus-align-left {
+    text-align: left;
+}
+
+.zeus-align-center {
+	text-align: center;
+}
+
+.zeus-align-right {
+	text-align: right;
+}
+
+.zeus-align-justify .zeus-scroll-button a {
+	width: 100%;
+}
+
+.elementor-widget-wrap .elementor-widget-zeus-scroll-up.zeus-fixed-yes {
+    display: none;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: auto;
+    cursor: pointer;
+    border-radius: 2px;
+    text-align: center;
+    z-index: 100;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+
+    &.zeus-button-position-left {
+        left: 20px;
+        right: auto;
+    }
+}
+
+body.elementor-editor-active .elementor-widget-wrap .elementor-widget-zeus-scroll-up.zeus-fixed-yes {
+    display: block;
+}
+
+/* RTL */
+body.rtl {
+    .zeus-scroll-button {
+        .elementor-align-icon-left {
+            margin-right: 4px;
+            margin-left: 0;
+        }
+
+        .elementor-align-icon-right {
+            margin-left: 4px;
+            margin-right: 0;
+        }
+    }
+}
+
+/*------------------------------------------------------------------
+Responsive
+-------------------------------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+    .zeus-tablet-align-left {
+        text-align: left;
+    }
+
+    .zeus-tablet-align-center {
+        text-align: center;
+    }
+
+    .zeus-tablet-align-right {
+        text-align: right;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .zeus-mobile-align-left {
+        text-align: left;
+    }
+
+    .zeus-mobile-align-center {
+        text-align: center;
+    }
+
+    .zeus-mobile-align-right {
+        text-align: right;
+    }
+}

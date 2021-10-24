@@ -1,0 +1,658 @@
+// Display flex
+@mixin flex() {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+// Flex wrap
+@mixin align() {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+// Flex direction
+@mixin direction() {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+// Flex direction
+@mixin justify( $args ) {
+    -webkit-justify-content: $args;
+    justify-content: $args;
+}
+
+// Box shadow
+@mixin shadow( $args ) {
+    -webkit-box-shadow: $args;
+    -moz-box-shadow: $args;
+    box-shadow: $args;
+}
+
+// Transition
+@mixin transition( $args ) {
+    -webkit-transition: $args;
+    -ms-transition: $args;
+    transition: $args;
+}
+
+// Animation
+@mixin animation( $args ) {
+    -webkit-animation: $args;
+    -ms-animation: $args;
+    animation: $args;
+}
+
+/*------------------------------------------------------------------
+Admin Styling
+-------------------------------------------------------------------*/
+.zeus-settings-wrap {
+	.zeus-settings-tabs {
+	    padding: 20px;
+	    margin: 60px 20px 20px;
+	}
+
+	.zeus-tabs {
+		@include flex();
+	    background-color: #fff;
+	    margin: 0 10px;
+
+		li {
+	    	margin-bottom: 0;
+	    	
+			a {
+				display: block;
+			    padding: 20px;
+			    background: #f9f9f9;
+			    color: #222;
+			    font-size: 13px;
+			    font-weight: 600;
+			    text-decoration: none;
+			    text-transform: uppercase;
+			    letter-spacing: 0.2px;
+			    outline: none;
+    			@include shadow( none );
+	    	
+				&.active {
+					background-color: #fff;
+    				color: #e5bf63;
+
+					img {
+						opacity: 1;
+					}
+				}
+
+				img {
+				    margin: 0 5px -4px 0;
+				    opacity: 0.7;
+				}
+			}
+		}
+	}
+
+	.zeus-elements {
+		display: none;
+	    padding: 30px 0;
+	    position: relative;
+
+		&.active {
+			display: block;
+		}
+	}
+
+	.zeus-buttons {
+		margin-bottom: 30px;
+
+	    button {
+		    background-color: #34a1ff;
+		    color: #fff;
+		    font-size: 13px;
+		    letter-spacing: 0.2px;
+		    font-weight: 600;
+		    text-transform: uppercase;
+		    border: 0;
+		    padding: 14px 25px;
+		    border-radius: 2px;
+		    margin: 0 3px;
+		    cursor: pointer;
+		    @include transition( 300ms );
+		    @include shadow( 0 4px 6px rgba(0, 0, 0, 0.04) );
+
+		    &:hover {
+		    	background: #1f7fd2;
+		    }
+
+		    span {
+		    	vertical-align: middle;
+		    }
+	    }
+
+	    .zeus-btn-disable {
+	    	background: #fe5252;
+
+	    	&:hover {
+		    	background: #ce3535;
+		    }
+		}
+
+		span.dashicons {
+			padding-right: 4px;
+		}
+	}
+
+	.zeus-container {
+	    @include flex();
+	    flex-flow: row wrap;
+	}
+
+	.zeus-block {
+	    position: relative;
+	    @include flex();
+	    width: calc( 100% / 5 - 20px);
+	    background-color: #fff;
+	    font-size: 24px;
+	    margin: 10px;
+	    padding: 30px;
+	    border-radius: 2px;
+	    @include shadow( 0 4px 8px rgba(0, 0, 0, 0.1) );
+	    box-sizing: border-box;
+	}
+
+	.zeus-inner {
+		flex: 1 1 20%;
+    	-webkit-flex-direction: column;
+    	flex-direction: column;
+    	margin-bottom: 20px;
+
+    	.zeus-block-icon img {
+    		max-width: 80px;
+    	}
+
+    	h4 {
+	    	font-size: 18px;
+		    text-transform: uppercase;
+		    margin: 20px 0;
+    	}
+
+    	p {
+	    	font-size: 14px;
+	    	margin: 0 0 20px;
+    	}
+
+		.zeus-btn {
+	    	background-color: #585858;
+		    min-height: initial;
+	    	min-width: initial;
+	    	text-decoration: none;
+
+	    	&:hover {
+	    		background-color: #e5c063;
+	    	}
+	    }
+	}
+
+	.zeus-templates,
+	.zeus-donation {
+		.zeus-block-icon img {
+			max-width: 130px;
+		}
+	}
+
+	.zeus-templates {
+		flex: 1 1 60%;
+		padding: 0;
+		border: 5px solid #e5bf63;
+		-webkit-flex-direction: row;
+    	flex-direction: row;
+		-webkit-box-align: center;
+	    -ms-flex-align: center;
+	    align-items: center;
+
+		&-inner {
+			padding: 50px;
+	    	flex: 1 1 100%;
+		}
+
+		&-image img {
+			max-width: 100%;
+		}
+	}
+
+	.zeus-donation {
+		background-color: #f9f9f9;
+		padding: 50px;
+
+    	.zeus-btn {
+	    	background-color: #fe5252;
+
+	    	&:hover {
+	    		background-color: #ff8989;
+	    	}
+	    }
+	}
+
+	.zeus-widgets {
+		.zeus-top {
+			margin: 0 10px;
+
+			p {
+				margin-top: 0;
+			}
+		}
+	}
+
+	.zeus-checkbox {
+		@include justify( space-between );
+	    @include align();
+
+	    .zeus-widgets-info {
+		    @include flex();
+		    @include align();
+		}
+
+		.zeus-widget-title {
+		    color: #333;
+		    margin: 0.5em;
+		    font-size: 13px;
+		    letter-spacing: 0.2px;
+		    font-weight: 600;
+		    text-transform: uppercase;
+		}
+
+		.zeus-widget-link {
+		    position: relative;
+		    width: 16px;
+		    @include flex();
+		    text-decoration: none;
+		    outline: none;
+		    @include shadow( none );
+		    margin-left: 4px;
+		    opacity: 0.4;
+		    @include align();
+		    @include justify( center );
+
+		    &.zeus-demo-link {
+			    margin-left: 10px;
+			}
+
+		    img {
+			    max-width: 100%;
+			}
+		}
+
+		input[type="checkbox"] {
+		    visibility: hidden;
+		    display: none;
+		}
+
+		label {
+		    display: block;
+		    position: relative;
+		    width: 48px;
+		    height: 24px;
+		    cursor: pointer;
+
+		    &::before {
+			    content: '';
+			    position: absolute;
+			    left: 0;
+			    width: 48px;
+			    height: 24px;
+			    background: #ccc;
+			    border: 1px solid #ccc;
+			    border-radius: 50px;
+			    @include transition( background 0.1s 0.1s ease );
+			}
+		
+			&::after {
+			    content: '';
+			    position: absolute;
+			    top: 3px;
+			    left: 3px;
+			    width: 20px;
+			    height: 20px;
+			    background: #fff;
+			    border-radius: 50%;
+			    @include transition( all 0.2s ease );
+			    @include animation( toggle-off 0.3s ease-out );
+			    z-index: 2;
+			}
+		}
+
+		input[type="checkbox"]:checked + label {
+		    &::before {
+			    background: #2ecc71;
+			    border-color: #2ecc71;
+			}
+
+			&::after {
+			    left: 27px;
+			    background: #ffffff;
+			    @include animation( toggle-on 0.3s ease-out );
+			}
+		}
+	}
+
+	.zeus-setting {
+	    -webkit-flex-direction: column;
+    	flex-direction: column;
+
+	    label {
+		    display: block;
+		    font-size: 15px;
+		    font-weight: 600;
+		    text-transform: uppercase;
+		    margin: 0 0 20px;
+		}
+
+	    input {
+		    display: block;
+		    background-color: #fff;
+		    border-radius: 2px;
+		    color: #333;
+		    font-size: 15px;
+		    border: 2px solid #eaeaea;
+		    padding: 6px 10px;
+		    height: 44px;
+		    line-height: 1.3;
+		    @include transition( all 0.2s ease-in-out 0s );
+
+		    &,
+		    &:hover,
+		    &:focus {
+			    @include shadow( none );
+			    outline: none;
+			}
+
+		    &:focus {
+			    border-color: #e5c063;
+			}
+		}
+
+	    .description {
+		    margin: 20px 0 0;
+		}
+	}
+
+	p.submit {
+	    margin: 30px 10px 0;
+	    padding: 0;
+	}
+
+	.zeus-btn {
+	    display: inline-block;
+	    min-height: 48px;
+    	min-width: 185px;
+	    font-size: 13px;
+	    font-weight: 600;
+	    line-height: 1;
+	    text-transform: uppercase;
+	    letter-spacing: 0.2px;
+	    background-color: #e5c063;
+	    border-radius: 2px;
+	    padding: 14px 25px;
+	    border: 0;
+	    @include transition( all 300ms ease-in-out );
+
+	    &:hover,
+	    &:focus {
+		    background-color: #e8c573;
+		}
+
+	    &,
+	    &:hover,
+	    &:focus {
+	    	color: #fff;
+		    @include shadow( 0 4px 6px rgba(0, 0, 0, 0.04) );
+		}
+
+		svg,
+	    span {
+		    vertical-align: middle;
+		}
+
+		span.dashicons {
+			padding-left: 10px;
+
+			&.icon-saved {
+				padding-left: 0;
+				padding-right: 10px;
+			}
+		}
+	}
+}
+
+@keyframes toggle-on {
+    50% {
+        transform: scaleX(1.3);
+    }
+}
+
+@keyframes toggle-off {
+    50% {
+        transform: scaleX(1.3);
+    }
+}
+
+#zeus-spinner {
+    width: 18px;
+    padding-right: 8px;
+}
+
+/* Top Bar */
+.toplevel_page_zeus-settings #wpcontent {
+    padding-left: 0;
+}
+
+#zeus-top-bar-wrap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background: #fff;
+    @include shadow( 0 4px 6px rgba(0, 0, 0, 0.04) );
+    z-index: 1;
+}
+
+.zeus-top-bar {
+    @include flex();
+    height: 50px;
+    @include justify( space-between );
+    @include align();
+    padding: 0 16px 0 40px;
+
+	&-main,
+	&-logo {
+	    display: -webkit-inline-box;
+	    display: -ms-inline-flexbox;
+	    display: inline-flex;
+	    @include align();
+	    @include justify( center );
+	}
+
+	&-logo {
+	    -webkit-margin-end: 40px;
+	    margin-inline-end: 40px;
+
+	    img {
+		    max-width: 32px;
+		    vertical-align: middle;
+		}
+
+	    h1 {
+		    font-size: 18px;
+		    font-weight: 700;
+		    padding: 0 8px;
+		    line-height: normal;
+		    text-transform: uppercase;
+		}
+	}
+
+	&-second {
+	    .zeus-btn {
+		    min-height: 40px;
+	    	min-width: 152px;
+		    font-size: 12px;
+		    padding: 12px 15px;
+
+			span.dashicons {
+			    padding-left: 8px;
+			    font-size: 16px;
+			    width: 16px;
+			    height: 16px;
+			}
+
+			#zeus-spinner {
+			    width: 16px;
+			}
+		}
+	}
+}
+
+/* RTL */
+body.rtl {
+	.zeus-settings-wrap {
+		.zeus-tabs li a img {
+			margin: 0 0 -4px 5px;
+		}
+
+		.zeus-buttons span.dashicons {
+			padding-right: 0;
+			padding-left: 4px;
+		}
+
+		.zeus-checkbox {
+			.zeus-widget-link.zeus-demo-link {
+				margin-left: 0;
+				margin-right: 10px;
+			}
+
+			label {
+			    &::before {
+				    left: auto;
+				    right: 0;
+				}
+			
+				&::after {
+				    left: auto;
+				    right: 3px;
+				}
+			}
+
+			input[type="checkbox"]:checked + label::after {
+				left: auto;
+				right: 27px;
+			}
+		}
+
+		.zeus-btn {
+			span.dashicons {
+				padding-left: 0;
+				padding-right: 10px;
+
+				&.icon-saved {
+					padding-right: 0;
+    				padding-left: 10px;
+				}
+			}
+		}
+	}
+
+	#zeus-spinner {
+	    padding-right: 0;
+	    padding-left: 8px;
+	}
+
+	/* Top Bar */
+	&.toplevel_page_zeus-settings #wpcontent {
+	    padding-right: 0;
+	}
+
+	.zeus-top-bar {
+	    padding: 0 40px 0 16px;
+
+		&-second .zeus-btn span.dashicons {
+			padding-left: 0;
+			padding-right: 8px;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Responsive
+-------------------------------------------------------------------*/
+@media only screen and (max-width: 1580px) {
+	.zeus-settings-wrap {
+	    .zeus-templates,
+		.zeus-donation {
+		    flex: 1 1 100% !important;
+		}
+
+		.zeus-templates {
+		    -webkit-flex-direction: column;
+		    flex-direction: column;
+		}
+
+		.zeus-block {
+			width: calc( 100% / 3 - 20px);
+		}
+	}
+}
+
+@media only screen and (max-width: 1280px) {
+	.zeus-settings-wrap {
+		.zeus-inner {
+			flex: 1 1 40%;
+		}
+
+		.zeus-block {
+			width: calc( 100% / 2 - 20px);
+		}
+	}
+}
+
+@media only screen and (max-width: 960px) {
+	.zeus-settings-wrap .zeus-block {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 720px) {
+	.zeus-settings-wrap {
+		.zeus-settings-tabs {
+		    padding: 0;
+    		margin: 80px 10px 10px;
+		}
+
+		.zeus-inner {
+			flex: 1 1 100%;
+		}
+	}
+}
+
+@media screen and (max-width: 600px) {
+	#zeus-top-bar-wrap {
+	    top: 46px;
+	}
+}
+
+@media only screen and (max-width: 520px) {
+	.zeus-settings-wrap {
+		.zeus-tabs {
+		    -webkit-flex-direction: column;
+		    flex-direction: column;
+		}
+
+		.zeus-setting {
+		    flex-basis: 100%;
+
+			input {
+			    width: 100%;
+			}
+		}
+	}
+}

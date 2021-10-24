@@ -1,0 +1,51 @@
+/*------------------------------------------------------------------
+Buttons
+-------------------------------------------------------------------*/
+.zeus-buttons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        display: inline-block;
+        margin-left: 12px;
+
+        &:first-child {
+            margin-left: 0 !important;
+        }
+
+        a {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #e5c063;
+            color: #fff;
+            line-height: 1;
+            text-align: center;
+            border-radius: 3px;
+
+            &:hover {
+                background-color: #222222;
+            }
+        }
+
+        .zeus-button-icon {
+
+            i, svg {
+                width: 1em;
+                height: 1em;
+                position: relative;
+                vertical-align: middle;
+            }
+
+        }
+    }
+}
+
+.rtl .zeus-buttons li {
+    margin-right: 12px;
+    margin-left: 0;
+
+    &:first-child {
+        margin-right: 0 !important;
+    }
+}

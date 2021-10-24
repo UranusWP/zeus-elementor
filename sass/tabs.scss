@@ -1,0 +1,165 @@
+// Display flex
+@mixin flex() {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+// Flex wrap
+@mixin wrap() {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+// Justify content
+@mixin justify( $args ) {
+    -webkit-justify-content: $args;
+    justify-content: $args;
+}
+
+// Flex Direction
+@mixin flex-direction( $args ) {
+    -webkit-flex-direction: $args;
+    flex-direction: $args;
+}
+
+/*------------------------------------------------------------------
+Tabs
+-------------------------------------------------------------------*/
+.zeus-tabs {
+    .zeus-tabs-wrap {
+        @include flex();
+        @include wrap();
+
+        &.zeus-tabs-normal {
+            &.zeus-tabs-center {
+                @include justify( center );
+            }
+
+            &.zeus-tabs-right {
+                @include justify( flex-end );
+            }
+
+            &.zeus-tabs-justify .zeus-tab-title {
+                flex: 1;
+                flex-basis: 1px;
+                text-align: center;
+            }
+        }
+    }
+
+    &.zeus-tabs-left,
+    &.zeus-tabs-right {
+        @include flex();
+        @include wrap();
+
+        .zeus-tabs-wrap {
+            @include flex-direction( column );
+        }
+
+        .zeus-tabs-content-wrap {
+            flex: 1;
+            flex-basis: 1px;
+        }
+    }
+
+    &.zeus-tabs-right .zeus-tabs-wrap {
+        order: 2;
+    }
+
+    .zeus-tab-title {
+        position: relative;
+        padding: 20px 25px;
+        font-weight: 600;
+        line-height: 1;
+        cursor: pointer;
+
+        &.zeus-active {
+            background-color: #e5c063;
+            color: #fff;
+        }
+
+        .zeus-icon-align-left {
+            margin-right: 3px;
+        }
+
+        .zeus-icon-align-right {
+            margin-left: 3px;
+        }
+
+        i, svg {
+            width: 1em;
+            height: 1em;
+            vertical-align: bottom;
+        }
+    }
+
+    .zeus-tab-mobile-title {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        border: 1px solid rgba(0,0,0,0.1);
+        border-top-width: 0 !important;
+
+        &:first-child {
+            border-top-width: 0 !important;
+        }
+    }
+
+    .zeus-tabs-content-wrap {
+        border-top: 1px solid rgba(0,0,0,0.1);
+
+        .zeus-tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-top: 0;
+
+            &.zeus-active {
+                display: block;
+            }
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+/* RTL */
+body.rtl {
+    .zeus-tabs .zeus-tab-title {
+        .zeus-icon-align-left {
+            margin-left: 3px;
+            margin-right: 0;
+        }
+
+        .zeus-icon-align-right {
+            margin-right: 3px;
+            margin-left: 0;
+        }
+    }
+}
+
+/*------------------------------------------------------------------
+Responsive
+-------------------------------------------------------------------*/
+@media (min-width: 767px) {
+    .zeus-tabs .zeus-tab-mobile-title {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .zeus-tabs {
+        .zeus-tabs-wrap {
+            display: none;
+        }
+
+        .zeus-tab-content {
+            border-top: 0 !important;
+        }
+    }
+}

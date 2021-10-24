@@ -1,0 +1,167 @@
+// Display Flex
+@mixin display() {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+// Flex Wrap
+@mixin flex-wrap( $args ) {
+    -ms-flex-wrap: $args;
+    -webkit-flex-wrap: $args;
+    flex-wrap: $args;
+}
+
+// Flex Direction
+@mixin flex-direction( $args ) {
+    -webkit-flex-direction: $args;
+    flex-direction: $args;
+}
+
+// Align Items
+@mixin align-items( $args ) {
+    -webkit-align-items: $args;
+    align-items: $args;
+}
+
+// Justify Content
+@mixin justify-content( $args ) {
+    -webkit-justify-content: $args;
+    justify-content: $args;
+}
+
+// Transition
+@mixin transition( $args ) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+/*------------------------------------------------------------------
+Price List
+-------------------------------------------------------------------*/
+.zeus-price-list {
+    .zeus-price-list-item {
+        @include display();
+        @include align-items( center );
+    
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
+    }
+
+    .zeus-price-list-text {
+        @include flex-wrap( wrap );
+        -webkit-box-flex: 1;
+        -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+        -moz-box-flex: 1;
+        flex-grow: 1;
+    }
+
+    .zeus-price-list-header {
+        @include display();
+        @include flex-wrap( wrap );
+        @include align-items( center );
+        @include justify-content( space-between );
+        font-size: 16px;
+    }
+
+    &.no-separator .zeus-price-list-header {
+        display: block;
+    }
+
+    .zeus-price-list-image {
+        padding-right: 18px;
+        width: 150px;
+        min-width: 150px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .zeus-price-list-title {
+        max-width: 80%;
+    }
+
+    .zeus-price-list-description {
+        color: #999999;
+        font-size: 14px;
+        margin: 10px 0 0;
+    }
+
+    .zeus-price-list-separator {
+        border-bottom: 2px dotted #b5b5b5;
+        flex: 1;
+        -webkit-box-flex: 1;
+        -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+        -moz-box-flex: 1;
+        flex-grow: 1;
+        margin: 0 20px;
+        height: 0;
+    }
+
+    .zeus-price-list-price-wrap {
+        display: inline-block;
+    }
+
+    &.zeus-price-list-inline .zeus-price-list-price-wrap {
+        margin-top: 10px;
+    }
+
+    .zeus-price-list-price {
+        font-size: 16px;
+        border-radius: 2px;
+        text-align: center;
+        @include transition( all .3s ease );
+    }
+
+    .zeus-price-list-discount-price {
+        text-decoration: line-through;
+        color: #ccc;
+    }
+}
+
+/* RTL */
+body.rtl {
+    .zeus-price-list {
+        .zeus-price-list-image {
+            padding-left: 25px;
+            padding-right: 0;
+        }
+
+        .zeus-price-list-price {
+            padding-right: 30px;
+            padding-left: 0;
+        }
+    }
+}
+
+/*------------------------------------------------------------------
+Responsive
+-------------------------------------------------------------------*/
+@media only screen and (max-width: 480px) {
+    .zeus-price-list {
+        .zeus-price-list-item {
+            display: block;
+        }
+
+        .zeus-price-list-image {
+            padding: 0;
+        }
+
+        .zeus-price-list-title {
+            font-size: 14px;
+            max-width: 100%;
+        }
+
+        .zeus-price-list-description {
+            font-size: 12px;
+        }
+    }
+}

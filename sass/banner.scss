@@ -1,0 +1,905 @@
+// Transform
+@mixin transform( $args ) {
+    -webkit-transform: $args;
+    -moz-transform: $args;
+    -ms-transform: $args;
+    -o-transform: $args;
+    transform: $args;
+}
+
+// Transform Origin
+@mixin transform-origin( $args ) {
+    -webkit-transform-origin: $args;
+    -moz-transform-origin: $args;
+    -ms-transform-origin: $args;
+    -o-transform-origin: $args;
+    transform-origin: $args;
+}
+
+// Transition
+@mixin transition( $args ) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+// Transition Delay
+@mixin transition-delay( $args ) {
+    -webkit-transition-delay: $args;
+    -moz-transition-delay: $args;
+    -ms-transition-delay: $args;
+    -o-transition-delay: $args;
+    transition-delay: $args;
+}
+
+// Transition Duration
+@mixin transition-duration( $args ) {
+    -webkit-transition-duration: $args;
+    -moz-transition-duration: $args;
+    -ms-transition-duration: $args;
+    -o-transition-duration: $args;
+    transition-duration: $args;
+}
+
+// Perspective
+@mixin perspective( $args ) {
+    -webkit-perspective: $args;
+    -moz-perspective: $args;
+    -ms-perspective: $args;
+    -o-perspective: $args;
+    perspective: $args;
+}
+
+/*------------------------------------------------------------------
+Banner
+-------------------------------------------------------------------*/
+.zeus-banner {
+    background-color: #e5c063;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+
+    img {
+        position: relative;
+        display: block;
+        max-width: 100%;
+        opacity: .8;
+    }
+
+    figcaption {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 30px;
+        font-size: 17px;
+        text-transform: uppercase;
+    }
+
+    .zeus-banner-content {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-flow: column;
+        -ms-flex-flow: column;
+        flex-flow: column;
+    }
+
+    .zeus-banner-title {
+        font-size: 24px;
+        color: #fff;
+        margin: 0;
+        order: 1;
+    }
+
+    .zeus-banner-text {
+        font-size: 62.5%;
+        letter-spacing: 1px;
+        color: #fff;
+        margin: 0;
+        order: 2;
+    }
+
+    &.zeus-gaia {
+        img {
+            opacity: 0.95;
+            @include transform( scale3d(1.05,1.05,1) );
+            @include transition( all .3s );
+        }
+
+        figcaption:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255,255,255,0.5);
+            @include transform( scale3d(2,2,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0) );
+            @include transition( transform .6s );
+        }
+
+        .zeus-banner-title {
+            text-align: left;
+        }
+
+        .zeus-banner-text {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            margin: 35px;
+            padding: 0 12px;
+            max-width: 150px;
+            border-right: 4px solid #fff;
+            text-align: right;
+            opacity: 0;
+            @include transition( opacity .35s );
+        }
+
+        &:hover {
+            img {
+                opacity: 0.6;
+                @include transform( scale3d(1,1,1) );
+            }
+
+            figcaption:before {
+                @include transform( scale3d(2,2,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0) );
+            }
+
+            .zeus-banner-text {
+                opacity: 1;
+                @include transition-delay( .1s );
+            }
+        }
+    }
+
+    &.zeus-poseidon {
+        img {
+            opacity: 0.7;
+            @include transition( opacity .3s );
+        }
+
+        figcaption {
+            &:before,
+            &:after {
+                position: absolute;
+                top: 30px;
+                right: 30px;
+                bottom: 30px;
+                left: 30px;
+                content: '';
+                opacity: 0;
+                @include transition( all .3s );
+            }
+
+            &:before {
+                border-top: 1px solid #fff;
+                border-bottom: 1px solid #fff;
+                @include transform( scale(0,1) );
+            }
+
+            &:after {
+                border-right: 1px solid #fff;
+                border-left: 1px solid #fff;
+                @include transform( scale(1,0) );
+            }
+        }
+
+        .zeus-banner-title {
+            padding-top: 30%;
+            @include transform( translate3d(0,-20px,0) );
+            @include transition( transform 0.35s );
+        }
+
+        .zeus-banner-text {
+            padding: 20px 25px;
+            opacity: 0;
+            @include transform( translate3d(0,20px,0) );
+            @include transition( all .3s );
+        }
+
+        &:hover {
+            img {
+                opacity: 0.4;
+            }
+
+            figcaption {
+                &:before,
+                &:after {
+                    opacity: 1;
+                    @include transform( scale(1) );
+                }
+            }
+
+            .zeus-banner-title,
+            .zeus-banner-text {
+                opacity: 1;
+                @include transform( translate3d(0,0,0) );
+            }
+        }
+    }
+
+    &.zeus-cronos {
+        img {
+            @include transition( all .3s );
+            @include transform( scale(1.12) );
+        }
+
+        figcaption {
+            padding: 30px 45px;
+        }
+
+        figcaption:before,
+        .zeus-banner-text {
+            opacity: 0;
+            @include transition( all .3s );
+        }
+
+        figcaption:before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            bottom: 30px;
+            left: 30px;
+            border: 1px solid #fff;
+            @include transform( scale(1.1) );
+        }
+
+        .zeus-banner-title {
+            padding: 20% 0 20px 0;
+        }
+
+        &:hover {
+            img {
+                opacity: 0.5;
+                @include transform( scale(1) );
+            }
+
+            figcaption:before,
+            .zeus-banner-text {
+                opacity: 1;
+                @include transform( scale(1) );
+            }
+        }
+    }
+
+    &.zeus-hades {
+        img {
+            opacity: 0.9;
+        }
+
+        img,
+        figcaption:after,
+        .zeus-banner-text {
+            @include transition( all .3s );
+        }
+
+        figcaption:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-top: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            opacity: 0;
+            @include transform( rotate3d(0,0,1,45deg) scale3d(1,0,1) );
+            @include transform-origin( 50% 50% );
+        }
+
+        .zeus-banner-title,
+        .zeus-banner-text {
+            opacity: 1;
+            @include transform( scale3d(0.8,0.8,1) );
+        }
+
+        .zeus-banner-title {
+            padding-top: 26%;
+            @include transition( transform .3s );
+        }
+
+        .zeus-banner-text {
+            padding: 10px 20px;
+            opacity: 0;
+        }
+
+        &:hover {
+            img {
+                opacity: 0.7;
+                @include transform( scale3d(1.05,1.05,1) );
+            }
+
+            figcaption:after {
+                opacity: 1;
+                @include transform( rotate3d(0,0,1,45deg) scale3d(1,1,1) );
+            }
+
+            .zeus-banner-title,
+            .zeus-banner-text {
+                opacity: 1;
+                @include transform( scale3d(1,1,1) );
+            }
+        }
+    }
+
+    &.zeus-demeter {
+        img {
+            height: auto;
+            max-width: calc(100% + 30px);
+            width: calc(100% + 30px);
+        }
+
+        img,
+        .zeus-banner-title {
+            @include transform( translate3d(-30px,0,0) );
+        }
+
+        figcaption {
+            &:before,
+            &:after {
+                position: absolute;
+                content: '';
+                opacity: 0;
+            }
+
+            &:before {
+                top: 50px;
+                right: 30px;
+                bottom: 50px;
+                left: 30px;
+                border-top: 1px solid #fff;
+                border-bottom: 1px solid #fff;
+                @include transform( scale(0,1) );
+                @include transform-origin( 0 0 );
+            }
+
+            &:after {
+                top: 30px;
+                right: 50px;
+                bottom: 30px;
+                left: 50px;
+                border-right: 1px solid #fff;
+                border-left: 1px solid #fff;
+                @include transform( scale(1,0) );
+                @include transform-origin( 100% 0 );
+            }
+        }
+
+        .zeus-banner-title {
+            padding-top: 26%;
+            @include transition( transform .3s );
+        }
+
+        .zeus-banner-text {
+            padding: 10px 45px;
+            text-transform: none;
+            opacity: 0;
+            @include transform( translate3d(0,-10px,0) );
+        }
+
+        img,
+        figcaption:before,
+        figcaption:after,
+        .zeus-banner-text {
+            @include transition( all .3s );
+        }
+
+        &:hover {
+            img {
+                opacity: 0.7;
+                @include transform( translate3d(0,0,0) );
+            }
+
+            figcaption {
+                &:before,
+                &:after {
+                    opacity: 1;
+                    @include transform( scale(1) );
+                }
+            }
+
+            .zeus-banner-title,
+            .zeus-banner-text {
+                opacity: 1;
+                @include transform( translate3d(0,0,0) );
+            }
+
+            img,
+            figcaption:after,
+            .zeus-banner-title,
+            .zeus-banner-text {
+                @include transition-delay( .15s );
+            }
+        }
+    }
+
+    &.zeus-apollo {
+        img {
+            max-width: none;
+            width: -webkit-calc(100% + 50px);
+            width: calc(100% + 50px);
+            opacity: 0.7;
+            @include transform( translate3d(-40px,0,0) );
+            @include transition( all .3s );
+        }
+
+        figcaption {
+            text-align: left;
+        }
+
+        .zeus-banner-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 20px;
+            width: 100%;
+            height: 50%;
+        }
+
+        .zeus-banner-title,
+        .zeus-banner-text {
+            @include transform( translate3d(0,40px,0) );
+        }
+
+        .zeus-banner-title {
+            @include transition( transform 0.35s );
+        }
+
+        .zeus-banner-text {
+            opacity: 0;
+            @include transition( all .2s );
+        }
+
+        &:hover {
+            img,
+            .zeus-banner-text {
+                opacity: 1;
+            }
+
+            img,
+            .zeus-banner-title,
+            .zeus-banner-text {
+                @include transform( translate3d(0,0,0) );
+            }
+
+            .zeus-banner-text {
+                @include transition-delay( .05s );
+                @include transition-duration( .35s );
+            }
+        }
+    }
+
+    &.zeus-athena {
+        img {
+            opacity: 0.9;
+            @include transition( opacity .3s );
+        }
+
+        figcaption:before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            bottom: 30px;
+            left: 30px;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 30px rgba(255,255,255,0.2);
+            opacity: 0;
+            @include transition( all .3s );
+            @include transform( scale3d(1.4,1.4,1) );
+        }
+
+        .zeus-banner-title {
+            margin: 20% 0 10px 0;
+            @include transform( transform 0.35s );
+        }
+
+        .zeus-banner-text {
+            padding: 10px 20px;
+            opacity: 0;
+            @include transition( all .3s );
+            @include transform( scale(1.5) );
+        }
+
+        &:hover {
+            img {
+                opacity: 0.4;
+            }
+
+            figcaption {
+                background-color: rgba(58,52,42,0);
+            }
+
+            figcaption:before,
+            .zeus-banner-text {
+                opacity: 1;
+                @include transform( scale3d(1,1,1) );
+            }
+
+            .zeus-banner-title {
+                @include transform( scale(0.9) );
+            }
+        }
+    }
+
+    &.zeus-artemis {
+        figcaption {
+            text-align: right;
+        }
+
+        .zeus-banner-title,
+        .zeus-banner-text {
+            position: absolute;
+            right: 30px;
+            left: 30px;
+            padding: 10px 0;
+        }
+
+
+        .zeus-banner-text {
+            bottom: 30px;
+            line-height: 1.5;
+            @include transform( translate3d(0,100%,0) );
+        }
+
+        .zeus-banner-title {
+            top: 30px;
+            @include transition( transform 0.35s );
+            @include transform( translate3d(0,20px,0) );
+        }
+
+        .zeus-banner-title:after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #fff;
+            @include transform( translate3d(0,40px,0) );
+        }
+
+        .zeus-banner-title:after,
+        .zeus-banner-text {
+            opacity: 0;
+            @include transition( all .3s );
+        }
+
+        &:hover {
+            .zeus-banner-title {
+                @include transform( translate3d(0,0,0) );
+            }
+
+            .zeus-banner-title:after,
+            .zeus-banner-text {
+                opacity: 1;
+                @include transform( translate3d(0,0,0) );
+            }
+        }
+    }
+
+    &.zeus-ares {
+        @include perspective( 1000px );
+
+        img {
+            @include transition( all .3s );
+            @include transform( translate3d(0,0,300px) );
+        }
+
+        figcaption {
+            &:before,
+            &:after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 80%;
+                height: 1px;
+                background-color: #fff;
+                @include transition( all .3s );
+                @include transform( translate3d(-50%,-50%,0) );
+            }
+        }
+
+        .zeus-banner-title,
+        .zeus-banner-text {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            @include transition( transform 0.35s );
+        }
+
+        .zeus-banner-title {
+            @include transform( translate3d(0,-50%,0) translate3d(0,-150%,0) );
+        }
+
+        .zeus-banner-text {
+            padding: 5px 30px;
+            @include transform( translate3d(0,-50%,0) translate3d(0,150%,0) );
+        }
+
+        &:hover {
+            img {
+                opacity: 0.6;
+                @include transform( translate3d(0,0,0) );
+            }
+
+            figcaption:before {
+                opacity: 0.5;
+                @include transform( translate3d(-50%,-50%,0) rotate(45deg) );
+            }
+
+            figcaption:after {
+                opacity: 0.5;
+                @include transform( translate3d(-50%,-50%,0) rotate(-45deg) );
+            }
+
+            .zeus-banner-title {
+                @include transform( translate3d(0,-50%,0) translate3d(0,-100%,0) );
+            }
+
+            .zeus-banner-text {
+                @include transform( translate3d(0,-50%,0) translate3d(0,100%,0) );
+            }
+        }
+    }
+
+    &.zeus-hermes {
+        img {
+            max-width: none;
+            width: calc(100% + 30px);
+             @include transition( all .3s );
+             @include transform( translate3d(-20px,0,0) );
+        }
+
+        figcaption:before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            bottom: 30px;
+            left: 30px;
+            border: 1px solid #fff;
+            opacity: 0;
+             @include transition( all .3s );
+             @include transform( translate3d(-20px,0,0) );
+        }
+
+        figcaption {
+            padding: 30px;
+            text-align: left;
+        }
+
+        .zeus-banner-title {
+            padding: 30% 15px 10px 15px;
+        }
+
+        .zeus-banner-text {
+            padding: 0 15px;
+            opacity: 0;
+             @include transition( all .3s );
+             @include transform( translate3d(-10px,0,0) );
+        }
+
+        &:hover {
+            img {
+                opacity: 0.7;
+                @include transform( translate3d(0,0,0) );
+            }
+
+            figcaption:before,
+            .zeus-banner-text {
+                opacity: 1;
+                @include transform( translate3d(0,0,0) );
+            }
+        }
+    }
+
+    &.zeus-eros {
+        img {
+            opacity: 0.7;
+             @include transition( all .3s );
+             @include transform( scale(1.15) );
+        }
+
+        .zeus-banner-title {
+            margin-top: 5%;
+             @include transition( transform 0.35s );
+             @include transform( translate3d(0,20px,0) );
+        }
+
+        .zeus-banner-text {
+            margin: 15px 0 0;
+            padding: 30px;
+            border: 1px solid #fff;
+            opacity: 0;
+             @include transition( all .3s );
+             @include transform( translate3d(0,20px,0) scale(1.1) );
+        }
+
+        &:hover {
+            img {
+                opacity: 0.5;
+                @include transform( scale(1) );
+            }
+
+            .zeus-banner-title {
+                @include transform( translate3d(0,0,0) );
+            }
+
+            .zeus-banner-text {
+                opacity: 1;
+                @include transform( translate3d(0,0,0) scale(1) );
+            }
+        }
+    }
+
+    &.zeus-hera {
+        img {
+            opacity: 0.9;
+            @include transition( opacity 0.35s );
+        }
+
+        figcaption {
+            padding: 30px;
+            background-color: rgba(58,52,42,0.7);
+            @include transition( background-color 0.35s );
+
+            é:before {
+                content: '';
+                position: absolute;
+                top: 30px;
+                right: 30px;
+                bottom: 30px;
+                left: 30px;
+                border: 1px solid #fff;
+            }
+        }
+
+        figcaption:before,
+        .zeus-banner-text {
+            opacity: 0;
+            @include transition( all .3s );
+            @include transform( scale(0) );
+        }
+
+        .zeus-banner-title {
+            margin: 20% 0 10px 0;
+            @include transition( transform 0.35s );
+            @include transform( translate3d(0,100%,0) );
+        }
+
+        &:hover {
+            img {
+                opacity: 0.4;
+            }
+
+            figcaption {
+                background-color: rgba(58,52,42,0);
+            }
+            .zeus-banner-title {
+                @include transform( translate3d(0,0,0) );
+            }
+
+            figcaption:before,
+            .zeus-banner-text {
+                opacity: 1;
+                @include transform( scale(1) );
+            }
+        }
+    }
+
+    &.zeus-aphrodite {
+        figcaption:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,0.8) 75%);
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(0,0,0,0.8) 75%);
+            opacity: 0;
+            @include transform( translate3d(0,50%,0) );
+        }
+
+        figcaption:before,
+        .zeus-banner-text {
+            @include transition( all .3s );
+        }
+
+        .zeus-banner-title {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            @include transition( all .3s );
+            @include transform( translate3d(0,-50%,0) );
+        }
+
+        .zeus-banner-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            opacity: 0;
+            @include transform( translate3d(0,10px,0) );
+        }
+
+        &:hover .zeus-banner-title {
+            @include transform( translate3d(0,-50%,0) translate3d(0,-40px,0) );
+        }
+
+        &:hover figcaption:before ,
+        &:hover .zeus-banner-text {
+            opacity: 1;
+            @include transform( translate3d(0,0,0) );
+        }
+    }
+
+    &.zeus-zeus {
+        img {
+            max-width: none;
+            width: -webkit-calc(100% + 20px);
+            width: calc(100% + 20px);
+            @include transition( all .3s );
+            @include transform( translate3d(-10px,0,0) );
+        }
+
+        figcaption {
+            text-align: left;
+        }
+
+        .zeus-banner-title {
+            position: relative;
+            overflow: hidden;
+            padding: 6px 0;
+
+            &:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background-color: #fff;
+                @include transition( transform 0.35s );
+                @include transform( translate3d(-100%,0,0) );
+            }
+        }
+
+        .zeus-banner-text {
+            padding: 12px 0;
+            opacity: 0;
+            @include transition( all .3s );
+            @include transform( translate3d(100%,0,0) );
+        }
+
+        &:hover {
+            img {
+                opacity: 0.4;
+                @include transform( translate3d(0,0,0) );
+            }
+
+            .zeus-banner-title:after {
+                @include transform( translate3d(0,0,0) );
+            }
+
+            .zeus-banner-text {
+                opacity: 1;
+                @include transform( translate3d(0,0,0) );
+            }
+        }
+    }
+}

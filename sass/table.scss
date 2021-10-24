@@ -1,0 +1,223 @@
+// Display flex
+@mixin flex() {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+// Align center
+@mixin align() {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+// Justify content
+@mixin justify-content( $arg ) {
+    -webkit-justify-content:  $arg ;
+    justify-content:  $arg ;
+}
+
+// Transition
+@mixin transition( $args ) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+/*------------------------------------------------------------------
+Table
+-------------------------------------------------------------------*/
+.zeus-table {
+    margin: 0 auto;
+
+    thead .zeus-table-cell {
+        background-color: #e5c063;
+        color: #fff;
+        border-bottom: 0;
+    }
+
+    &.zeus-table-rules {
+        border-collapse: collapse;
+    }
+}
+
+.zeus-table-cell {
+    padding: 0;
+}
+
+.zeus-table-text {
+    @include flex();
+    @include align();
+    padding: 12px;
+}
+
+.zeus-table {
+    .zeus-table-row,
+    .zeus-table-cell,
+    .zeus-table-text {
+        @include transition( all .3s ease );
+    }
+}
+
+.zeus-align-left .zeus-table {
+    .zeus-table-cell {
+        text-align: left;
+    }
+
+    .zeus-table-text {
+        @include justify-content( flex-start );
+    }
+}
+
+.zeus-align-center .zeus-table {
+    .zeus-table-cell {
+        text-align: center;
+    }
+    
+    .zeus-table-text {
+        @include justify-content( center );
+    }
+}
+
+.zeus-align-right .zeus-table {
+    .zeus-table-cell {
+        text-align: right;
+    }
+    
+    .zeus-table-text {
+        @include justify-content( flex-end );
+    }
+}
+
+.zeus-table-text {
+    .elementor-align-icon-left {
+        margin-right: 12px;
+    }
+
+    .elementor-align-icon-right {
+        -ms-flex-order: 2;
+        order: 2;
+        margin-left: 12px;
+    }
+}
+
+/*------------------------------------------------------------------
+Responsive
+-------------------------------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+    .zeus-tablet-align-left .zeus-table {
+        .zeus-table-cell {
+            text-align: left;
+        }
+
+        .zeus-table-text {
+            @include justify-content( flex-start );
+        }
+    }
+
+    .zeus-tablet-align-center .zeus-table {
+        .zeus-table-cell {
+            text-align: center;
+        }
+        
+        .zeus-table-text {
+            @include justify-content( center );
+        }
+    }
+
+    .zeus-tablet-align-right .zeus-table {
+        .zeus-table-cell {
+            text-align: right;
+        }
+        
+        .zeus-table-text {
+            @include justify-content( flex-end );
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .zeus-table {
+        thead {
+            display: none;
+        }
+
+        tr {
+            td,
+            th {
+                @include flex();
+            }
+
+            td > *,
+            td:before,
+            th > *,
+            th:before {
+                -ms-flex-preferred-size: 50%;
+                flex-basis: 50%;
+                width: 50%;
+                -ms-flex-positive: 1;
+                flex-grow: 1;
+            }
+
+            td[data-title]:before,
+            th[data-title]:before {
+                background-color: #e5c063;
+                color: #fff;
+                content: attr(data-title);
+                position: relative;
+                padding: 12px;
+            }
+        }
+    }
+
+    .zeus-table-mobile-header-hide .zeus-table-cell[data-title]:before {
+        content: none !important;
+    }
+
+    .zeus-table-mobile-header-inline .zeus-table-cell[data-title] {
+        -ms-flex-direction: column;
+        flex-direction: column;
+
+        > *,
+        &:before {
+            -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+            width: auto;
+        }
+    }
+
+    .zeus-mobile-align-left .zeus-table {
+        .zeus-table-cell {
+            text-align: left;
+        }
+
+        .zeus-table-text {
+            @include justify-content( flex-start );
+        }
+    }
+
+    .zeus-mobile-align-center .zeus-table {
+        .zeus-table-cell {
+            text-align: center;
+        }
+        
+        .zeus-table-text {
+            @include justify-content( center );
+        }
+    }
+
+    .zeus-mobile-align-right .zeus-table {
+        .zeus-table-cell {
+            text-align: right;
+        }
+        
+        .zeus-table-text {
+            @include justify-content( flex-end );
+        }
+    }
+}

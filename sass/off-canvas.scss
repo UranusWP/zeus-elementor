@@ -1,0 +1,224 @@
+// Transition
+@mixin transition( $args ) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+// Transform
+@mixin transform( $args ) {
+    -webkit-transform: $args;
+    -moz-transform: $args;
+    -ms-transform: $args;
+    -o-transform: $args;
+    transform: $args;
+}
+
+// Box Shadow
+@mixin box-shadow( $args ) {
+    -webkit-box-shadow: $args;
+    -moz-box-shadow: $args;
+    box-shadow: $args;
+}
+
+/*------------------------------------------------------------------
+Off Canvas
+-------------------------------------------------------------------*/
+.zeus-off-canvas-button {
+    a i {
+        font-size: 14px;
+    }
+
+    .elementor-align-icon-left {
+        margin-right: 4px;
+    }
+
+    .elementor-align-icon-right {
+        margin-left: 4px;
+    }
+
+    i, svg {
+        width: 1em;
+        height: 1em;
+        vertical-align: middle;
+    }
+}
+
+.zeus-align-left {
+    text-align: left;
+}
+
+.zeus-align-center {
+	text-align: center;
+}
+
+.zeus-align-right {
+	text-align: right;
+}
+
+.zeus-align-justify .zeus-off-canvas-button a {
+	width: 100%;
+}
+
+.zeus-off-canvas-wrap {
+    visibility: hidden;
+    @include transition( all 0.25s ease-in-out );
+
+    &,
+    .zeus-off-canvas-overlay {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 9999;
+    }
+
+    .zeus-off-canvas-overlay {
+        background-color: rgba(0,0,0,.5);
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+    }
+
+    .zeus-off-canvas-sidebar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        width: 325px;
+        height: 100%;
+        padding: 35px;
+        overflow: auto;
+        z-index: 10000;
+        @include box-shadow( 0 0 12px 0 rgba(0,0,0,.1) );
+        @include transition( transform 0.3s ease-in-out );
+        @include transform( translateX(-100%) );
+    }
+}
+
+.zeus-off-canvas-wrap.show {
+    visibility: visible;
+
+    .zeus-off-canvas-sidebar {
+        @include transform( translateX(0) );
+    }
+}
+
+.admin-bar .zeus-off-canvas-wrap .zeus-off-canvas-sidebar {
+    top: 32px;
+    height: -webkit-calc(100% - 32px);
+    height: calc(100% - 32px);
+}
+
+@media screen and (max-width: 782px) {
+    .admin-bar .zeus-off-canvas-wrap .zeus-off-canvas-sidebar {
+        top: 46px;
+        height: -webkit-calc(100% - 46px);
+        height: calc(100% - 46px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .admin-bar .zeus-off-canvas-wrap .zeus-off-canvas-sidebar {
+        top: 0;
+        height: 100%;
+    }
+}
+
+.zeus-off-canvas-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    z-index: 1000;
+
+    svg {
+        @include transition( all .3s ease-in-out );
+    }
+
+    &:hover svg {
+        fill:  #777;
+    }
+}
+
+/* RTL */
+body.rtl {
+    .zeus-off-canvas-button {
+        .elementor-align-icon-left {
+            margin-left: 4px;
+            margin-right: 0;
+        }
+
+        .elementor-align-icon-right {
+            margin-right: 4px;
+            margin-left: 0;
+        }
+    }
+
+    .zeus-off-canvas-wrap {
+        &,
+        .zeus-off-canvas-overlay {
+            right: 0;
+            left: auto;
+        }
+
+        .zeus-off-canvas-sidebar {
+            right: 0;
+            left: auto;
+        }
+    }
+
+    .zeus-off-canvas-close {
+        left: 15px;
+        right: auto;
+    }
+}
+
+/*------------------------------------------------------------------
+Responsive
+-------------------------------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+    .zeus-tablet-align-left {
+        text-align: left;
+    }
+
+    .zeus-tablet-align-center {
+        text-align: center;
+    }
+
+    .zeus-tablet-align-right {
+        text-align: right;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .zeus-mobile-align-left {
+        text-align: left;
+    }
+
+    .zeus-mobile-align-center {
+        text-align: center;
+    }
+
+    .zeus-mobile-align-right {
+        text-align: right;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .zeus-off-canvas-wrap {
+        width: 100%;
+    }
+
+    .zeus-off-canvas-wrap .zeus-off-canvas-sidebar {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,228 @@
+/*------------------------------------------------------------------
+Alert Message
+-------------------------------------------------------------------*/
+.zeus-alert {
+	padding: 30px;
+	text-align: left;
+}
+
+.zeus-alert .zeus-alert-heading {
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+.zeus-alert .zeus-alert-icon {
+	width: 1em;
+	height: 1em;
+	line-height: 1;
+	font-size: 16px;
+	text-align: center;
+	margin-right: 10px;
+}
+
+.zeus-alert-content-wrap {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.zeus-alert-content-wrap p:last-child {
+	margin: 0;
+}
+
+/* Small style */
+.zeus-alert.zeus-alert-small {
+	font-weight: 600;
+	line-height: 16px;
+	padding: 11px 20px;
+}
+
+.zeus-alert-small {
+	border: 1px solid transparent;
+}
+
+.zeus-alert-small.zeus-alert-notice {
+	color: #b5b5b5;
+	background-color: #fbfcfc;
+	border-color: #e9e9e9;
+}
+
+.zeus-alert-small.zeus-alert-error {
+	color: #e75744;
+	background-color: #ffdfdf;
+	border-color: #fdBdB5;
+}
+
+.zeus-alert-small.zeus-alert-warning {
+	color: #de9606;
+	background-color: #fcf8e3;
+	border-color: #e7db9e;
+}
+
+.zeus-alert-small.zeus-alert-success {
+	color: #3cb37d;
+	background-color: #dff0d8;
+	border-color: #bddeaf;
+}
+
+.zeus-alert-small.zeus-alert-info {
+	color: #56afdc;
+	background-color: #d9edf7;
+	border-color: #a5e1ff;
+}
+
+/* Big style */
+.zeus-alert.zeus-alert-big {
+	padding: 32px 50px;
+	border-radius: 2px;
+}
+
+.zeus-alert-big {
+	border: 1px solid transparent;
+}
+
+.zeus-alert-big .zeus-alert-heading {
+	margin: 0 0 8px;
+}
+
+.zeus-alert-big .zeus-alert-icon {
+	font-size: 30px;
+}
+
+.zeus-alert-big.zeus-alert-notice {
+	color: #b5b5b5;
+	background-color: #fbfcfc;
+	border-color: #e9e9e9;
+}
+
+.zeus-alert-big.zeus-alert-notice .zeus-alert-heading {
+	color: #b5b5b5;
+}
+
+.zeus-alert-big.zeus-alert-error {
+	color: #e75744;
+	background-color: #ffdfdf;
+	border-color: #fdBdB5;
+}
+
+.zeus-alert-big.zeus-alert-error .zeus-alert-heading {
+	color: #e75744;
+}
+
+.zeus-alert-big.zeus-alert-warning {
+	color: #de9606;
+	background-color: #fcf8e3;
+	border-color: #e7db9e;
+}
+
+.zeus-alert-big.zeus-alert-warning .zeus-alert-heading {
+	color: #de9606;
+}
+
+.zeus-alert-big.zeus-alert-success {
+	color: #3cb37d;
+	background-color: #dff0d8;
+	border-color: #bddeaf;
+}
+
+.zeus-alert-big.zeus-alert-success .zeus-alert-heading {
+	color: #3cb37d;
+}
+
+.zeus-alert-big.zeus-alert-info {
+	color: #56afdc;
+	background-color: #d9edf7;
+	border-color: #a5e1ff;
+}
+
+.zeus-alert-big.zeus-alert-info .zeus-alert-heading {
+	color: #56afdc;
+}
+
+/* Minimal style */
+.zeus-alert.zeus-alert-minimal {
+	padding: 36px 50px;
+	border-radius: 2px;
+}
+
+.zeus-alert-minimal {
+	border: 1px solid #e9e9e9;
+}
+
+.zeus-alert-minimal .zeus-alert-heading {
+	margin: 0 0 6px;
+}
+
+.zeus-alert-minimal .zeus-alert-content-wrap {
+	color: #b5b5b5;
+	line-height: 24px;
+}
+
+.zeus-alert-minimal .zeus-alert-icon {
+	font-size: 24px;
+	border: 5px solid transparent;
+	width: 64px;
+	height: 64px;
+	line-height: 54px;
+	border-radius: 50%;
+	text-align: center;
+}
+
+.zeus-alert-minimal.zeus-alert-notice .zeus-alert-icon {
+	color: #b5b5b5;
+	background-color: #fbfcfc;
+	border-color: #e9e9e9;
+}
+
+.zeus-alert-minimal.zeus-alert-error .zeus-alert-icon {
+	color: #d52e13;
+	background-color: #fd7761;
+	border-color: #f55c43;
+}
+
+.zeus-alert-minimal.zeus-alert-warning .zeus-alert-icon {
+	color: #a47503;
+	background-color: #ffc12d;
+	border-color: #f9b718;
+}
+
+.zeus-alert-minimal.zeus-alert-success .zeus-alert-icon {
+	color: #558502;
+	background-color: #97e411;
+	border-color: #7bc200;
+}
+
+.zeus-alert-minimal.zeus-alert-info .zeus-alert-icon {
+	color: #0787d4;
+	background-color: #6fd9fc;
+	border-color: #47b4f6;
+}
+
+/* RTL */
+body.rtl .zeus-alert {
+	text-align: right;
+}
+
+body.rtl .zeus-alert .zeus-alert-icon {
+	margin-right: 0;
+	margin-left: 10px;
+}
+
+/*------------------------------------------------------------------
+Responsive
+-------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+	.zeus-alert-big .zeus-alert-content-wrap,
+	.zeus-alert-minimal .zeus-alert-content-wrap {
+		text-align: center;
+		flex-direction: column;
+	}
+	.zeus-alert-big .zeus-alert-icon,
+	.zeus-alert-minimal .zeus-alert-icon {
+		margin: 0 0 10px;
+	}
+}

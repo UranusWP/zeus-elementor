@@ -1,0 +1,113 @@
+/*------------------------------------------------------------------
+MailChimp
+-------------------------------------------------------------------*/
+.zeus-mailchimp-wrap {
+    .zeus-field {
+        &.zeus-mc-submit {
+            margin: 0 !important;
+        }
+
+        label {
+            display: block;
+            margin: 0 0 10px;
+        }
+
+        .zeus-mc-input {
+            font-size: 13px;
+            border: 1px solid #ddd;
+            border-radius: 0;
+            padding: 12px 16px;
+            outline: none;
+            max-width: 100%;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            outline: none;
+        }
+
+        .zeus-mc-subscribe {
+            display: block;
+            width: 100%;
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1;
+            text-transform: uppercase;
+            background-color: #e5c063;
+            color: #fff;
+            border: 0;
+            border-radius: 0;
+            padding: 16px 20px;
+            outline: none;
+
+            &:hover {
+                background-color: #e8c573;
+            }
+        }
+    }
+
+    &.zeus-mc-blocks .zeus-field {
+        margin: 0 0 14px;
+    }
+
+    &.zeus-mc-inline .zeus-form-fields {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+
+        .zeus-field {
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-box-align: end;
+            -ms-flex-align: end;
+            align-items: flex-end;
+            margin-right: 5px;
+
+            .zeus-mc-input {
+                -webkit-box-flex: 1;
+                -ms-flex: 1 100%;
+                flex: 1 100%;
+            }
+        }
+    }
+
+    .zeus-mc-message {
+        display: none;
+        text-align: center;
+        margin: 15px 0 0;
+
+        &.zeus-mc-success-text {
+            color: #28ab28;
+        }
+
+        &.zeus-mc-error-text {
+            color: #fe5252;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
+/* RTL */
+body.rtl {
+    
+}
+
+/*------------------------------------------------------------------
+Responsive
+-------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+}
+
+@media only screen and (max-width: 360px) {
+}

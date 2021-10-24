@@ -1,0 +1,416 @@
+// Perspective
+@mixin perspective( $args ) {
+    -webkit-perspective: $args;
+    perspective: $args;
+}
+
+// Transform
+@mixin transform( $args ) {
+    -webkit-transform: $args;
+    transform: $args;
+}
+
+// Transform style
+@mixin transform-style( $args ) {
+    -webkit-transform-style: $args;
+    transform-style: $args;
+}
+
+// Transition
+@mixin transition( $args ) {
+    -webkit-transition: $args;
+    transition: $args;
+}
+
+// Backface
+@mixin backface-visibility( $args ) {
+    -webkit-backface-visibility: $args;
+    backface-visibility: $args;
+}
+
+/*------------------------------------------------------------------
+Flip Box
+-------------------------------------------------------------------*/
+.zeus-flip-box {
+    position: relative;
+    height: 280px;
+    @include perspective( 1000px );
+    @include transform-style( preserve-3d );
+
+    .elementor-icon {
+        color: #fff;
+    }
+
+    .elementor-view-framed .elementor-icon {
+        color: #fff;
+        border-color: #fff;
+    }
+
+    .elementor-view-stacked .elementor-icon {
+        color: #fff;
+        background-color: rgba(0, 0, 0, .5);
+    }
+
+    .elementor-icon-wrap {
+        margin-bottom: 20px;
+    }
+
+    .zeus-flip-box-button {
+        background-color: #fff;
+        color: #333;
+
+        &:hover {
+            background-color: #eee;
+        }
+    }
+}
+
+.zeus-flip-box-front {
+    background-color: #e5c063;
+}
+
+.zeus-flip-box-back {
+    display: block;
+    background-color: #fe8a52;
+}
+
+.zeus-flip-box-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    @include transition( all .6s ease-in-out );
+}
+
+.zeus-flip-box-layer-overlay {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+    padding: 35px;
+    text-align: center;
+}
+
+.zeus-flip-box-layer-title {
+    color: #fff;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 600;
+
+    &:not(:last-child) {
+        margin: 0 0 20px 0;
+        padding: 0;
+    }
+}
+
+.zeus-flip-box-layer-desc {
+    font-size: 14px;
+    color: #fff;
+
+    &:not(:last-child) {
+        margin: 0 0 20px 0;
+        padding: 0;
+    }
+}
+
+.zeus-flip-box-image {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 20px 0;
+
+    img {
+        width: 100px;
+    }
+}
+
+.zeus-flip-box-3d-yes {
+    .zeus-flip-box-layer-inner {
+        @include transform( translateZ(90px) scale(.91) );
+    }
+
+    .zeus-flip-box-layer-overlay {
+        @include transform( translateZ(.1px) );
+        @include transform-style( preserve-3d );
+    }
+}
+
+.zeus-flip-box-effect-flip {
+    .zeus-flip-box {
+        @include perspective( 1000px );
+        @include transform-style( preserve-3d );
+
+        &:hover .zeus-flip-box-back {
+            @include transform( none );
+        }
+    }
+
+    .zeus-flip-box-layer {
+        @include transform-style( preserve-3d );
+        @include backface-visibility( hidden );
+    }
+
+    .zeus-flip-box-front {
+        @include transform( none );
+        z-index: 1;
+    }
+
+    &.zeus-flip-box-direction-right {
+        .zeus-flip-box-back {
+            @include transform( rotateX(0) rotateY(-180deg) );
+        }
+
+        .zeus-flip-box:hover .zeus-flip-box-front {
+            @include transform( rotateX(0) rotateY(180deg) );
+        }
+    }
+
+    &.zeus-flip-box-direction-left {
+        .zeus-flip-box-back {
+            @include transform( rotateX(0) rotateY(180deg) );
+        }
+
+        .zeus-flip-box:hover .zeus-flip-box-front {
+            @include transform( rotateX(0) rotateY(-180deg) );
+        }
+    }
+
+    &.zeus-flip-box-direction-up {
+        .zeus-flip-box-back {
+            @include transform( rotateX(-180deg) rotateY(0) );
+        }
+
+        .zeus-flip-box:hover .zeus-flip-box-front {
+            @include transform( rotateX(180deg) rotateY(0) );
+        }
+    }
+
+    &.zeus-flip-box-direction-down {
+        .zeus-flip-box-back {
+            @include transform( rotateX(180deg) rotateY(0) );
+        }
+
+        .zeus-flip-box:hover .zeus-flip-box-front {
+            @include transform( rotateX(-180deg) rotateY(0) );
+        }
+    }
+}
+
+.zeus-flip-box-effect-push {
+    .zeus-flip-box-front {
+        @include transform( none );
+    }
+
+    .zeus-flip-box {
+        overflow: hidden;
+
+        &:hover .zeus-flip-box-back {
+            @include transform( none );
+        }
+    }
+
+    &.zeus-flip-box-direction-right {
+        .zeus-flip-box:hover .zeus-flip-box-front {
+            @include transform( translateX(100%) translateY(0) );
+        }
+
+        .zeus-flip-box-back {
+            @include transform( translateX(-100%) translateY(0) );
+        }
+    }
+
+    &.zeus-flip-box-direction-left {
+        .zeus-flip-box:hover .zeus-flip-box-front {
+            @include transform( translateX(-100%) translateY(0) );
+        }
+
+        .zeus-flip-box-back {
+            @include transform( translateX(100%) translateY(0) );
+        }
+    }
+
+    &.zeus-flip-box-direction-up {
+        .zeus-flip-box:hover .zeus-flip-box-front {
+            @include transform( translateX(0) translateY(-100%) );
+        }
+
+        .zeus-flip-box-back {
+            @include transform( translateX(0) translateY(100%) );
+        }
+    }
+
+    &.zeus-flip-box-direction-down {
+        .zeus-flip-box:hover .zeus-flip-box-front {
+            @include transform( translateX(0) translateY(100%) );
+        }
+
+        .zeus-flip-box-back {
+            @include transform( translateX(0) translateY(-100%) );
+        }
+    }
+}
+
+.zeus-flip-box-effect-slide {
+    .zeus-flip-box {
+        overflow: hidden;
+    }
+
+    .zeus-flip-box:hover .zeus-flip-box-back {
+        @include transform( none );
+    }
+
+    &.zeus-flip-box-direction-right .zeus-flip-box-back {
+        @include transform( translateX(-100%) translateY(0) );
+    }
+
+    &.zeus-flip-box-direction-left .zeus-flip-box-back {
+        @include transform( translateX(100%) translateY(0) );
+    }
+
+    &.zeus-flip-box-direction-up .zeus-flip-box-back {
+        @include transform( translateX(0) translateY(100%) );
+    }
+
+    &.zeus-flip-box-direction-down .zeus-flip-box-back {
+        @include transform( translateX(0) translateY(-100%) );
+    }
+}
+
+.zeus-flip-box-effect-zoom-out .zeus-flip-box {
+    .zeus-flip-box-front {
+        -webkit-transition: opacity .35s, width .1ms, -webkit-transform .7s;
+        transition: opacity .35s, width .1ms, -webkit-transform .7s;
+        transition: transform .7s, opacity .35s, width .1ms;
+        transition: transform .7s, opacity .35s, width .1ms, -webkit-transform .7s;
+        opacity: 1;
+        z-index: 1;
+        width: 100%;
+        @include transform( scale(1) );
+    }
+
+    &:hover .zeus-flip-box-front {
+        width: 0;
+        opacity: 0;
+        -webkit-transition: opacity .7s .1s, width .1ms .7s, -webkit-transform .8s;
+        transition: opacity .7s .1s, width .1ms .7s, -webkit-transform .8s;
+        transition: transform .8s, opacity .7s .1s, width .1ms .7s;
+        transition: transform .8s, opacity .7s .1s, width .1ms .7s, -webkit-transform .8s;
+        @include transform( scale(.7) );
+    }
+}
+
+.zeus-flip-box-effect-zoom-in .zeus-flip-box {
+    .zeus-flip-box-back {
+        -webkit-transition: opacity .5s .2s, -webkit-transform .7s;
+        transition: opacity .5s .2s, -webkit-transform .7s;
+        transition: transform .7s, opacity .5s .2s;
+        transition: transform .7s, opacity .5s .2s, -webkit-transform .7s;
+        opacity: 0;
+        @include transform( scale(.7) );
+    }
+
+    &:hover .zeus-flip-box-back {
+        -webkit-transition: opacity .5s, -webkit-transform .7s;
+        transition: opacity .5s, -webkit-transform .7s;
+        transition: transform .7s, opacity .5s;
+        transition: transform .7s, opacity .5s, -webkit-transform .7s;
+        opacity: 1;
+        @include transform( scale(1) );
+    }
+}
+
+.zeus-flip-box-effect-fade .zeus-flip-box {
+    .zeus-flip-box-back {
+        opacity: 0;
+    }
+
+    &:hover .zeus-flip-box-back {
+        opacity: 1;
+    }
+}
+
+.elementor-widget-zeus-flip-box.zeus-flip-box-flipped .elementor-widget-container {
+    .zeus-flip-box-front {
+        display: none;
+    }
+
+    .zeus-flip-box-back {
+        @include transform( none );
+        opacity: 1;
+    }
+}
+
+/* RTL */
+body.rtl {
+    .zeus-flip-box-effect-flip {
+        &.zeus-flip-box-direction-right .zeus-flip-box-back {
+            @include transform( rotateX(0) rotateY(180deg) );
+
+            &:hover .zeus-flip-box-front {
+                @include transform( rotateX(0) rotateY(-180deg) );
+            }
+        }
+
+        &.zeus-flip-box-direction-left .zeus-flip-box-back {
+            @include transform( rotateX(0) rotateY(-180deg) );
+
+            &:hover .zeus-flip-box-front {
+                @include transform( rotateX(0) rotateY(180deg) );
+            }
+        }
+    }
+
+    .zeus-flip-box-effect-push {
+        &.zeus-flip-box-direction-right {
+            .zeus-flip-box:hover .zeus-flip-box-front {
+                @include transform( translateX(-100%) translateY(0) );
+            }
+
+            .zeus-flip-box-back {
+                @include transform( translateX(100%) translateY(0) );
+            }
+        }
+
+        &.zeus-flip-box-direction-left {
+            .zeus-flip-box:hover .zeus-flip-box-front {
+                @include transform( translateX(100%) translateY(0) );
+            }
+
+            .zeus-flip-box-back {
+                @include transform( translateX(-100%) translateY(0) );
+            }
+        }
+    }
+
+    .zeus-flip-box-effect-slide {
+        &.zeus-flip-box-direction-right .zeus-flip-box-back {
+            @include transform( translateX(100%) translateY(0) );
+        }
+
+        &.zeus-flip-box-direction-left .zeus-flip-box-back {
+            @include transform( translateX(-100%) translateY(0) );
+        }
+    }
+}
+
+/*------------------------------------------------------------------
+Responsive
+-------------------------------------------------------------------*/
+@media (max-device-width: 1024px) {
+    .zeus-flip-box {
+        cursor: pointer;
+    }
+}

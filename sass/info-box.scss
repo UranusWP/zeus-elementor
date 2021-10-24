@@ -1,0 +1,245 @@
+// Display flex
+@mixin flex() {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+// Flex Direction
+@mixin flex-direction( $args ) {
+    -webkit-flex-direction: $args;
+    flex-direction: $args;
+}
+
+// Flex basis
+@mixin grow( $args ) {
+    -webkit-box-flex: $args;
+    -webkit-flex-grow: $args;
+    -ms-flex-positive: $args;
+    flex-grow: $args;
+}
+
+// Transition
+@mixin transition( $args ) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+/*------------------------------------------------------------------
+Info Box
+-------------------------------------------------------------------*/
+.zeus-info-box-wrap {
+    display: block;
+    text-align: center;
+    @include transition( all .3s ease-in-out );
+}
+
+.zeus-info-box {
+    @include flex();
+    @include flex-direction( column );
+
+    .zeus-info-box-icon-wrap {
+        margin-bottom: 15px;
+    }
+
+    .zeus-info-box-icon {
+        display: inline-block;
+        line-height: 1;
+        color: #818a91;
+        font-size: 50px;
+        @include transition( all .5s );
+
+        i {
+            text-align: center;
+        }
+
+        i, svg {
+            width: 1em;
+            height: 1em;
+            position: relative;
+        }
+    }
+
+    img {
+        display: block;
+    }
+
+    .zeus-info-box-content {
+        @include grow( 1 );
+    }
+
+    .zeus-info-box-divider-wrap {
+        font-size: 0;
+        line-height: 0;
+    }
+
+    .zeus-info-box-divider {
+        display: inline-block;
+    }
+}
+
+.zeus-info-box-left {
+    .zeus-info-box-wrap {
+        text-align: left;
+    }
+
+    .zeus-info-box {
+        @include flex-direction( row );
+
+        .zeus-info-box-icon-wrap {
+            @include flex();
+            flex-shrink: 0;
+            margin-right: 20px;
+            margin-bottom: 0;
+        }
+
+        .zeus-info-box-icon,
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.zeus-info-box-top .zeus-info-box img {
+    margin: 0 auto;
+}
+
+.zeus-info-box-right {
+    .zeus-info-box-wrap {
+        text-align: right;
+    }
+
+    .zeus-info-box {
+        @include flex-direction( row-reverse );
+
+        .zeus-info-box-icon-wrap {
+            @include flex();
+            flex-shrink: 0;
+            margin-left: 20px;
+            margin-bottom: 0;
+        }
+
+        .zeus-info-box-icon,
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.zeus-info-box-btn-wrap {
+    margin-top: 15px;
+
+    .zeus-info-box-button {
+
+        i, svg {
+            width: 1em;
+            height: 1em;
+            position: relative;
+            vertical-align: middle;
+        }
+
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .zeus-info-box-tablet-top {
+        .zeus-info-box {
+            @include flex-direction( column );
+
+            .zeus-info-box-icon-wrap {
+                display: inline-block;
+            }
+
+            .zeus-info-box-icon {
+                margin-right: auto;
+            }
+        }
+    }
+
+    .zeus-info-box-tablet-left {
+        .zeus-info-box {
+            @include flex-direction( row );
+
+            .zeus-info-box-icon-wrap {
+                @include flex();
+                flex-shrink: 0;
+                margin-right: 20px;
+            }
+
+            .zeus-info-box-icon,
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    .zeus-info-box-tablet-right {
+        .zeus-info-box {
+            @include flex-direction( row-reverse );
+
+            .zeus-info-box-icon-wrap {
+                @include flex();
+                flex-shrink: 0;
+                margin-left: 20px;
+            }
+
+            .zeus-info-box-icon,
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 767px) {
+    .zeus-info-box-mobile-top {
+        .zeus-info-box {
+            @include flex-direction( column );
+
+            .zeus-info-box-icon-wrap {
+                display: inline-block;
+            }
+
+            .zeus-info-box-icon {
+                margin-right: auto;
+            }
+        }
+    }
+
+    .zeus-info-box-mobile-left {
+        .zeus-info-box {
+            @include flex-direction( row );
+
+            .zeus-info-box-icon-wrap {
+                @include flex();
+                flex-shrink: 0;
+                margin-right: 20px;
+            }
+
+            .zeus-info-box-icon,
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    .zeus-info-box-mobile-right {
+        .zeus-info-box {
+            @include flex-direction( row-reverse );
+
+            .zeus-info-box-icon-wrap {
+                @include flex();
+                flex-shrink: 0;
+                margin-left: 20px;
+            }
+
+            .zeus-info-box-icon,
+            img {
+                width: 100%;
+            }
+        }
+    }
+}

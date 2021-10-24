@@ -1,0 +1,316 @@
+// Transition
+@mixin transition( $args ) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+// Transform
+@mixin transform( $args ) {
+    -webkit-transform: $args;
+    -moz-transform: $args;
+    -ms-transform: $args;
+    -o-transform: $args;
+    transform: $args;
+}
+
+// Box Shadow
+@mixin box-shadow( $args ) {
+    -webkit-box-shadow: $args;
+    -moz-box-shadow: $args;
+    box-shadow: $args;
+}
+
+/*------------------------------------------------------------------
+Navbar
+-------------------------------------------------------------------*/
+.zeus-navbar-wrap {
+    background-color: #e5c063;
+    position: fixed;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    z-index: 10000;
+    @include box-shadow( 0 0 12px 0 rgba(0,0,0,0.1) );
+
+    &.zeus-navbar-left {
+        left: 0;
+    }
+
+    &.zeus-navbar-right {
+        right: 0;
+    }
+
+    .zeus-navbar-inner {
+        padding-top: 60px;
+    }
+
+    .zeus-navbar-logo-text {
+        font-weight: 600;
+    }
+
+    a {
+        color: #fff;
+        display: block;
+        position: relative;
+        font-size: 16px;
+        padding: 10px 15px;
+        text-align: center;
+
+        .zeus-navbar-icon {
+            i, svg {
+                width: 1em;
+                height: 1em;
+            }
+        }
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            margin-bottom: 12px;
+
+            &:last-child {
+               margin-bottom: 0; 
+            }
+
+            a {
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.1);
+                }
+            }
+        }
+    }
+
+    .zeus-navbar-tooltip {
+        position: absolute;
+        top: 50%;
+        width: 110px;
+        background-color: #e5c063;
+        color: #fff;
+        padding: 10px 15px;
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 3px;
+        text-align: center;
+        visibility: hidden;
+        opacity: 0;
+        @include transition( all .3s cubic-bezier(0.28, 0.86, 0.58, 1) );
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            margin-top: -6px;
+            border: solid transparent;
+            border-width: 6px;
+            height: 0;
+            width: 0;
+        }
+    }
+
+    .zeus-navbar-link:hover .zeus-navbar-tooltip {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &.zeus-navbar-left ul li a {
+        .zeus-navbar-tooltip {
+            left: 100%;
+            margin-left: 10px;
+            @include transform( translateY(-50%) translateX(15px) );
+
+            &:before {
+                right: 100%;
+                border-right-color: #e5c063;
+            }
+        }
+
+        &:hover .zeus-navbar-tooltip {
+            @include transform( translateY(-50%) translateX(0px) );
+        }
+    }
+
+    &.zeus-navbar-right ul li a {
+        .zeus-navbar-tooltip {
+            right: 100%;
+            margin-right: 10px;
+            @include transform( translateY(-50%) translateX(-15px) );
+
+            &:before {
+                left: 100%;
+                border-left-color: #e5c063;
+            }
+        }
+
+        &:hover .zeus-navbar-tooltip {
+            @include transform( translateY(-50%) translateX(0px) );
+        }
+    }
+
+    .zeus-icon {
+        vertical-align: inherit;
+    }
+}
+
+.elementor .elementor-widget-zeus-navbar {
+    margin: 0;
+}
+
+.zeus-off-canvas-wrap.zeus-navbar-off-canvas {
+    &.zeus-navbar-left .zeus-off-canvas-sidebar {
+        left: 50px;
+    }
+
+    &.zeus-navbar-right {
+        &,
+        .zeus-off-canvas-overlay {
+            right: 0;
+            left: auto;
+        }
+
+        .zeus-off-canvas-sidebar {
+            right: 50px;
+            left: auto;
+            @include transform( translateX(100%) );
+        }
+
+        &.show .zeus-off-canvas-sidebar {
+            @include transform( translateX(0) );
+        }
+
+        .zeus-off-canvas-close {
+            left: 15px;
+            right: auto;
+        }
+    }
+}
+
+/* RTL */
+body.rtl {
+}
+
+/*------------------------------------------------------------------
+Responsive
+-------------------------------------------------------------------*/
+.zeus-navbar-wrap.zeus-is-responsive {
+    .zeus-mobile-wrap,
+    .zeus-mobile-close {
+        display: none;
+    }
+
+    .zeus-mobile-wrap {
+        a {
+            font-weight: 600;
+        }
+
+        .zeus-mobile-icon {
+            margin-right: 5px;
+        }
+
+        .opened {
+            .zeus-mobile-title {
+                display: none;
+            }
+
+            .zeus-mobile-close {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 959px) {
+    .zeus-navbar-wrap.zeus-is-responsive.zeus-default-breakpoint ul.zeus-navbar {
+        display: block !important;
+    }
+}
+
+@media only screen and (max-width: 959px) {
+    .zeus-navbar-wrap.zeus-is-responsive.zeus-default-breakpoint {
+        width: 100% !important;
+        height: 50px;
+        top: 32px;
+
+        .zeus-mobile-wrap {
+            display: block;
+            float: right;
+        }
+
+        .zeus-navbar-inner {
+            position: relative;
+            padding: 0 !important;
+        }
+
+        .zeus-navbar-logo {
+            float: left;
+            margin: 0 !important;
+        }
+
+        ul.zeus-navbar {
+            display: none;
+            width: 100%;
+            background-color: #e5c063;
+            max-height: 400px;
+            overflow-y: auto;
+            @include box-shadow( 0 2px 6px rgba(0,0,0,0.1) );
+
+            li {
+                margin-bottom: 0;
+
+                &.zeus-off-canvas-li {
+                    display: none;
+                }
+
+                a {
+                    text-align: left;
+
+                    .zeus-navbar-tooltip {
+                        position: relative;
+                        top: auto;
+                        left: auto;
+                        right: auto;
+                        width: auto;
+                        background-color: transparent;
+                        color: #fff;
+                        padding: 0;
+                        margin-left: 10px;
+                        border-radius: 0 !important;
+                        text-align: left;
+                        visibility: visible;
+                        opacity: 1;
+                        @include transition( none );
+
+                        &:before {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .admin-bar .zeus-navbar-wrap.zeus-is-responsive.zeus-default-breakpoint {
+        top: 32px;
+    }
+}
+
+@media only screen and (max-width: 782px) {
+    .admin-bar .zeus-navbar-wrap.zeus-is-responsive.zeus-default-breakpoint {
+        top: 46px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .admin-bar .zeus-navbar-wrap.zeus-is-responsive.zeus-default-breakpoint {
+        top: 0;
+    }
+}

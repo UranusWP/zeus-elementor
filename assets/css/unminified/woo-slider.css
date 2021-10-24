@@ -1,0 +1,131 @@
+/*------------------------------------------------------------------
+Woo Slider
+-------------------------------------------------------------------*/
+.zeus-woo-carousel .swiper-container {
+	margin: 0 40px;
+}
+
+.zeus-woo-carousel .swiper-container.has-dots {
+	padding-bottom: 10px;
+}
+
+.zeus-woo-carousel li.product {
+	border: 1px solid #eee;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+	text-align: center;
+}
+
+.zeus-woo-carousel ul.products .star-rating {
+	margin: 0 auto 10px auto;
+}
+
+.zeus-woo-carousel a.button {
+	display: block;
+	font-size: 13px;
+	font-weight: 400;
+	text-align: center;
+	text-transform: uppercase;
+	background-color: #e5c063;
+	color: #fff;
+	padding: 15px;
+	margin: 15px;
+	border-radius: 0;
+}
+
+.zeus-woo-carousel a.button:hover {
+	background-color: #e8c573;
+	color: #fff;
+}
+
+.zeus-woo-carousel a.button.loading::after {
+	top: inherit;
+	right: inherit;
+	margin-left: 6px;
+}
+
+.zeus-woo-carousel a.added_to_cart {
+	display: block;
+	margin: 0 0 15px 0;
+	padding: 0;
+	font-size: 14px;
+	line-height: 1;
+	text-transform: capitalize;
+	background-color: transparent;
+	color: #333;
+}
+
+.zeus-woo-carousel .zeus-swiper-buttons {
+	background-image: none;
+	color: #222;
+	outline: none;
+	margin-top: 0;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+	top: calc(50% - (20px/2));
+	text-align: center;
+	-webkit-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.zeus-woo-carousel .swiper-button-next {
+	right: 0;
+}
+
+.zeus-woo-carousel .swiper-button-prev {
+	left: 0;
+}
+
+.zeus-woo-carousel .swiper-pagination {
+	position: static;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+.zeus-woo-carousel .swiper-pagination-bullet {
+	background: #ccc;
+	margin: 0 4px;
+	height: 8px;
+	width: 8px;
+	opacity: 1;
+	-webkit-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+
+.zeus-woo-carousel .swiper-pagination-bullet-active {
+	background: #000;
+}
+
+body .zeus-woo-carousel .product {
+	clear: none;
+}
+
+.zeus-woo-slider.woocommerce ul.products {
+	flex-wrap: initial;
+	margin: 0;
+}
+
+.zeus-woo-slider.woocommerce ul.products li.product {
+	margin: 0;
+}
+
+/* RTL */
+body.rtl .zeus-woo-carousel a.button.loading::after {
+	left: inherit;
+	margin-left: 0;
+	margin-right: 6px;
+}
+
+body.rtl .zeus-woo-carousel .swiper-button-next {
+	right: auto;
+	left: 0;
+}
+
+body.rtl .zeus-woo-carousel .swiper-button-prev {
+	left: auto;
+	right: 0;
+}

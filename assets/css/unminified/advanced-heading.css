@@ -1,0 +1,139 @@
+/*------------------------------------------------------------------
+Advanced Heading
+-------------------------------------------------------------------*/
+.zeus-advanced-heading {
+	position: relative;
+}
+
+.zeus-advanced-heading .zeus-has-bg.zeus-background-heading > div, .zeus-advanced-heading .zeus-has-bg.zeus-main-heading > div, .zeus-advanced-heading .zeus-has-bg.zeus-sub-heading > div {
+	background-color: transparent;
+	background-image: linear-gradient(180deg, #26cdff 0%, #e5c063 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.zeus-advanced-heading .zeus-background-heading {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	font-size: 60px;
+	font-weight: 700;
+	line-height: 1;
+	color: rgba(0, 0, 0, 0.03);
+	text-transform: uppercase;
+	z-index: 0;
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+
+.zeus-advanced-heading .zeus-background-heading > div {
+	display: inline-block;
+}
+
+.zeus-advanced-heading .zeus-main-heading {
+	margin: 0;
+	padding: 0;
+}
+
+.zeus-advanced-heading .zeus-main-heading,
+.zeus-advanced-heading .zeus-sub-heading {
+	position: relative;
+	z-index: 1;
+}
+
+.zeus-advanced-heading .zeus-main-heading > div,
+.zeus-advanced-heading .zeus-sub-heading > div {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.zeus-advanced-heading .zeus-sub-heading {
+	text-transform: uppercase;
+}
+
+.zeus-advanced-heading .zeus-line:after {
+	content: '';
+	background-color: #e5c063;
+	display: inline-block;
+	width: 40px;
+	height: 2px;
+	vertical-align: middle;
+}
+
+.zeus-advanced-heading .zeus-line-align-left {
+	float: left;
+}
+
+.zeus-advanced-heading .zeus-line-align-right {
+	float: right;
+}
+
+.zeus-advanced-heading .zeus-line-align-bottom {
+	line-height: 0;
+}
+
+.zeus-background-heading-left .zeus-background-heading {
+	text-align: left;
+}
+
+.zeus-background-heading-center .zeus-background-heading {
+	text-align: center;
+}
+
+.zeus-background-heading-right .zeus-background-heading {
+	text-align: right;
+}
+
+/*------------------------------------------------------------------
+Responsive
+-------------------------------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+	.zeus-tablet-background-heading-left .zeus-background-heading {
+		text-align: left;
+	}
+	.zeus-tablet-background-heading-center .zeus-background-heading {
+		text-align: center;
+	}
+	.zeus-tablet-background-heading-right .zeus-background-heading {
+		text-align: right;
+	}
+	.elementor-align-tablet-left {
+		text-align: left;
+	}
+	.elementor-align-tablet-center {
+		text-align: center;
+	}
+	.elementor-align-tablet-right {
+		text-align: right;
+	}
+	.zeus-hide-tm {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.zeus-mobile-background-heading-left .zeus-background-heading {
+		text-align: left;
+	}
+	.zeus-mobile-background-heading-center .zeus-background-heading {
+		text-align: center;
+	}
+	.zeus-mobile-background-heading-right .zeus-background-heading {
+		text-align: right;
+	}
+	.elementor-align-mobile-left {
+		text-align: left;
+	}
+	.elementor-align-mobile-center {
+		text-align: center;
+	}
+	.elementor-align-mobile-right {
+		text-align: right;
+	}
+	.zeus-hide-m {
+		display: none;
+	}
+}

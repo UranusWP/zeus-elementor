@@ -1,0 +1,111 @@
+// Transform
+@mixin transform( $args ) {
+    -webkit-transform: $args;
+    -moz-transform: $args;
+    -ms-transform: $args;
+    -o-transform: $args;
+    transform: $args;
+}
+
+// Transition
+@mixin transition( $args ) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+// Animation
+@mixin animation( $args ) {
+    -ms-animation: $args;
+    -webkit-animation: $args;
+    -o-animation: $args;
+    -moz-animation: $args;
+    animation: $args;
+}
+
+/*------------------------------------------------------------------
+Hotspots
+-------------------------------------------------------------------*/
+.zeus-hotspots-wrap {
+    position: relative;
+}
+
+.zeus-hotspot-wrap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.zeus-hotspot-inner {
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    cursor: pointer;
+    text-align: center;
+    @include transform( translate( -50%, -50% ) );
+    @include transition( all 0.3s ease );
+
+    &,
+    &:before {
+        display: block;
+        min-width: 40px;
+        min-height: 40px;
+        border-radius: 50%;
+        background-color: #000;
+        color: #fff;
+    }
+
+    &,
+    i {
+        line-height: 40px;
+    }
+
+    &:hover {
+        color: #fff;
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        @include transform( scale(1) );
+        @include animation( 2s pulse infinite );
+    }
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes pulse {
+    0% {
+        -moz-transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        -moz-transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}

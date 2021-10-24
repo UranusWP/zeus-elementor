@@ -1,0 +1,20 @@
+/*------------------------------------------------------------------
+Breadcrumbs
+-------------------------------------------------------------------*/
+.zeus-breadcrumbs ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.zeus-breadcrumbs ul li {
+	display: inline-block;
+}
+
+.zeus-breadcrumbs ul li .zeus-separator {
+	padding: 0 5px;
+}
+
+.elementor-widget-zeus-site-breadcrumbs p {
+	margin: 0;
+}

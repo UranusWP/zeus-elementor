@@ -1,0 +1,194 @@
+/*------------------------------------------------------------------
+Recipe
+-------------------------------------------------------------------*/
+.zeus-recipe-wrap {
+    border: 1px solid #eaeaea;
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .zeus-recipe-header {
+        padding: 30px;
+    }
+
+    .zeus-recipe-image {
+        float: right;
+        width: 200px;
+        max-width: 100%;
+        margin-left: 30px;
+    }
+
+    .zeus-recipe-header-content {
+        overflow: hidden;
+    }
+
+    .zeus-recipe-title {
+        display: block;
+        font-size: 28px;
+        margin: 0 0 10px;
+    }
+
+    .zeus-recipe-meta {
+        display: inline-block;
+        margin-bottom: 15px;
+
+        li {
+            float: left;
+        }
+    }
+
+    .zeus-recipe-meta-item {
+        position: relative;
+
+        &:after {
+            content: '/';
+            margin-right: 6px;
+        }
+
+        &:last-child:after {
+            content: '';
+            margin-right: 0;
+        }
+    }
+
+    .zeus-recipe-section {
+        padding: 30px;
+        border-top: 1px solid #eaeaea;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    .zeus-recipe-details {
+        width: 100%;
+        padding: 20px 30px;
+        text-align: center;
+
+        li {
+            display: inline-block;
+            min-width: 125px;
+            padding: 10px 20px;
+            text-align: left;
+        }
+
+        &-icon {
+            color: #e5c063;
+            margin-right: 8px;
+        }
+
+        &-content {
+            display: inline-block;
+        }
+
+        &-icon,
+        &-content,
+        &-title,
+        &-value {
+            vertical-align: middle;
+        }
+
+        &-title,
+        &-value {
+            display: block;
+        }
+
+        &-title {
+            font-weight: 600;
+        }
+    }
+
+    .zeus-recipe-ingredients li {
+        position: relative;
+        margin: 0 0 5px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        i {
+            margin-right: 4px;
+        }
+    }
+
+    ol {
+        list-style: decimal;
+        margin: 0 0 0 15px;
+        padding: 0;
+    }
+
+    .zeus-recipe-notes-text p:last-child {
+        margin: 0;
+    }
+
+    .zeus-recipe-details-icon, .zeus-recipe-ingredient {
+        i, svg {
+            width: 1em;
+            height: 1em;
+            vertical-align: middle;
+        }
+    }
+}
+
+/* RTL */
+body.rtl {
+    .zeus-recipe-wrap {
+        .zeus-recipe-image {
+            float: left;
+            margin-right: 30px;
+            margin-left: 0;
+        }
+
+        .zeus-recipe-meta li {
+            float: right;
+        }
+
+        .zeus-recipe-meta-item {
+            &:after {
+                margin-left: 6px;
+                margin-right: 0;
+            }
+
+            &:last-child:after {
+                margin-left: 0;
+            }
+        }
+
+
+        .zeus-recipe-details {
+            li {
+                text-align: right;
+            }
+
+            &-icon {
+                margin-left: 8px;
+                margin-right: 0;
+            }
+        }
+
+        .zeus-recipe-ingredients li {
+            i {
+                margin-left: 4px;
+                margin-right: 0;
+            }
+        }
+
+        ol {
+            margin: 0 15px 0 0;
+        }
+    }
+}
+
+/*------------------------------------------------------------------
+Responsive
+-------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+    .zeus-recipe-wrap .zeus-recipe-image {
+        float: none;
+        width: 100%;
+        margin: 0 0 20px;
+    }
+}

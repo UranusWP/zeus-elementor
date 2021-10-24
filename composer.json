@@ -1,0 +1,28 @@
+{
+    "name": "zeus/zeus-elementor",
+    "description": "Add many new powerful and entirely customizable widgets to the popular free page builder - Elementor",
+    "type": "wordpress-plugin",
+    "license": "GNU General Public License v3.0",
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5|^6|^7",
+        "justinrainbow/json-schema": "^5.2",
+        "squizlabs/php_codesniffer": "^3.6",
+        "wp-coding-standards/wpcs": "^2.3",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+        "wp-cli/i18n-command": "^2.2.5"
+    },
+    "scripts": {
+        "lint": "phpcs --standard=phpcs.xml",
+        "test": "phpunit",
+        "test:install": "bash ./bin/install-wp-tests-local.sh"
+    },
+    "authors": [
+        {
+            "name": "Contributors"
+        }
+    ]
+}

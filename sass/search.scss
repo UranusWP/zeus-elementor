@@ -1,0 +1,282 @@
+// Transition
+@mixin transition( $args ) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+/*------------------------------------------------------------------
+Search
+-------------------------------------------------------------------*/
+.zeus-search-wrap {
+    position: relative;
+
+    form {
+        position: relative;
+    }
+
+    input {
+        display: block;
+        border-radius: 2px;
+        color: #333;
+        font-size: 15px;
+        border: 2px solid #eaeaea;
+        padding: 6px 10px;
+        height: 44px;
+        line-height: 1.3;
+        @include transition( all 0.2s ease-in-out );
+    }
+
+    .search-submit {
+        color: #333;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 44px;
+        min-width: auto;
+        padding: .5rem 1rem;
+        background: none;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        outline: none;
+
+        &:focus,
+        &:hover {
+            color: #333;
+        }
+
+        svg {
+            width: 1em;
+            height: 1em;
+            vertical-align: middle;
+            @include transition( all 0.2s ease-in-out );
+        }
+    }
+
+    .zeus-ajax-loading {
+        display: none;
+        background: transparent url( '../../img/loader.svg' ) no-repeat center center;
+        background-size: 100%;
+        position: absolute;
+        top: 50%;
+        right: 60px;
+        margin-top: -8px;
+        width: 16px;
+        height: 16px;
+    }
+
+    .zeus-search-results {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        -moz-box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        z-index: 999;
+        overflow: hidden;
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                a.search-result-link {
+                    display: -webkit-flex;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-align-items: center;
+                    -ms-flex-align: center;
+                    align-items: center;
+                }
+
+                a {
+                    position: relative;
+                    font-size: 14px;
+                    line-height: 1;
+                    padding: 10px 34px 10px 13px;
+                    border-bottom: 1px solid #eaeaea;
+                    letter-spacing: 0.6px;
+
+                    img {
+                        float: left;
+                        max-width: 30px;
+                        margin-right: 10px;
+                    }
+
+                    .result-title {
+                        display: block;
+                        line-height: 1.3;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+
+                    i.icon {
+                        position: absolute;
+                        top: 50%;
+                        right: 13px;
+                        margin-top: -6px;
+                        font-size: 12px;
+                        color: #aaa;
+                        @include transition( all 0.3s ease );
+                    }
+
+                    &:hover i.icon {
+                        color: #666;
+                    }
+
+                    &.all-results {
+                        display: block;
+                        font-size: 12px;
+                        font-weight: 600;
+                        letter-spacing: 0.6px;
+                        text-align: center;
+
+                        span {
+                            display: inline-block;
+                            padding-bottom: 3px;
+                            border-bottom: 1px solid;
+
+                            i {
+                                padding-left: 5px;
+                            }
+                        }
+                    }
+                }
+
+                a.search-result-link:hover {
+                    background-color: #f8f8f8;
+                    color: #555;
+                }
+
+                &:last-child a {
+                    border-bottom: 0;
+                }
+            }
+        }
+    }
+
+    .zeus-no-search-results {
+        position: relative;
+        font-size: 14px;
+        line-height: 1;
+        padding: 18px 18px;
+
+        h6 {
+            margin: 0 0 10px;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
+form.zeus-searchform {
+    width: 100%;
+    height: auto;
+
+    &,
+    input.field {
+        min-height: 40px;
+    }
+
+    input.field:focus {
+        -webkit-box-shadow: 0 0 8px 1px rgba( 0, 0, 0, .1 );
+        -moz-box-shadow: 0 0 8px 1px rgba( 0, 0, 0, .1 );
+        box-shadow: 0 0 8px 1px rgba( 0, 0, 0, .1 );
+    }
+}
+
+.zeus-align-left .zeus-search-wrap {
+    margin: 0 auto 0 0;
+}
+
+.zeus-align-center .zeus-search-wrap {
+    margin: 0 auto;
+}
+
+.zeus-align-right .zeus-search-wrap {
+    margin: 0 0 0 auto;
+}
+
+@media (max-width: 1024px) {
+    .zeus-tablet-align-left .zeus-search-wrap {
+        margin: 0 auto 0 0;
+    }
+
+    .zeus-tablet-align-center .zeus-search-wrap {
+        margin: 0 auto;
+    }
+
+    .zeus-tablet-align-right .zeus-search-wrap {
+        margin: 0 0 0 auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .zeus-mobile-align-left .zeus-search-wrap {
+        margin: 0 auto 0 0;
+    }
+
+    .zeus-mobile-align-center .zeus-search-wrap {
+        margin: 0 auto;
+    }
+
+    .zeus-mobile-align-right .zeus-search-wrap {
+        margin: 0 0 0 auto;
+    }
+}
+
+/* RTL */
+body.rtl {
+    .zeus-search-wrap {
+        .search-submit {
+            left: 0;
+            right: auto;
+        }
+
+        .zeus-ajax-loading {
+            left: 60px;
+            right: auto;
+        }
+
+        .zeus-search-results {
+            right: 0;
+            left: auto;
+        }
+
+        .zeus-search-results ul li a {
+            padding-left: 34px;
+            padding-right: 13px;
+
+            .result-thumb {
+                margin-left: 10px;
+                margin-right: 0;
+            }
+
+            i.icon {
+                left: 13px;
+                right: auto;
+            }
+
+            &.all-results span i {
+                padding-right: 5px;
+                padding-left: 0;
+            }
+        }
+
+        form.zeus-searchform button {
+            left: 0;
+            right: auto;
+        }
+    }
+}
+
