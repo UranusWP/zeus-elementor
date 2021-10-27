@@ -80,7 +80,6 @@ class Pricing_Table extends Widget_Base {
 			array(
 				'label'            => __( 'Icon', 'zeus-elementor' ),
 				'type'             => Controls_Manager::ICONS,
-				'fa4compatibility' => 'table_icon',
 				'default'          => array(
 					'value'   => 'far fa-gem',
 					'library' => 'fa-regular',
@@ -326,7 +325,6 @@ class Pricing_Table extends Widget_Base {
 			array(
 				'label'            => __( 'Icon', 'zeus-elementor' ),
 				'type'             => Controls_Manager::ICONS,
-				'fa4compatibility' => 'item_icon',
 				'default'          => $default_icon,
 			)
 		);
@@ -1716,21 +1714,10 @@ class Pricing_Table extends Widget_Base {
 
 			<?php
 			// Icon
-			if ( 'style-2' === $style && ( ! empty( $settings['table_icon'] ) || ! empty( $settings['selected_table_icon'] ) ) ) :
+			if ( 'style-2' === $style && ! empty( $settings['selected_table_icon'] ) ) :
 				?>
 				<div class="zeus-pricing-table-icon">
-					<?php
-					$migrated = isset( $settings['__fa4_migrated']['selected_table_icon'] );
-					$is_new   = ! isset( $settings['table_icon'] ) && Icons_Manager::is_migration_allowed();
-
-					if ( $is_new || $migrated ) :
-						Icons_Manager::render_icon( $settings['selected_table_icon'], array( 'aria-hidden' => 'true' ) );
-					else :
-						?>
-						<i class="<?php echo esc_attr( $settings['table_icon'] ); ?>" aria-hidden="true"></i>
-						<?php
-					endif;
-					?>
+					<?php Icons_Manager::render_icon( $settings['selected_table_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 				</div>
 				<?php
 			endif;
@@ -1840,9 +1827,6 @@ class Pricing_Table extends Widget_Base {
 
 						$repeater_setting_key = $this->get_repeater_setting_key( 'item_text', 'items', $index );
 						$this->add_inline_editing_attributes( $repeater_setting_key );
-
-						$migrated = isset( $item['__fa4_migrated']['selected_item_icon'] );
-						$is_new   = ! isset( $item['item_icon'] ) && Icons_Manager::is_migration_allowed();
 						?>
 
 						<li <?php $this->print_render_attribute_string( $key ); ?>>
@@ -1853,16 +1837,8 @@ class Pricing_Table extends Widget_Base {
 								<?php
 							}
 
-							if ( ! empty( $item['item_icon'] ) || ! empty( $item['selected_item_icon'] ) ) :
-
-								if ( $is_new || $migrated ) :
-									Icons_Manager::render_icon( $item['selected_item_icon'], array( 'aria-hidden' => 'true' ) );
-								else :
-									?>
-									<i class="<?php echo esc_attr( $item['item_icon'] ); ?>" aria-hidden="true"></i>
-									<?php
-								endif;
-
+							if ( ! empty( $item['selected_item_icon'] ) ) :
+								Icons_Manager::render_icon( $item['selected_item_icon'], [ 'aria-hidden' => 'true' ] );
 							endif;
 
 							if ( ! empty( $item['item_text'] ) ) :
@@ -1971,8 +1947,7 @@ class Pricing_Table extends Widget_Base {
 			var symbol          = '',
 				iconsHTML       = {},
 				$bg_image       = '',
-				iconHTML        = elementor.helpers.renderIcon( view, settings.selected_table_icon, { 'aria-hidden': true }, 'i' , 'object' ),
-				migrated        = elementor.helpers.isIconMigrated( settings, 'selected_table_icon' );
+				iconHTML        = elementor.helpers.renderIcon( view, settings.selected_table_icon, { 'aria-hidden': true }, 'i' , 'object' );
 
 			if ( settings.currency_symbol ) {
 				if ( 'custom' !== settings.currency_symbol ) {
@@ -2031,12 +2006,9 @@ class Pricing_Table extends Widget_Base {
 			if ( 'style-2' === settings.style && ( ! _.isEmpty( settings.table_icon ) || ! _.isEmpty( settings.selected_table_icon ) ) ) { #>
 				<div class="zeus-pricing-table-icon">
 					<#
-					if ( iconHTML && iconHTML.rendered && ( ! settings.table_icon || migrated ) ) { #>
+					if ( iconHTML && iconHTML.rendered ) { #>
 						{{{ iconHTML.value }}}
-					<# } else { #>
-						<i class="{{ settings.table_icon }}"></i>
-					<#
-					} #>
+					<# } #>
 				</div>
 			<#
 			}
@@ -2124,8 +2096,7 @@ class Pricing_Table extends Widget_Base {
 							view.addRenderAttribute( tooltipKey, 'title', item.item_tooltip_content );
 						}
 
-						var featureKey = view.getRepeaterSettingKey( 'item_text', 'items', index ),
-							migrated = elementor.helpers.isIconMigrated( item, 'selected_item_icon' );
+						var featureKey = view.getRepeaterSettingKey( 'item_text', 'items', index );
 
 						view.addInlineEditingAttributes( featureKey ); #>
 
@@ -2134,12 +2105,10 @@ class Pricing_Table extends Widget_Base {
 								<span {{{ view.getRenderAttributeString( tooltipKey ) }}}>
 							<# }
 
-							if ( item.item_icon  || item.selected_item_icon ) {
+							if ( item.selected_item_icon ) {
 								iconsHTML[ index ] = elementor.helpers.renderIcon( view, item.selected_item_icon, { 'aria-hidden': 'true' }, 'i', 'object' );
-								if ( ( ! item.item_icon || migrated ) && iconsHTML[ index ] && iconsHTML[ index ].rendered ) { #>
+								if ( iconsHTML[ index ] && iconsHTML[ index ].rendered ) { #>
 									{{{ iconsHTML[ index ].value }}}
-								<# } else { #>
-									<i class="{{ item.item_icon }}" aria-hidden="true"></i>
 								<# }
 							} #>
 

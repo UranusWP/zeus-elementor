@@ -4,11 +4,11 @@ class Zeus_Toggle extends elementorModules.frontend.handlers.Base {
     getDefaultSettings() {
         return {
             selectors: {
-                toggle: ".zeus-switch-container",
-                toggleSwitcher: ".zeus-switch-wrap",
-                toggleSwitcherLabel: ".zeus-switch-label",
-                togglePrimaryContent: ".zeus-switch-primary-wrap",
-                toggleSecondaryContent: ".zeus-switch-secondary-wrap",
+                toggle: ".zeus-toggle-container",
+                toggleSwitcher: ".zeus-toggle-wrap",
+                toggleSwitcherLabel: ".zeus-toggle-label",
+                togglePrimaryContent: ".zeus-toggle-primary-wrap",
+                toggleSecondaryContent: ".zeus-toggle-secondary-wrap",
             },
         };
     }
@@ -33,7 +33,7 @@ class Zeus_Toggle extends elementorModules.frontend.handlers.Base {
     toggleSwitcher(event) {
         event.preventDefault();
 
-        this.elements.toggleSwitcher.classList.toggle("zeus-switch-on");
+        this.elements.toggleSwitcher.classList.toggle("zeus-toggle-on");
 
         ["hide", "show"].forEach((className) => {
             this.elements.togglePrimaryContent.classList.toggle(className);

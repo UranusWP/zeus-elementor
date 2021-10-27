@@ -97,8 +97,12 @@ class Table extends Widget_Base {
 			'cell_icon',
 			[
 				'label'         => __( 'Icon', 'zeus-elementor' ),
-				'type'          => Controls_Manager::ICON,
-				'default'       => '',
+				'type'          => Controls_Manager::ICONS,
+				'label_block'   => true,
+				'default'       => [
+					'value'   => '',
+					'library' => 'fa-solid',
+				],
 			]
 		);
 
@@ -256,8 +260,12 @@ class Table extends Widget_Base {
 			'content_icon',
 			[
 				'label'         => __( 'Icon', 'zeus-elementor' ),
-				'type'          => Controls_Manager::ICON,
-				'default'       => '',
+				'type'          => Controls_Manager::ICONS,
+				'label_block'   => true,
+				'default'       => [
+					'value'   => '',
+					'library' => 'fa-solid',
+				],
 				'condition' => [
 					'content_type' => 'cell',
 				],
@@ -866,11 +874,9 @@ class Table extends Widget_Base {
 
 	protected function is_invalid_first_row() {
 		$settings = $this->get_settings();
-
 		if ( 'row' === $settings['rows'][0]['content_type'] ) {
 			return false;
 		}
-
 		return true;
 	}
 
@@ -891,21 +897,16 @@ class Table extends Widget_Base {
 		$this->add_render_attribute( 'row', 'class', 'zeus-table-row' ); ?>
 
 		<table <?php $this->print_render_attribute_string( 'table' ); ?>>
-
 			<?php
 			if ( $settings['header_cells'] ) { ?>
-
 				<thead>
 					<tr <?php $this->print_render_attribute_string( 'row' ); ?>>
-
 						<?php
 						foreach ( $settings['header_cells'] as $index => $row ) {
-
 							$key = $this->get_repeater_setting_key( 'cell_text', 'header_cells', $index );
 
 							$this->add_render_attribute( 'header-' . $counter, 'class', 'zeus-table-cell' );
 							$this->add_render_attribute( 'header-' . $counter, 'class', 'elementor-repeater-item-' . $row['_id'] );
-
 							$this->add_render_attribute( 'header-text-' . $counter, 'class', 'zeus-table-text' );
 							$this->add_render_attribute( $key, 'class', 'zeus-table-text-inner' );
 							$this->add_inline_editing_attributes( $key, 'basic' );
@@ -924,44 +925,39 @@ class Table extends Widget_Base {
 
 							if ( $row['cell_row_span'] > 1 ) {
 								$this->add_render_attribute( 'header-' . $counter, 'rowspan', $row['cell_row_span'] );
-							}
+							} ?>
 
-							// Output header contents
-							$head_output .= '<th ' . $this->get_render_attribute_string( 'header-' . $counter ) . '>';
-							$head_output .= '<span ' . $this->get_render_attribute_string( 'header-text-' . $counter ) . '>';
-
-							if ( '' !== $row['cell_icon'] ) {
-								$this->add_render_attribute( 'icon-' . $counter, 'class', 'elementor-align-icon-' . $row['cell_icon_align'] );
-								$head_output .= '<span ' . $this->get_render_attribute_string( 'icon-' . $counter ) . '>';
-									$head_output .= '<i class="' . esc_attr( $row['cell_icon'] ) . '"></i>';
-								$head_output .= '</span>';
-							}
-
-							$head_output .= '<span ' . $this->get_render_attribute_string( $key ) . '>' . $row['cell_text'] . '</span>';
-
-							$head_output .= '</span>';
-							$head_output .= '</th>';
-
+							<th <?php $this->print_render_attribute_string( 'header-' . $counter ); ?>>
+								<span <?php $this->print_render_attribute_string( 'header-text-' . $counter ); ?>>
+									<?php
+									if ( ! empty( $row['cell_icon'] ) ) {
+										$this->add_render_attribute( 'icon-' . $counter, 'class', 'elementor-align-icon-' . $row['cell_icon_align'] ); ?>
+										<span <?php $this->print_render_attribute_string( 'icon-' . $counter ); ?>>
+											<?php \Elementor\Icons_Manager::render_icon( $row['cell_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+										</span>
+										<?php
+									}
+									?>
+									<span <?php $this->print_render_attribute_string( $key ); ?>><?php echo esc_attr( $row['cell_text'] ); ?></span>
+								</span>
+							</th>
+							<?php
 						}
-
-						echo $head_output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						?>
 					</tr>
 				</thead>
 				<?php
 			}
 
-			if ( $settings['rows'] ) { ?>
-
+			if ( $settings['rows'] ) {
+				?>
 				<tbody>
-
 					<?php if ( $this->is_invalid_first_row() ) { ?>
 						<tr <?php $this->print_render_attribute_string( 'row' ); ?>>
 					<?php } ?>
 
 						<?php
 						foreach ( $settings['rows'] as $index => $row ) {
-
 							$text_tag       = 'span';
 							$header_text    = '';
 							$content_key    = $this->get_repeater_setting_key( 'content_text', 'rows', $index );
@@ -972,17 +968,13 @@ class Table extends Widget_Base {
 							}
 
 							if ( 'cell' === $row['content_type'] ) {
-
 								if ( 'hide' !== $settings['hide_headers_mobile'] ) {
-
 									// Fetch corresponding header cell text
 									if ( isset( $settings['header_cells'][ $cell_counter ] ) ) {
 										$header_text = $settings['header_cells'][ $cell_counter ]['cell_text'];
 									}
-
 									// Increment to next cell
 									$cell_counter++;
-
 								}
 
 								$this->add_render_attribute( 'cell-' . $counter, 'class', 'zeus-table-cell' );
@@ -1010,27 +1002,25 @@ class Table extends Widget_Base {
 
 								if ( $row['content_row_span'] > 1 ) {
 									$this->add_render_attribute( 'cell-' . $counter, 'rowspan', $row['content_row_span'] );
-								}
+								} ?>
 
-								// Output cell contents
-								$output .= '<' . $row['cell_type'] . ' ' . $this->get_render_attribute_string( 'cell-' . $counter ) . '>';
-								$output .= '<' . $text_tag . ' ' . $this->get_render_attribute_string( 'text-' . $counter ) . '>';
-
-								if ( '' !== $row['content_icon'] ) {
-
-									$this->add_render_attribute( 'icon-' . $counter, 'class', 'elementor-align-icon-' . $row['content_icon_align'] );
-
-									$output .= '<span ' . $this->get_render_attribute_string( 'icon-' . $counter ) . '>';
-										$output .= '<i class="' . esc_attr( $row['content_icon'] ) . '"></i>';
-									$output .= '</span>';
-								}
-
-								$output .= '<span ' . $this->get_render_attribute_string( $content_key ) . '>' . $row['content_text'] . '</span>';
-								$output .= '</' . $text_tag . '>';
-								$output .= '</' . $row['cell_type'] . '>';
-
+								<<?php echo esc_attr( $row['cell_type'] ); ?> <?php $this->print_render_attribute_string( 'cell-' . $counter ); ?>>
+									<<?php echo esc_attr( $text_tag ); ?> <?php $this->print_render_attribute_string( 'text-' . $counter ); ?>>
+									<?php
+									if ( ! empty( $row['content_icon'] ) ) {
+										$this->add_render_attribute( 'icon-' . $counter, 'class', 'elementor-align-icon-' . $row['content_icon_align'] );
+										?>
+										<span <?php $this->print_render_attribute_string( 'icon-' . $counter ); ?>>
+											<?php \Elementor\Icons_Manager::render_icon( $row['content_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+										</span>
+										<?php
+									}
+									?>
+									<span <?php $this->print_render_attribute_string( $content_key ); ?>><?php $this->print_text_editor( $row['content_text'] ); ?></span>
+									</<?php echo esc_attr( $text_tag ); ?>>
+								</<?php echo esc_attr( $row['cell_type'] ); ?>>
+								<?php
 							} else {
-
 								$this->add_render_attribute( 'row-' . $counter, 'class', 'zeus-table-row' );
 								$this->add_render_attribute( 'row-' . $counter, 'class', 'elementor-repeater-item-' . $row['_id'] );
 
@@ -1043,31 +1033,26 @@ class Table extends Widget_Base {
 								}
 
 								if ( $counter > 1 && $counter < $row_count ) {
-
-									// Break into new row
-									$output .= '</tr><tr ' . $this->get_render_attribute_string( 'row-' . $counter ) . '>';
-
+									?>
+									</tr><tr <?php $this->print_render_attribute_string( 'row-' . $counter ); ?>>
+									<?php
 								} elseif ( 1 === $counter && false === $this->is_invalid_first_row() ) {
-									$output .= '<tr ' . $this->get_render_attribute_string( 'row-' . $counter ) . '>';
+									?>
+									<tr <?php $this->print_render_attribute_string( 'row-' . $counter ); ?>>
+									<?php
 								}
 
 								$cell_counter = 0;
 							}
-
 							$counter++;
-
 						}
-
-						echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-
+						?>
 					</tr>
-
 				</tbody>
-
-			<?php } ?>
-
+				<?php
+			}
+			?>
 		</table>
-
 		<?php
 	}
 
@@ -1095,11 +1080,14 @@ class Table extends Widget_Base {
 							<th id="{{ row._item_id }}" class="zeus-table-cell elementor-repeater-item-{{ row._id }} {{ row.css_classes }}" colspan="{{ row.cell_span }}" rowspan="{{ row.cell_row_span }}">
 								<span class="zeus-table-text">
 
-									<# if ( '' !== row.cell_icon ) { #>
-										<span class="elementor-align-icon-{{ row.cell_icon_align }}">
-											<i class="{{ row.cell_icon }}"></i>
-										</span>
-									<# } #>
+									<# if ( row.cell_icon ) {
+										cellIconsHTML = elementor.helpers.renderIcon( view, row.cell_icon, { 'aria-hidden': 'true' }, 'i', 'object' );
+										if ( cellIconsHTML && cellIconsHTML.rendered ) { #>
+											<span class="elementor-align-icon-{{ row.cell_icon_align }}">
+												{{{ cellIconsHTML.value }}}
+											</span>
+										<# }
+									} #>
 
 									<span class="zeus-table-text-inner elementor-inline-editing" data-elementor-setting-key="header_cells.{{ counter - 1 }}.cell_text" data-elementor-inline-editing-toolbar="basic">{{{ row.cell_text }}}</span>
 
@@ -1154,11 +1142,14 @@ class Table extends Widget_Base {
 								<{{ row.cell_type }} id="{{ row.content_item_id }}" class="zeus-table-cell elementor-repeater-item-{{ row._id }} {{ row.content_css_classes }}" colspan="{{ row.content_span }}" rowspan="{{ row.content_row_span }}" {{{ data_header_text }}}>
 
 									<{{ text_tag }} {{ text_link }} class="zeus-table-text">
-										<# if ( '' !== row.content_icon ) { #>
-											<span class="elementor-align-icon-{{ row.content_icon_align }}">
-												<i class="{{ row.content_icon }}"></i>
-											</span>
-										<# } #>
+										<# if ( row.content_icon ) {
+											contentIconsHTML = elementor.helpers.renderIcon( view, row.content_icon, { 'aria-hidden': 'true' }, 'i', 'object' );
+											if ( contentIconsHTML && contentIconsHTML.rendered ) { #>
+												<span class="elementor-align-icon-{{ row.content_icon_align }}">
+													{{{ contentIconsHTML.value }}}
+												</span>
+											<# }
+										} #>
 										<span class="zeus-table-text-inner elementor-inline-editing" data-elementor-setting-key="rows.{{ counter - 1 }}.content_text" data-elementor-inline-editing-toolbar="basic">{{{ row.content_text }}}</span>
 									</{{ text_tag }}>
 
@@ -1189,5 +1180,4 @@ class Table extends Widget_Base {
 
 		<?php
 	}
-
 }

@@ -346,7 +346,6 @@ class CallToAction extends Widget_Base {
 			[
 				'label'         => __( 'Icon', 'zeus-elementor' ),
 				'type'          => Controls_Manager::ICONS,
-				'fa4compatibility' => 'cta_icon',
 				'default'       => [
 					'value'     => 'far fa-gem',
 					'library'   => 'fa-regular',
@@ -443,7 +442,6 @@ class CallToAction extends Widget_Base {
 			[
 				'label'         => __( 'Icon', 'zeus-elementor' ),
 				'type'          => Controls_Manager::ICONS,
-				'fa4compatibility' => 'btn_icon',
 				'default'       => [
 					'value'     => '',
 					'library'   => 'fa-regular',
@@ -545,7 +543,6 @@ class CallToAction extends Widget_Base {
 			[
 				'label'         => __( 'Icon', 'zeus-elementor' ),
 				'type'          => Controls_Manager::ICONS,
-				'fa4compatibility' => 's_btn_icon',
 				'default'       => [
 					'value'     => '',
 					'library'   => 'fa-regular',
@@ -1833,18 +1830,10 @@ class CallToAction extends Widget_Base {
 					</div>
 					<?php
 				elseif ( 'icon' === $settings['element']
-					&& ( ! empty( $settings['cta_icon'] ) || ! empty( $settings['selected_cta_icon'] ) ) ) :
-					$migrated   = isset( $settings['__fa4_migrated']['selected_cta_icon'] );
-					$is_new     = empty( $settings['cta_icon'] ) && Icons_Manager::is_migration_allowed(); ?>
+					&& ( ! empty( $settings['selected_cta_icon'] ) ) ) : ?>
 					<div <?php $this->print_render_attribute_string( 'element' ); ?>>
 						<div class="zeus-icon">
-							<?php
-							if ( $is_new || $migrated ) :
-								Icons_Manager::render_icon( $settings['selected_cta_icon'], [ 'aria-hidden' => 'true' ] );
-							else : ?>
-								<i class="<?php echo esc_attr( $settings['cta_icon'] ); ?>" aria-hidden="true"></i>
-								<?php
-							endif; ?>
+							<?php Icons_Manager::render_icon( $settings['selected_cta_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 						</div>
 					</div>
 					<?php
@@ -1867,13 +1856,13 @@ class CallToAction extends Widget_Base {
 						<<?php echo esc_attr( $btn_tag ); ?> <?php $this->print_render_attribute_string( 'btn' ); ?>>
 							<?php
 							if ( 'left' === $settings['icon_align']
-								&& ( ! empty( $settings['btn_icon'] ) || ! empty( $settings['selected_btn_icon'] ) ) ) :
+								&& ( ! empty( $settings['selected_btn_icon'] ) ) ) :
 								Icons_Manager::render_icon( $settings['selected_btn_icon'], [ 'aria-hidden' => 'true' ] );
 							endif; ?>
 							<span><?php $this->print_unescaped_setting( 'btn_text' ); ?></span>
 							<?php
 							if ( 'right' === $settings['icon_align']
-								&& ( ! empty( $settings['btn_icon'] ) || ! empty( $settings['selected_btn_icon'] ) ) ) :
+								&& ( ! empty( $settings['selected_btn_icon'] ) ) ) :
 								Icons_Manager::render_icon( $settings['selected_btn_icon'], [ 'aria-hidden' => 'true' ] );
 							endif; ?>
 						</<?php echo esc_attr( $btn_tag ); ?>>
@@ -1884,13 +1873,13 @@ class CallToAction extends Widget_Base {
 							<a <?php $this->print_render_attribute_string( 's-btn' ); ?>>
 								<?php
 								if ( 'left' === $settings['s_icon_align']
-									&& ( ! empty( $settings['s_btn_icon'] ) || ! empty( $settings['selected_s_btn_icon'] ) ) ) :
+									&& ( ! empty( $settings['selected_s_btn_icon'] ) ) ) :
 									Icons_Manager::render_icon( $settings['selected_s_btn_icon'], [ 'aria-hidden' => 'true' ] );
 								endif; ?>
 								<span><?php $this->print_unescaped_setting( 's_btn_text' ); ?></span>
 								<?php
 								if ( 'right' === $settings['s_icon_align']
-									&& ( ! empty( $settings['s_btn_icon'] ) || ! empty( $settings['selected_s_btn_icon'] ) ) ) :
+									&& ( ! empty( $settings['selected_s_btn_icon'] ) ) ) :
 									Icons_Manager::render_icon( $settings['selected_s_btn_icon'], [ 'aria-hidden' => 'true' ] );
 								endif; ?>
 							</a>
@@ -1919,11 +1908,8 @@ class CallToAction extends Widget_Base {
 			contentAnimation    = settings.content_animation,
 			animationClass,
 			iconHTML            = elementor.helpers.renderIcon( view, settings.selected_cta_icon, { 'aria-hidden': true }, 'i' , 'object' ),
-			migrated            = elementor.helpers.isIconMigrated( settings, 'selected_cta_icon' ),
 			btnIconHTML         = elementor.helpers.renderIcon( view, settings.selected_btn_icon, { 'aria-hidden': true }, 'i' , 'object' ),
-			btnMigrated         = elementor.helpers.isIconMigrated( settings, 'selected_btn_icon' ),
-			sbtnIconHTML        = elementor.helpers.renderIcon( view, settings.selected_s_btn_icon, { 'aria-hidden': true }, 'i' , 'object' ),
-			sbtnMigrated        = elementor.helpers.isIconMigrated( settings, 'selected_s_btn_icon' );
+			sbtnIconHTML        = elementor.helpers.renderIcon( view, settings.selected_s_btn_icon, { 'aria-hidden': true }, 'i' , 'object' );
 
 		if ( '' !== settings.bg_image.url ) {
 			var bg_image = {
@@ -2005,10 +1991,8 @@ class CallToAction extends Widget_Base {
 				<# } else if ( 'icon' === settings.element && ( settings.cta_icon || settings.selected_cta_icon ) ) { #>
 					<div {{{ view.getRenderAttributeString( 'element' ) }}}>
 						<div class="zeus-icon">
-							<# if ( iconHTML && iconHTML.rendered && ( ! settings.cta_icon || migrated ) ) { #>
+							<# if ( iconHTML && iconHTML.rendered ) { #>
 								{{{ iconHTML.value }}}
-							<# } else { #>
-								<i class="{{ settings.cta_icon }}"></i>
 							<# } #>
 						</div>
 					</div>
@@ -2026,34 +2010,26 @@ class CallToAction extends Widget_Base {
 					<div {{{ view.getRenderAttributeString( 'btn-wrapper' ) }}}>
 						<a href="{{ settings.btn_link.url }}" class="zeus-button elementor-button elementor-animation-{{ settings.button_animation }}">
 							<#
-							if ( 'left' == settings.icon_align && ( btnIconHTML && btnIconHTML.rendered && ( ! settings.btn_icon || btnMigrated ) ) ) { #>
+							if ( 'left' == settings.icon_align && ( btnIconHTML && btnIconHTML.rendered ) ) { #>
 								{{{ btnIconHTML.value }}}
-							<# } else { #>
-								<i class="{{ settings.btn_icon }}"></i>
 							<# } #>
 							<span>{{{ settings.btn_text }}}</span>
 							<#
-							if ( 'right' == settings.icon_align && ( btnIconHTML && btnIconHTML.rendered && ( ! settings.btn_icon || btnMigrated ) ) ) { #>
+							if ( 'right' == settings.icon_align && ( btnIconHTML && btnIconHTML.rendered ) ) { #>
 								{{{ btnIconHTML.value }}}
-							<# } else { #>
-								<i class="{{ settings.btn_icon }}"></i>
 							<# } #>
 						</a>
 
 						<# if ( 'yes' == settings.secondary_btn && settings.s_btn_text ) { #>
 							<a href="{{ settings.s_btn_link.url }}" class="zeus-button zeus-cta-s-btn elementor-button elementor-animation-{{ settings.button_animation }}">
 								<#
-								if ( 'left' == settings.s_icon_align && ( sbtnIconHTML && sbtnIconHTML.rendered && ( ! settings.s_btn_icon || sbtnMigrated ) ) ) { #>
+								if ( 'left' == settings.s_icon_align && ( sbtnIconHTML && sbtnIconHTML.rendered ) ) { #>
 									{{{ sbtnIconHTML.value }}}
-								<# } else { #>
-									<i class="{{ settings.s_btn_icon }}"></i>
 								<# } #>
 								<span>{{{ settings.s_btn_text }}}</span>
 								<#
-								if ( 'right' == settings.s_icon_align && ( sbtnIconHTML && sbtnIconHTML.rendered && ( ! settings.s_btn_icon || sbtnMigrated ) ) ) { #>
+								if ( 'right' == settings.s_icon_align && ( sbtnIconHTML && sbtnIconHTML.rendered ) ) { #>
 									{{{ sbtnIconHTML.value }}}
-								<# } else { #>
-									<i class="{{ settings.s_btn_icon }}"></i>
 								<# } #>
 							</a>
 						<# } #>

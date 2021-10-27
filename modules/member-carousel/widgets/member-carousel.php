@@ -233,24 +233,6 @@ class Member_Carousel extends Widget_Base {
 			]
 		);
 
-		$this->add_responsive_control(
-			'icon_size',
-			[
-				'label'         => __( 'Social Icons Size', 'zeus-elementor' ),
-				'type'          => Controls_Manager::SLIDER,
-				'range'         => [
-					'px' => [
-						'min' => 6,
-						'max' => 150,
-					],
-				],
-				'selectors'     => [
-					'{{WRAPPER}} .zeus-member-carousel-wrap .zeus-member-carousel-social li a' => 'font-size: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .zeus-member-carousel-wrap .zeus-member-carousel-social li a .zeus-icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
-
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -939,11 +921,17 @@ class Member_Carousel extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'icons_size',
+		$this->add_responsive_control(
+			'icon_size',
 			[
 				'label'         => __( 'Icons Size', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SLIDER,
+				'range'         => [
+					'px' => [
+						'min' => 6,
+						'max' => 150,
+					],
+				],
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-member-carousel-wrap .zeus-member-carousel-social li a' => 'font-size: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}} .zeus-member-carousel-wrap .zeus-member-carousel-social li a .zeus-icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',

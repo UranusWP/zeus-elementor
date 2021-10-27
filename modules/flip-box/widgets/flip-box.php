@@ -112,7 +112,6 @@ class FlipBox extends Widget_Base {
 			[
 				'label'         => __( 'Icon', 'zeus-elementor' ),
 				'type'          => Controls_Manager::ICONS,
-				'fa4compatibility' => 'icon',
 				'default'       => [
 					'value'     => 'fas fa-snowflake',
 					'library'   => 'fa-solid',
@@ -1341,8 +1340,7 @@ class FlipBox extends Widget_Base {
 				}
 			}
 
-		var iconHTML = elementor.helpers.renderIcon( view, settings.selected_icon, { 'aria-hidden': true }, 'i' , 'object' ),
-			migrated = elementor.helpers.isIconMigrated( settings, 'selected_icon' ); #>
+		var iconHTML = elementor.helpers.renderIcon( view, settings.selected_icon, { 'aria-hidden': true }, 'i' , 'object' ); #>
 
 		<div class="zeus-flip-box">
 			<div class="zeus-flip-box-layer zeus-flip-box-front">
@@ -1357,10 +1355,8 @@ class FlipBox extends Widget_Base {
 							&& settings.selected_icon ) { #>
 							<div class="{{ iconWrapperClasses }}" >
 								<div class="elementor-icon">
-									<# if ( iconHTML && iconHTML.rendered && ( ! settings.icon || migrated ) ) { #>
+									<# if ( iconHTML && iconHTML.rendered ) { #>
 										{{{ iconHTML.value }}}
-									<# } else { #>
-										<i class="{{ settings.icon }}" aria-hidden="true"></i>
 									<# } #>
 								</div>
 							</div>

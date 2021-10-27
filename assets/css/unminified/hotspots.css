@@ -65,6 +65,10 @@ Hotspots
 	animation: 2s pulse infinite;
 }
 
+.tippy-content p {
+	margin: 0;
+}
+
 @-webkit-keyframes pulse {
 	0% {
 		-webkit-transform: scale(1);

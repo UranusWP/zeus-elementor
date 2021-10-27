@@ -10,6 +10,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
+use Elementor\Icons_Manager;
 use Elementor\Widget_Base;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -162,7 +163,7 @@ class Recipe extends Widget_Base {
 				'type'          => Controls_Manager::ICONS,
 				'default'       => [
 					'value'     => 'fas fa-leaf',
-					'library'   => 'solid',
+					'library'   => 'fa-solid',
 				],
 				'condition'     => [
 					'prep_time!' => '',
@@ -214,7 +215,7 @@ class Recipe extends Widget_Base {
 				'type'          => Controls_Manager::ICONS,
 				'default'       => [
 					'value'     => 'fas fa-utensils',
-					'library'   => 'solid',
+					'library'   => 'fa-solid',
 				],
 				'condition'     => [
 					'cook_time!' => '',
@@ -266,7 +267,7 @@ class Recipe extends Widget_Base {
 				'type'          => Controls_Manager::ICONS,
 				'default'       => [
 					'value'     => 'fas fa-clock',
-					'library'   => 'solid',
+					'library'   => 'fa-solid',
 				],
 				'condition'     => [
 					'total_time!' => '',
@@ -318,7 +319,7 @@ class Recipe extends Widget_Base {
 				'type'          => Controls_Manager::ICONS,
 				'default'       => [
 					'value'     => 'fas fa-users',
-					'library'   => 'solid',
+					'library'   => 'fa-solid',
 				],
 				'condition'     => [
 					'servings!' => '',
@@ -370,7 +371,7 @@ class Recipe extends Widget_Base {
 				'type'          => Controls_Manager::ICONS,
 				'default'       => [
 					'value'     => 'fas fa-bolt',
-					'library'   => 'solid',
+					'library'   => 'fa-solid',
 				],
 				'condition'     => [
 					'calories!' => '',
@@ -458,7 +459,7 @@ class Recipe extends Widget_Base {
 				'type'          => Controls_Manager::ICONS,
 				'default'       => [
 					'value'     => 'fas fa-circle',
-					'library'   => 'solid',
+					'library'   => 'fa-solid',
 				],
 			]
 		);
@@ -1311,7 +1312,7 @@ class Recipe extends Widget_Base {
 					if ( $settings['prep_time'] ) { ?>
 						<li <?php $this->print_render_attribute_string( 'details-prep' ); ?>>
 							<span <?php $this->print_render_attribute_string( 'details-icon' ); ?>>
-								<?php \Elementor\Icons_Manager::render_icon( $settings['prep_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+								<?php Icons_Manager::render_icon( $settings['prep_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 							</span>
 
 							<span <?php $this->print_render_attribute_string( 'details-content' ); ?>>
@@ -1331,7 +1332,7 @@ class Recipe extends Widget_Base {
 					if ( $settings['cook_time'] ) { ?>
 						<li <?php $this->print_render_attribute_string( 'details-cook' ); ?>>
 							<span <?php $this->print_render_attribute_string( 'details-icon' ); ?>>
-								<?php \Elementor\Icons_Manager::render_icon( $settings['cook_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+								<?php Icons_Manager::render_icon( $settings['cook_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 							</span>
 
 							<span <?php $this->print_render_attribute_string( 'details-content' ); ?>>
@@ -1351,7 +1352,7 @@ class Recipe extends Widget_Base {
 					if ( $settings['total_time'] ) { ?>
 						<li <?php $this->print_render_attribute_string( 'details-total' ); ?>>
 							<span <?php $this->print_render_attribute_string( 'details-icon' ); ?>>
-								<?php \Elementor\Icons_Manager::render_icon( $settings['total_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+								<?php Icons_Manager::render_icon( $settings['total_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 							</span>
 
 							<span <?php $this->print_render_attribute_string( 'details-content' ); ?>>
@@ -1371,7 +1372,7 @@ class Recipe extends Widget_Base {
 					if ( $settings['servings'] ) { ?>
 						<li <?php $this->print_render_attribute_string( 'details-servings' ); ?>>
 							<span <?php $this->print_render_attribute_string( 'details-icon' ); ?>>
-								<?php \Elementor\Icons_Manager::render_icon( $settings['servings_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+								<?php Icons_Manager::render_icon( $settings['servings_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 							</span>
 
 							<span <?php $this->print_render_attribute_string( 'details-content' ); ?>>
@@ -1392,7 +1393,7 @@ class Recipe extends Widget_Base {
 						<li <?php $this->print_render_attribute_string( 'details-calories' ); ?>>
 							<span <?php $this->print_render_attribute_string( 'details-calories-item' ); ?>>
 								<span <?php $this->print_render_attribute_string( 'details-icon' ); ?>>
-									<?php \Elementor\Icons_Manager::render_icon( $settings['calories_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+									<?php Icons_Manager::render_icon( $settings['calories_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 								</span>
 
 								<span <?php $this->print_render_attribute_string( 'details-content' ); ?>>
@@ -1429,7 +1430,7 @@ class Recipe extends Widget_Base {
 							<li class="zeus-recipe-ingredient">
 								<?php
 								if ( '' !== $settings['ingredients_icon'] ) { ?>
-									<?php \Elementor\Icons_Manager::render_icon( $settings['ingredients_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+									<?php Icons_Manager::render_icon( $settings['ingredients_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 									<?php
 								} ?>
 
@@ -1485,13 +1486,14 @@ class Recipe extends Widget_Base {
 	}
 
 	protected function content_template() { ?>
-		<# var i = 1; #>
-		<# var prepiconHTML = elementor.helpers.renderIcon( view, settings.prep_icon, { 'aria-hidden': true }, 'i' , 'object' ); #>
-		<# var cookiconHTML = elementor.helpers.renderIcon( view, settings.cook_icon, { 'aria-hidden': true }, 'i' , 'object' ); #>
-		<# var totaliconHTML = elementor.helpers.renderIcon( view, settings.total_icon, { 'aria-hidden': true }, 'i' , 'object' ); #>
-		<# var servingsiconHTML = elementor.helpers.renderIcon( view, settings.servings_icon, { 'aria-hidden': true }, 'i' , 'object' ); #>
-		<# var caloriesiconHTML = elementor.helpers.renderIcon( view, settings.calories_icon, { 'aria-hidden': true }, 'i' , 'object' ); #>
-		<# var ingredientsiconHTML = elementor.helpers.renderIcon( view, settings.ingredients_icon, { 'aria-hidden': true }, 'i' , 'object' ); #>
+		<#
+		var i = 1,
+			prepiconHTML = elementor.helpers.renderIcon( view, settings.prep_icon, { 'aria-hidden': true }, 'i' , 'object' ),
+			cookiconHTML = elementor.helpers.renderIcon( view, settings.cook_icon, { 'aria-hidden': true }, 'i' , 'object' ),
+			totaliconHTML = elementor.helpers.renderIcon( view, settings.total_icon, { 'aria-hidden': true }, 'i' , 'object' ),
+			servingsiconHTML = elementor.helpers.renderIcon( view, settings.servings_icon, { 'aria-hidden': true }, 'i' , 'object' ),
+			caloriesiconHTML = elementor.helpers.renderIcon( view, settings.calories_icon, { 'aria-hidden': true }, 'i' , 'object' ),
+			ingredientsiconHTML = elementor.helpers.renderIcon( view, settings.ingredients_icon, { 'aria-hidden': true }, 'i' , 'object' ); #>
 
 		<div class="zeus-recipe-wrap">
 			<div class="zeus-recipe-header">
@@ -1539,7 +1541,9 @@ class Recipe extends Widget_Base {
 					<# if ( '' != settings.prep_time ) { #>
 						<li>
 							<span class="zeus-recipe-details-icon">
-								{{{ prepiconHTML.value }}}
+								<# if ( prepiconHTML && prepiconHTML.rendered ) { #>
+									{{{ prepiconHTML.value }}}
+								<# } #>
 							</span>
 
 							<span class="zeus-recipe-details-content">
@@ -1557,7 +1561,9 @@ class Recipe extends Widget_Base {
 					<# if ( '' != settings.cook_time ) { #>
 						<li>
 							<span class="zeus-recipe-details-icon">
-								{{{ cookiconHTML.value }}}
+								<# if ( cookiconHTML && cookiconHTML.rendered ) { #>
+									{{{ cookiconHTML.value }}}
+								<# } #>
 							</span>
 
 							<span class="zeus-recipe-details-content">
@@ -1575,7 +1581,9 @@ class Recipe extends Widget_Base {
 					<# if ( '' != settings.total_time ) { #>
 						<li>
 							<span class="zeus-recipe-details-icon">
-								{{{ totaliconHTML.value }}}
+								<# if ( totaliconHTML && totaliconHTML.rendered ) { #>
+									{{{ totaliconHTML.value }}}
+								<# } #>
 							</span>
 
 							<span class="zeus-recipe-details-content">
@@ -1593,7 +1601,9 @@ class Recipe extends Widget_Base {
 					<# if ( '' != settings.servings ) { #>
 						<li>
 							<span class="zeus-recipe-details-icon">
-								{{{ servingsiconHTML.value }}}
+								<# if ( servingsiconHTML && servingsiconHTML.rendered ) { #>
+									{{{ servingsiconHTML.value }}}
+								<# } #>
 							</span>
 
 							<span class="zeus-recipe-details-content">
@@ -1611,7 +1621,9 @@ class Recipe extends Widget_Base {
 					<# if ( '' != settings.calories ) { #>
 						<li>
 							<span class="zeus-recipe-details-icon">
-								{{{ caloriesiconHTML.value }}}
+								<# if ( caloriesiconHTML && caloriesiconHTML.rendered ) { #>
+									{{{ caloriesiconHTML.value }}}
+								<# } #>
 							</span>
 
 							<span class="zeus-recipe-details-content">
@@ -1636,7 +1648,9 @@ class Recipe extends Widget_Base {
 						<# if ( '' != item.ingredient ) { #>
 							<li class="zeus-recipe-ingredient">
 								<# if ( '' != settings.ingredients_icon ) { #>
-									{{{ ingredientsiconHTML.value }}}
+									<# if ( ingredientsiconHTML && ingredientsiconHTML.rendered ) { #>
+										{{{ ingredientsiconHTML.value }}}
+									<# } #>
 								<# } #>
 
 								<#

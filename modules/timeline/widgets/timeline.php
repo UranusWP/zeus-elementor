@@ -567,6 +567,17 @@ class Timeline extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'timeline_meta_icon_color',
+			[
+				'label'         => esc_html__( 'Icon Color', 'zeus-elementor' ),
+				'type'          => Controls_Manager::COLOR,
+				'selectors'     => [
+					'{{WRAPPER}} .zeus-timeline .zeus-timeline-meta li svg' => 'fill: {{VALUE}};',
+				],
+			]
+		);
+
 		$this->start_controls_tabs( 'tabs_timeline_meta_style' );
 
 		$this->start_controls_tab(
@@ -647,7 +658,7 @@ class Timeline extends Widget_Base {
 				'label'         => esc_html__( 'Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
 				'selectors'     => [
-					'{{WRAPPER}} .zeus-timeline .zeus-timeline-item-wrap .zeus-timeline-excerpt' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .zeus-timeline .zeus-timeline-item-wrap .zeus-timeline-excerpt, {{WRAPPER}} .zeus-timeline .zeus-timeline-item-wrap .zeus-timeline-excerpt a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -922,7 +933,6 @@ class Timeline extends Widget_Base {
 							$post_format    = get_post_format() ? '' : 'standard';
 							$category       = '';
 							$position       = ( 0 === $count % 2 ) ? 'right' : 'left';
-							$date_class     = ( 'center' === $align ) ? 'hidden' : 'normal';
 
 							if ( 0 === $count % 2
 								&& 'center' === $align ) { ?>
@@ -965,8 +975,14 @@ class Timeline extends Widget_Base {
 
 												if ( 'yes' === $settings['show_meta'] ) { ?>
 													<ul class="zeus-timeline-meta">
-														<li class="zeus-timeline-meta-date zeus-timeline-<?php echo esc_attr( $date_class ); ?>"><?php echo esc_attr( get_the_date( 'd F Y' ) ); ?></li>
-														<li><?php echo wp_kses_post( get_the_category_list( ', ' ) ); ?></li>
+														<li class="zeus-timeline-meta-author" itemprop="name">
+															<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve"><path d="M256,288.389c-153.837,0-238.56,72.776-238.56,204.925c0,10.321,8.365,18.686,18.686,18.686h439.747 c10.321,0,18.686-8.365,18.686-18.686C494.56,361.172,409.837,288.389,256,288.389z M55.492,474.628 c7.35-98.806,74.713-148.866,200.508-148.866s193.159,50.06,200.515,148.866H55.492z"/><path d="M256,0c-70.665,0-123.951,54.358-123.951,126.437c0,74.19,55.604,134.54,123.951,134.54s123.951-60.35,123.951-134.534 C379.951,54.358,326.665,0,256,0z M256,223.611c-47.743,0-86.579-43.589-86.579-97.168c0-51.611,36.413-89.071,86.579-89.071 c49.363,0,86.579,38.288,86.579,89.071C342.579,180.022,303.743,223.611,256,223.611z"/></svg>
+															<?php echo esc_attr( the_author_posts_link() ); ?>
+														</li>
+														<li class="zeus-timeline-meta-cat">
+															<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve"><path d="M480,105.6H244.909L182.08,41.011c-3.616-3.712-8.576-5.811-13.76-5.811H32c-17.645,0-32,14.355-32,32v377.6 c0,17.645,14.355,32,32,32h448c17.645,0,32-14.355,32-32V137.6C512,119.955,497.645,105.6,480,105.6z M473.6,438.4H38.4V73.6 h121.811l62.829,64.589c3.616,3.712,8.576,5.811,13.76,5.811h236.8V438.4z"/></svg>
+															<?php the_category( ' / ', get_the_ID() ); ?>
+														</li>
 													</ul>
 													<?php
 												}
@@ -1010,7 +1026,6 @@ class Timeline extends Widget_Base {
 						$count++;
 
 						$position       = ( 0 === $count % 2 ) ? 'right' : 'left';
-						$date_class     = ( 'center' === $align ) ? 'hidden' : '';
 						$image_url      = wp_get_attachment_image_src( $item['timeline_image']['id'], 'full' );
 						$image_url      = ( '' !== $image_url ) ? $image_url[0] : $item['timeline_image']['url'];
 
@@ -1053,7 +1068,7 @@ class Timeline extends Widget_Base {
 											}
 
 											if ( 'yes' === $settings['show_meta'] ) { ?>
-												<ul class="zeus-timeline-meta zeus-timeline-<?php echo esc_attr( $date_class ); ?>">
+												<ul class="zeus-timeline-meta">
 													<li><?php echo esc_attr( $item['timeline_date'] ); ?></li>
 												</ul>
 												<?php

@@ -729,14 +729,14 @@ class Instagram extends Widget_Base {
 			$request_args = array(
 				'timeout' => 10,
 			);
-			$data_info = wp_remote_retrieve_body( wp_remote_get( $url . '?fields=id,username&access_token=' . $token, $request_args ) );
-			$data_info_check = json_decode( $data_info, true );
+			$get_info = wp_remote_retrieve_body( wp_remote_get( $url . '?fields=id,username&access_token=' . $token, $request_args ) );
+			$info_json = json_decode( $get_info, true );
 
-			if ( ! empty( $data_info_check['data'] ) ) {
-				set_transient( $info_key, $data_info, ( $cache * MINUTE_IN_SECONDS ) );
+			if ( ! empty( $info_json['data'] ) ) {
+				set_transient( $info_key, $get_info, ( $cache * MINUTE_IN_SECONDS ) );
 			}
 		} else {
-			$data_info = get_transient( $info_key );
+			$get_info = get_transient( $info_key );
 		}
 
 		// Get media
@@ -744,21 +744,20 @@ class Instagram extends Widget_Base {
 			$request_args = array(
 				'timeout' => 10,
 			);
-			$data_media = wp_remote_retrieve_body( wp_remote_get( $url . '/media/?fields=username,id,caption,media_type,media_url,permalink,thumbnail_url,timestamp&limit=200&access_token=' . $token, $request_args ) );
-			$data_media_check = json_decode( $data_media, true );
+			$get_media = wp_remote_retrieve_body( wp_remote_get( $url . '/media/?fields=username,id,caption,media_type,media_url,permalink,thumbnail_url,timestamp&limit=200&access_token=' . $token, $request_args ) );
+			$media_json = json_decode( $get_media, true );
 
-			if ( ! empty( $data_media_check['data'] ) ) {
-				set_transient( $media_key, $data_media, ( $cache * MINUTE_IN_SECONDS ) );
+			if ( ! empty( $media_json['data'] ) ) {
+				set_transient( $media_key, $get_media, ( $cache * MINUTE_IN_SECONDS ) );
 			}
 		} else {
-			$data_media = get_transient( $media_key );
+			$get_media = get_transient( $media_key );
 		}
 
-		$data_info = json_decode( $data_info, true );
-		$data_media = json_decode( $data_media, true );
+		$get_info = json_decode( $get_info, true );
+		$get_media = json_decode( $get_media, true );
 
-		if ( empty( $data_media['data'] )
-			|| empty( $settings['images_count']['size'] ) ) {
+		if ( empty( $get_media['data'] ) ) {
 			return;
 		}
 
@@ -767,7 +766,7 @@ class Instagram extends Widget_Base {
 		if ( ! empty( $username ) ) {
 			$name = $username;
 		} else {
-			$name = $data_info['username'];
+			$name = $get_info['username'];
 		}
 
 		// If link
@@ -775,69 +774,67 @@ class Instagram extends Widget_Base {
 		$end_link = '';
 		$link_target = ( $settings['button_target'] ) ? 'target=_blank' : 'target=_self';
 		if ( 'yes' === $settings['button'] ) {
-			$link = '<a href="https://www.instagram.com/' . esc_attr( $data_info['username'] ) . '" ' . esc_attr( $link_target ) . '>';
+			$link = '<a href="https://www.instagram.com/' . esc_attr( $get_info['username'] ) . '" ' . esc_attr( $link_target ) . '>';
 			$end_link = '</a>';
 		}
 
-		if ( $items === $data_media['data'] ) {
-			$items = array_splice( $items, ( 0 * $settings['images_count']['size'] ), $settings['images_count']['size'] );
+		$items = array_splice( $get_media['data'], ( 0 * $settings['images_count']['size'] ), $settings['images_count']['size'] );
 
-			$icon = '<svg aria-hidden="true" aria-label="Instagram" data-icon="instagram" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>';
+		$icon = '<svg aria-hidden="true" aria-label="Instagram" data-icon="instagram" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>';
 
-			if ( 'yes' === $settings['header'] ) {
-				$html .= '<div class="zeus-insta-header">';
+		if ( 'yes' === $settings['header'] ) {
+			$html .= '<div class="zeus-insta-header">';
 
-				$html .= '<div class="zeus-insta-left">';
+			$html .= '<div class="zeus-insta-left">';
 
-				if ( ! empty( $settings['avatar']['url'] ) ) {
-					$html .= '<div class="zeus-insta-avatar">' . wp_kses_post( $link ) . wp_kses_post( Group_Control_Image_Size::get_attachment_image_html( $settings, 'avatar' ) ) . wp_kses_post( $end_link ) . '</div>';
-				}
-
-				$html .= '<div class="zeus-insta-details">';
-				$html .= '<h3 class="zeus-insta-username">' . wp_kses_post( $link ) . esc_attr( $name ) . wp_kses_post( $end_link ) . '</h3>';
-
-				if ( ! empty( $settings['bio'] ) ) {
-					$html .= '<p class="zeus-insta-desc">' . $this->print_unescaped_setting( 'bio' ) . '</p>';
-				}
-
-				$html .= '</div>';
-
-				$html .= '</div>';
-
-				if ( 'yes' === $settings['button'] ) {
-					$html .= '<div class="zeus-insta-button">' . wp_kses_post( $link ) . $icon . '<span>' . $this->print_unescaped_setting( 'button_text' ) . '</span>' . wp_kses_post( $end_link ) . '</div>';
-				}
-
-				$html .= '</div>';
+			if ( ! empty( $settings['avatar']['url'] ) ) {
+				$html .= '<div class="zeus-insta-avatar">' . wp_kses_post( $link ) . wp_kses_post( Group_Control_Image_Size::get_attachment_image_html( $settings, 'avatar' ) ) . wp_kses_post( $end_link ) . '</div>';
 			}
 
-			$html .= '<div class="zeus-insta-pictures">';
-			foreach ( $items as $item ) {
-				if ( 'yes' === $settings['link'] ) {
-					$target = ( $settings['link_target'] ) ? 'target=_blank' : 'target=_self';
-					$tag = 'a';
-					$link = ' href="' . $item['permalink'] . '" ' . esc_attr( $target );
-				} else {
-					$tag = 'div';
-					$link = '';
-				}
+			$html .= '<div class="zeus-insta-details">';
+			$html .= '<h3 class="zeus-insta-username">' . wp_kses_post( $link ) . esc_attr( $name ) . wp_kses_post( $end_link ) . '</h3>';
 
-				$image_src = ( 'VIDEO' === $item['media_type'] ) ? $item['thumbnail_url'] : $item['media_url'];
-
-				$html .= '<' . esc_attr( $tag ) . wp_kses_post( $link ) . ' class="zeus-insta-item">';
-				$html .= '<div class="zeus-insta-item-inner">';
-				if ( 'CAROUSEL_ALBUM' === $item['media_type'] ) {
-					$html .= '<div class="zeus-insta-gallery-icon"><svg aria-hidden="true" data-icon="clone" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 0H144c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h320c26.51 0 48-21.49 48-48v-48h48c26.51 0 48-21.49 48-48V48c0-26.51-21.49-48-48-48zM362 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h42v224c0 26.51 21.49 48 48 48h224v42a6 6 0 0 1-6 6zm96-96H150a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h308a6 6 0 0 1 6 6v308a6 6 0 0 1-6 6z"></path></svg></div>';
-				}
-				$html .= '<img class="zeus-insta-img" src="' . esc_attr( $image_src ) . '">';
-				if ( 'yes' === $settings['overlay'] ) {
-					$html .= '<div class="zeus-insta-icon">' . $icon . '</div>';
-				}
-				$html .= '</div>';
-				$html .= '</' . esc_attr( $tag ) . '>';
+			if ( ! empty( $settings['bio'] ) ) {
+				$html .= '<p class="zeus-insta-desc">' . wp_kses_post( $settings['bio'] ) . '</p>';
 			}
+
+			$html .= '</div>';
+
+			$html .= '</div>';
+
+			if ( 'yes' === $settings['button'] ) {
+				$html .= '<div class="zeus-insta-button">' . wp_kses_post( $link ) . $icon . '<span>' . esc_attr( $settings['button_text'] ) . '</span>' . wp_kses_post( $end_link ) . '</div>';
+			}
+
 			$html .= '</div>';
 		}
+
+		$html .= '<div class="zeus-insta-pictures">';
+		foreach ( $items as $item ) {
+			if ( 'yes' === $settings['link'] ) {
+				$target = ( $settings['link_target'] ) ? 'target=_blank' : 'target=_self';
+				$tag = 'a';
+				$link = ' href="' . $item['permalink'] . '" ' . esc_attr( $target );
+			} else {
+				$tag = 'div';
+				$link = '';
+			}
+
+			$image_src = ( 'VIDEO' === $item['media_type'] ) ? $item['thumbnail_url'] : $item['media_url'];
+
+			$html .= '<' . esc_attr( $tag ) . wp_kses_post( $link ) . ' class="zeus-insta-item">';
+			$html .= '<div class="zeus-insta-item-inner">';
+			if ( 'CAROUSEL_ALBUM' === $item['media_type'] ) {
+				$html .= '<div class="zeus-insta-gallery-icon"><svg aria-hidden="true" data-icon="clone" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 0H144c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h320c26.51 0 48-21.49 48-48v-48h48c26.51 0 48-21.49 48-48V48c0-26.51-21.49-48-48-48zM362 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h42v224c0 26.51 21.49 48 48 48h224v42a6 6 0 0 1-6 6zm96-96H150a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h308a6 6 0 0 1 6 6v308a6 6 0 0 1-6 6z"></path></svg></div>';
+			}
+			$html .= '<img class="zeus-insta-img" src="' . esc_attr( $image_src ) . '">';
+			if ( 'yes' === $settings['overlay'] ) {
+				$html .= '<div class="zeus-insta-icon">' . $icon . '</div>';
+			}
+			$html .= '</div>';
+			$html .= '</' . esc_attr( $tag ) . '>';
+		}
+		$html .= '</div>';
 
 		return $html;
 	}

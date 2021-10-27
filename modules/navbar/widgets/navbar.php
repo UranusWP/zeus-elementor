@@ -70,7 +70,6 @@ class Navbar extends Widget_Base {
 					'value'     => 'fas fa-home',
 					'library'   => 'fa-solid',
 				],
-				'fa4compatibility' => 'icon',
 			]
 		);
 

@@ -3,7 +3,6 @@ Woo Add To Cart
 -------------------------------------------------------------------*/
 .zeus-addtocart {
 	position: relative;
-	display: inline-block;
 }
 
 .zeus-addtocart .elementor-align-icon-left {
@@ -12,6 +11,10 @@ Woo Add To Cart
 
 .zeus-addtocart .elementor-align-icon-right {
 	margin-left: 4px;
+}
+
+.zeus-addtocart .zeus-addtocart-text {
+	vertical-align: middle;
 }
 
 .zeus-addtocart.loading {

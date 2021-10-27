@@ -109,6 +109,15 @@ Tabs
 	margin-bottom: 0;
 }
 
+.zeus-tabs.zeus-tabs-bottom {
+	display: flex;
+	flex-direction: column;
+}
+
+.zeus-tabs.zeus-tabs-bottom .zeus-tabs-wrap {
+	order: 2;
+}
+
 /* RTL */
 body.rtl .zeus-tabs .zeus-tab-title .zeus-icon-align-left {
 	margin-left: 3px;

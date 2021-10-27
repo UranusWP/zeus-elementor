@@ -210,7 +210,6 @@ class ContentProtection extends Widget_Base {
 			[
 				'label'         => __( 'Icon', 'zeus-elementor' ),
 				'type'          => Controls_Manager::ICONS,
-				'fa4compatibility' => 'icon',
 				'default'       => [
 					'value'     => 'fas fa-lock',
 					'library'   => 'fa-solid',
@@ -1006,7 +1005,7 @@ class ContentProtection extends Widget_Base {
 			<?php
 			if ( 'content' === $settings['content_type'] ) {
 				?>
-				<p><?php $this->parse_text_editor( $editor_content ); ?></p>
+				<p><?php echo $this->parse_text_editor( $editor_content ); // phpcs:ignore WordPress.Security.EscapeOutput ?></p>
 				<?php
 			} elseif ( 'template' === $settings['content_type'] ) {
 				if ( ! empty( $settings['content_template'] ) ) {
@@ -1030,18 +1029,10 @@ class ContentProtection extends Widget_Base {
 				<div class="zeus-cp">
 					<?php
 					if ( 'yes' === $settings['show_icon']
-						&& ( ! empty( $settings['icon'] ) || ! empty( $settings['selected_icon'] ) ) ) {
-						$migrated   = isset( $settings['__fa4_migrated']['selected_icon'] );
-						$is_new     = empty( $settings['icon'] ) && Icons_Manager::is_migration_allowed(); ?>
+						&& ( ! empty( $settings['selected_icon'] ) ) ) { ?>
 
 						<div class="zeus-cp-icon">
-							<?php
-							if ( $is_new || $migrated ) {
-								Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] );
-							} else { ?>
-								<i class="<?php echo esc_attr( $settings['icon'] ); ?>" aria-hidden="true"></i>
-								<?php
-							} ?>
+							<?php Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 						</div>
 						<?php
 					} ?>
@@ -1069,18 +1060,10 @@ class ContentProtection extends Widget_Base {
 					<div class="zeus-cp">
 						<?php
 						if ( 'yes' === $settings['show_icon']
-							&& ( ! empty( $settings['icon'] ) || ! empty( $settings['selected_icon'] ) ) ) {
-							$migrated   = isset( $settings['__fa4_migrated']['selected_icon'] );
-							$is_new     = empty( $settings['icon'] ) && Icons_Manager::is_migration_allowed(); ?>
+							&& ! empty( $settings['selected_icon'] ) ) { ?>
 
 							<div class="zeus-cp-icon">
-								<?php
-								if ( $is_new || $migrated ) {
-									Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] );
-								} else { ?>
-									<i class="<?php echo esc_attr( $settings['icon'] ); ?>" aria-hidden="true"></i>
-									<?php
-								} ?>
+								<?php Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 							</div>
 							<?php
 						} ?>

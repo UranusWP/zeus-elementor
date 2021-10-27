@@ -30,12 +30,12 @@
 }
 
 /*------------------------------------------------------------------
-Switch
+Toggle
 -------------------------------------------------------------------*/
-.zeus-switch-container {
+.zeus-toggle-container {
     text-align: center;
 
-    .zeus-switch-secondary-wrap {
+    .zeus-toggle-secondary-wrap {
         display: none;
 
         &.show {
@@ -43,11 +43,11 @@ Switch
         }
     }
 
-    .zeus-switch-primary-wrap.hide {
+    .zeus-toggle-primary-wrap.hide {
         display: none;
     }
 
-    .zeus-switch-wrap {
+    .zeus-toggle-wrap {
         @include flex();
         @include align();
         @include justify( center );
@@ -60,17 +60,17 @@ Switch
             text-transform: uppercase;
         }
 
-        .zeus-switch {
+        .zeus-toggle {
             margin: 0 25px;
             text-align: center;
         }
 
-        .zeus-switch input {
+        .zeus-toggle input {
             position: absolute;
             left: -9999px;
         }
 
-        .zeus-switch span {
+        .zeus-toggle span {
             position: relative;
             padding-left: 4em;
             padding-top: .25em;
@@ -103,25 +103,25 @@ Switch
             }
         }
 
-        &.zeus-switch-on span:before {
+        &.zeus-toggle-on span:before {
             background-color: #72da67;
             border-color: #72da67;
         }
 
-        &.zeus-switch-on span:after {
+        &.zeus-toggle-on span:after {
             left: 1.95em;
         }
     }
 }
 
 /* RTL */
-body.rtl .zeus-switch-container .zeus-switch-wrap {
-    .zeus-switch input {
+body.rtl .zeus-toggle-container .zeus-toggle-wrap {
+    .zeus-toggle input {
         right: -9999px;
         left: auto;
     }
 
-    .zeus-switch span {
+    .zeus-toggle span {
         padding-right: 4em;
         padding-left: 0;
 
@@ -136,7 +136,7 @@ body.rtl .zeus-switch-container .zeus-switch-wrap {
         }
     }
 
-    &.zeus-switch-on span:after {
+    &.zeus-toggle-on span:after {
         right: 1.95em;
         left: auto;
     }

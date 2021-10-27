@@ -137,8 +137,12 @@ class ACF extends Widget_Base {
 				'icon',
 				[
 					'label'         => __( 'Icon', 'zeus-elementor' ),
-					'type'          => Controls_Manager::ICON,
-					'default'       => '',
+					'type'          => Controls_Manager::ICONS,
+					'label_block'   => true,
+					'default'       => [
+						'value'   => '',
+						'library' => 'fa-solid',
+					],
 				]
 			);
 
@@ -363,7 +367,7 @@ class ACF extends Widget_Base {
 			if ( ! empty( $settings['icon'] ) && 'left' === $settings['icon_align'] ) {
 				?>
 				<span <?php $this->print_render_attribute_string( 'icon' ); ?>>
-					<i class="<?php echo esc_attr( $settings['icon'] ); ?>" aria-hidden="true"></i>
+					<?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
 				</span>
 				<?php
 			}
@@ -400,7 +404,7 @@ class ACF extends Widget_Base {
 			if ( ! empty( $settings['icon'] ) && 'right' === $settings['icon_align'] ) {
 				?>
 				<span <?php $this->print_render_attribute_string( 'icon' ); ?>>
-					<i class="<?php echo esc_attr( $settings['icon'] ); ?>" aria-hidden="true"></i>
+					<?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
 				</span>
 				<?php
 			}

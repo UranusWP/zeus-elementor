@@ -835,7 +835,7 @@ class BusinessHours extends Widget_Base {
 				<div <?php $this->print_render_attribute_string( 'row' . $i ); ?>>
 					<span class="zeus-business-day">
 						<?php
-						if ( '' !== $settings['icon'] ) { ?>
+						if ( ! empty( $settings['icon'] ) ) { ?>
 							<span class="zeus-icon"><?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?></span>
 							<?php
 						}

@@ -134,7 +134,7 @@ class Modal extends Widget_Base {
 		$this->add_responsive_control(
 			'icon_size',
 			[
-				'label' => __( 'Size', 'zeus-elementor' ),
+				'label' => __( 'Icon Size', 'zeus-elementor' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -712,8 +712,14 @@ class Modal extends Widget_Base {
 		$close      = $settings['modal_close_button'];
 
 		$this->add_render_attribute( 'button-wrap', 'class', 'zeus-modal-button' );
+
 		$this->add_render_attribute( 'button', 'href', '#zeus-modal-' . esc_attr( $id ) );
-		$this->add_render_attribute( 'button', 'class', 'button' );
+		$this->add_render_attribute( 'button', 'class',
+			[
+				'button',
+				'elementor-button',
+			]
+		);
 
 		$this->add_render_attribute( 'icon-align', 'class', [
 			'zeus-button-icon',

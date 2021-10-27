@@ -155,7 +155,7 @@ class Member extends Widget_Base {
 				'label'     => __( 'Icon Background', 'zeus-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .zeus-member .zeus-member-icons {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
@@ -166,7 +166,7 @@ class Member extends Widget_Base {
 				'label'     => __( 'Icon Color', 'zeus-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .zeus-member .zeus-member-icons {{CURRENT_ITEM}}' => 'color: {{VALUE}}',
+					'{{WRAPPER}} {{CURRENT_ITEM}}' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -203,23 +203,6 @@ class Member extends Widget_Base {
 					),
 				),
 				'title_field' => '{{{ social_link_title }}}',
-			)
-		);
-
-		$this->add_responsive_control(
-			'icon_size',
-			array(
-				'label'     => __( 'Icon Size', 'zeus-elementor' ),
-				'type'      => Controls_Manager::SLIDER,
-				'range'     => array(
-					'px' => array(
-						'min' => 6,
-						'max' => 150,
-					),
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .zeus-member-icons a' => 'font-size: {{SIZE}}{{UNIT}};',
-				),
 			)
 		);
 
@@ -696,11 +679,17 @@ class Member extends Widget_Base {
 			)
 		);
 
-		$this->add_control(
-			'icons_size',
+		$this->add_responsive_control(
+			'icon_size',
 			array(
 				'label'     => __( 'Icon Size', 'zeus-elementor' ),
 				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min' => 6,
+						'max' => 150,
+					),
+				),
 				'selectors' => array(
 					'{{WRAPPER}} .zeus-member-wrap .zeus-member-icons a' => 'font-size: {{SIZE}}{{UNIT}};',
 				),
@@ -814,6 +803,71 @@ class Member extends Widget_Base {
 			</div>
 		</div>
 
+		<?php
+	}
+
+	protected function content_template() {
+		?>
+		<#
+		var image = {
+			id: settings.image.id,
+			url: settings.image.url,
+			size: settings.image_size,
+			dimension: settings.image_custom_dimension,
+			model: view.getEditModel()
+		};
+
+		var imageUrl = elementor.imagesManager.getImageUrl( image ); #>
+		<div class="zeus-member-wrap">
+
+			<# if ( imageUrl ) { #>
+				<div class="zeus-member-image">
+					<img src="{{ imageUrl }}">
+				</div>
+			<# } #>
+
+			<div class="zeus-member-content">
+				<# if ( settings.name ) { #>
+					<{{settings.title_html_tag}} class="zeus-member-name">
+						{{{ settings.name }}}
+					</{{settings.title_html_tag}}>
+				<# } #>
+
+				<# if ( settings.role ) { #>
+					<span class="zeus-member-role">{{{ settings.role }}}</span>
+				<# } #>
+
+				<# if ( settings.description ) { #>
+					<div class="zeus-member-description">{{{ settings.description }}}</div>
+				<# } #>
+			</div>
+
+			<div class="zeus-member-icons">
+				<# _.each( settings.social_links, function( item, index ) {
+					var link = view.getRepeaterSettingKey( 'links', 'social_links', index ),
+						iconHTML = elementor.helpers.renderIcon( view, item.social_icon, { 'aria-hidden': true }, 'i' , 'object' );
+
+					view.addRenderAttribute( link, 'href', item.social_link );
+					view.addRenderAttribute( link, 'class', 'zeus-member-icon' );
+					view.addRenderAttribute( link, 'class', 'elementor-repeater-item-' + item._id );
+
+					if ( 'yes' === settings.member_tooltip ) {
+						var tooltipPosition = settings.member_tooltip_position;
+
+						view.addRenderAttribute( link, 'class', 'zeus-member-tooltip' );
+						view.addRenderAttribute( link, 'class', 'zeus-tooltip-' + tooltipPosition );
+						view.addRenderAttribute( link, 'title', item.social_link_title );
+						view.addRenderAttribute( link, 'data-tooltip-position', 'zeus-tooltip-' + tooltipPosition );
+					}
+
+					view.addRenderAttribute( link, 'target', '_blank' ); #>
+
+					<a {{{ view.getRenderAttributeString( link ) }}}>
+						{{{ iconHTML.value }}}
+					</a>
+				<# } ); #>
+			</div>
+		</div>
 		<?php
 	}
 }

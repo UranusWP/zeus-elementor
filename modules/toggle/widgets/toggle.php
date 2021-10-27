@@ -23,7 +23,7 @@ class Toggle extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Switch', 'zeus-elementor' );
+		return __( 'Toggle', 'zeus-elementor' );
 	}
 
 	public function get_icon() {
@@ -228,13 +228,13 @@ class Toggle extends Widget_Base {
 		$this->start_controls_section(
 			'section_style',
 			array(
-				'label' => esc_html__( 'Switch', 'zeus-elementor' ),
+				'label' => esc_html__( 'Toggle', 'zeus-elementor' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
 
 		$this->add_responsive_control(
-			'switch_align',
+			'toggle_align',
 			array(
 				'label'     => __( 'Alignment', 'zeus-elementor' ),
 				'type'      => Controls_Manager::CHOOSE,
@@ -254,13 +254,13 @@ class Toggle extends Widget_Base {
 				),
 				'default'   => 'center',
 				'selectors' => array(
-					'{{WRAPPER}} .zeus-switch-container .zeus-switch-wrap' => 'display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-justify-content: {{VALUE}}; justify-content: {{VALUE}};',
+					'{{WRAPPER}} .zeus-toggle-container .zeus-toggle-wrap' => 'display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-justify-content: {{VALUE}}; justify-content: {{VALUE}};',
 				),
 			)
 		);
 
 		$this->add_responsive_control(
-			'switch_size',
+			'toggle_size',
 			array(
 				'label'      => __( 'Size', 'zeus-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
@@ -277,13 +277,13 @@ class Toggle extends Widget_Base {
 				),
 				'size_units' => array( 'px' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .zeus-switch' => 'font-size: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .zeus-toggle' => 'font-size: {{SIZE}}{{UNIT}}',
 				),
 			)
 		);
 
 		$this->add_responsive_control(
-			'switch_labels_spacing',
+			'toggle_labels_spacing',
 			array(
 				'label'      => __( 'Labels Spacing', 'zeus-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
@@ -305,27 +305,27 @@ class Toggle extends Widget_Base {
 				),
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .zeus-switch-container .zeus-switch-wrap .zeus-switch' => 'margin: 0 {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .zeus-toggle-container .zeus-toggle-wrap .zeus-toggle' => 'margin: 0 {{SIZE}}{{UNIT}}',
 				),
 			)
 		);
 
 		$this->add_responsive_control(
-			'switch_margin',
+			'toggle_margin',
 			array(
 				'label'      => __( 'Margin', 'zeus-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .zeus-switch-container .zeus-switch-wrap' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .zeus-toggle-container .zeus-toggle-wrap' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
 
-		$this->start_controls_tabs( 'tabs_switch_style' );
+		$this->start_controls_tabs( 'tabs_toggle_style' );
 
 		$this->start_controls_tab(
-			'tab_switch_normal',
+			'tab_toggle_normal',
 			array(
 				'label' => __( 'Normal', 'zeus-elementor' ),
 			)
@@ -334,29 +334,29 @@ class Toggle extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			array(
-				'name'     => 'switch_normal_background',
+				'name'     => 'toggle_normal_background',
 				'types'    => array( 'classic', 'gradient' ),
-				'selector' => '{{WRAPPER}} .zeus-switch-container .zeus-switch-wrap .zeus-switch span:before',
+				'selector' => '{{WRAPPER}} .zeus-toggle-container .zeus-toggle-wrap .zeus-toggle span:before',
 			)
 		);
 
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			array(
-				'name'     => 'switch_normal_border',
+				'name'     => 'toggle_normal_border',
 				'label'    => __( 'Border', 'zeus-elementor' ),
-				'selector' => '{{WRAPPER}} .zeus-switch-container .zeus-switch-wrap .zeus-switch span:before',
+				'selector' => '{{WRAPPER}} .zeus-toggle-container .zeus-toggle-wrap .zeus-toggle span:before',
 			)
 		);
 
 		$this->add_control(
-			'switch_normal_border_radius',
+			'toggle_normal_border_radius',
 			array(
 				'label'      => __( 'Border Radius', 'zeus-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .zeus-switch-container .zeus-switch-wrap .zeus-switch span:before' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .zeus-toggle-container .zeus-toggle-wrap .zeus-toggle span:before' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -364,7 +364,7 @@ class Toggle extends Widget_Base {
 		$this->end_controls_tab();
 
 		$this->start_controls_tab(
-			'tab_switch_active',
+			'tab_toggle_active',
 			array(
 				'label' => __( 'Active', 'zeus-elementor' ),
 			)
@@ -373,29 +373,29 @@ class Toggle extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			array(
-				'name'     => 'switch_activel_background',
+				'name'     => 'toggle_activel_background',
 				'types'    => array( 'classic', 'gradient' ),
-				'selector' => '{{WRAPPER}} .zeus-switch-container .zeus-switch-wrap.zeus-switch-on span:before',
+				'selector' => '{{WRAPPER}} .zeus-toggle-container .zeus-toggle-wrap.zeus-toggle-on span:before',
 			)
 		);
 
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			array(
-				'name'     => 'switch_active_border',
+				'name'     => 'toggle_active_border',
 				'label'    => __( 'Border', 'zeus-elementor' ),
-				'selector' => '{{WRAPPER}} .zeus-switch-container .zeus-switch-wrap.zeus-switch-on span:before',
+				'selector' => '{{WRAPPER}} .zeus-toggle-container .zeus-toggle-wrap.zeus-toggle-on span:before',
 			)
 		);
 
 		$this->add_control(
-			'switch_active_border_radius',
+			'toggle_active_border_radius',
 			array(
 				'label'      => __( 'Border Radius', 'zeus-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .zeus-switch-container .zeus-switch-wrap.zeus-switch-on span:before' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .zeus-toggle-container .zeus-toggle-wrap.zeus-toggle-on span:before' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -418,7 +418,7 @@ class Toggle extends Widget_Base {
 			array(
 				'name'     => 'controller_background',
 				'types'    => array( 'classic', 'gradient' ),
-				'selector' => '{{WRAPPER}} .zeus-switch-container .zeus-switch-wrap .zeus-switch span:after',
+				'selector' => '{{WRAPPER}} .zeus-toggle-container .zeus-toggle-wrap .zeus-toggle span:after',
 			)
 		);
 
@@ -427,7 +427,7 @@ class Toggle extends Widget_Base {
 			array(
 				'name'     => 'controller_border',
 				'label'    => __( 'Border', 'zeus-elementor' ),
-				'selector' => '{{WRAPPER}} .zeus-switch-container .zeus-switch-wrap .zeus-switch span:after',
+				'selector' => '{{WRAPPER}} .zeus-toggle-container .zeus-toggle-wrap .zeus-toggle span:after',
 			)
 		);
 
@@ -438,7 +438,7 @@ class Toggle extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .zeus-switch-container .zeus-switch-wrap .zeus-switch span:after' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .zeus-toggle-container .zeus-toggle-wrap .zeus-toggle span:after' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -458,7 +458,7 @@ class Toggle extends Widget_Base {
 			array(
 				'name'     => 'labels_typography',
 				'label'    => __( 'Typography', 'zeus-elementor' ),
-				'selector' => '{{WRAPPER}} .zeus-switch-container .zeus-switch-wrap .zeus-text',
+				'selector' => '{{WRAPPER}} .zeus-toggle-container .zeus-toggle-wrap .zeus-text',
 			)
 		);
 
@@ -477,7 +477,7 @@ class Toggle extends Widget_Base {
 				'label'     => __( 'Label Color', 'zeus-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .zeus-switch-container .zeus-switch-wrap .zeus-text.zeus-primary' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .zeus-toggle-container .zeus-toggle-wrap .zeus-text.zeus-primary' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -488,7 +488,7 @@ class Toggle extends Widget_Base {
 				'label'     => __( 'Active Label Color', 'zeus-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .zeus-switch-container .zeus-switch-wrap.zeus-switch-on .zeus-text.zeus-primary' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .zeus-toggle-container .zeus-toggle-wrap.zeus-toggle-on .zeus-text.zeus-primary' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -508,7 +508,7 @@ class Toggle extends Widget_Base {
 				'label'     => __( 'Label Color', 'zeus-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .zeus-switch-container .zeus-switch-wrap .zeus-text.zeus-secondary' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .zeus-toggle-container .zeus-toggle-wrap .zeus-text.zeus-secondary' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -519,7 +519,7 @@ class Toggle extends Widget_Base {
 				'label'     => __( 'Active Label Color', 'zeus-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .zeus-switch-container .zeus-switch-wrap.zeus-switch-on .zeus-text.zeus-secondary' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .zeus-toggle-container .zeus-toggle-wrap.zeus-toggle-on .zeus-text.zeus-secondary' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -535,14 +535,9 @@ class Toggle extends Widget_Base {
 			array(
 				'label' => __( 'Content', 'zeus-elementor' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
-			)
-		);
-
-		$this->add_control(
-			'content_style_text',
-			array(
-				'type' => Controls_Manager::RAW_HTML,
-				'raw'  => __( 'If Content type', 'zeus-elementor' ),
+				'condition'     => [
+					'primary_type' => 'content',
+				],
 			)
 		);
 
@@ -567,7 +562,7 @@ class Toggle extends Widget_Base {
 				),
 				'default'   => 'center',
 				'selectors' => array(
-					'{{WRAPPER}} .zeus-switch-container' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .zeus-toggle-container' => 'text-align: {{VALUE}};',
 				),
 			)
 		);
@@ -577,7 +572,7 @@ class Toggle extends Widget_Base {
 			array(
 				'name'     => 'content_typography',
 				'label'    => __( 'Typography', 'zeus-elementor' ),
-				'selector' => '{{WRAPPER}} .zeus-switch-container .zeus-switch-primary-wrap, {{WRAPPER}} .zeus-switch-container .zeus-switch-secondary-wrap',
+				'selector' => '{{WRAPPER}} .zeus-toggle-container .zeus-toggle-primary-wrap, {{WRAPPER}} .zeus-toggle-container .zeus-toggle-secondary-wrap',
 			)
 		);
 
@@ -587,7 +582,7 @@ class Toggle extends Widget_Base {
 				'label'     => __( 'Color', 'zeus-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .zeus-switch-container' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .zeus-toggle-container' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -599,14 +594,9 @@ class Toggle extends Widget_Base {
 			array(
 				'label' => __( 'Image', 'zeus-elementor' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
-			)
-		);
-
-		$this->add_control(
-			'image_style_text',
-			array(
-				'type' => Controls_Manager::RAW_HTML,
-				'raw'  => __( 'If Image type', 'zeus-elementor' ),
+				'condition'     => [
+					'primary_type' => 'image',
+				],
 			)
 		);
 
@@ -640,7 +630,7 @@ class Toggle extends Widget_Base {
 					),
 				),
 				'selectors'      => array(
-					'{{WRAPPER}} .zeus-switch-img img' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .zeus-toggle-img img' => 'width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -667,7 +657,7 @@ class Toggle extends Widget_Base {
 					),
 				),
 				'selectors'      => array(
-					'{{WRAPPER}} .zeus-switch-img img' => 'max-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .zeus-toggle-img img' => 'max-width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -685,7 +675,7 @@ class Toggle extends Widget_Base {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .zeus-switch-img img' => 'opacity: {{SIZE}};',
+					'{{WRAPPER}} .zeus-toggle-img img' => 'opacity: {{SIZE}};',
 				),
 			)
 		);
@@ -694,7 +684,7 @@ class Toggle extends Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'image_border',
-				'selector' => '{{WRAPPER}} .zeus-switch-img img',
+				'selector' => '{{WRAPPER}} .zeus-toggle-img img',
 			)
 		);
 
@@ -705,7 +695,7 @@ class Toggle extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .zeus-switch-img img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .zeus-toggle-img img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -717,7 +707,7 @@ class Toggle extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .zeus-switch-img img' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .zeus-toggle-img img' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -729,7 +719,7 @@ class Toggle extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .zeus-switch-img img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .zeus-toggle-img img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -738,7 +728,7 @@ class Toggle extends Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'image_box_shadow',
-				'selector' => '{{WRAPPER}} .zeus-switch-img img',
+				'selector' => '{{WRAPPER}} .zeus-toggle-img img',
 			)
 		);
 
@@ -755,26 +745,26 @@ class Toggle extends Widget_Base {
 		$primary_templates   = $settings['primary_template'];
 		$secondary_templates = $settings['secondary_template'];
 
-		$this->add_render_attribute( 'primary', 'class', 'zeus-switch-primary-wrap show' );
-		$this->add_render_attribute( 'secondary', 'class', 'zeus-switch-secondary-wrap hide' );
+		$this->add_render_attribute( 'primary', 'class', 'zeus-toggle-primary-wrap show' );
+		$this->add_render_attribute( 'secondary', 'class', 'zeus-toggle-secondary-wrap hide' );
 
 		if ( 'image' === $primary_type ) {
-			$this->add_render_attribute( 'primary', 'class', 'zeus-switch-img' );
+			$this->add_render_attribute( 'primary', 'class', 'zeus-toggle-img' );
 		}
 
 		if ( 'image' === $secondary_type ) {
-			$this->add_render_attribute( 'secondary', 'class', 'zeus-switch-img' );
+			$this->add_render_attribute( 'secondary', 'class', 'zeus-toggle-img' );
 		} ?>
 
-		<div class="zeus-switch-container">
-			<div class="zeus-switch-wrap">
+		<div class="zeus-toggle-container">
+			<div class="zeus-toggle-wrap">
 				<?php if ( $settings['primary_label'] ) { ?>
 					<div class="zeus-text zeus-primary">
 						<?php echo esc_attr( $settings['primary_label'] ); ?>
 					</div>
 				<?php } ?>
-				<div class="zeus-switch">
-					<label class="zeus-switch-label">
+				<div class="zeus-toggle">
+					<label class="zeus-toggle-label">
 						<input type="checkbox">
 						<span></span>
 					</label>

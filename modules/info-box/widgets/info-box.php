@@ -68,7 +68,6 @@ class InfoBox extends Widget_Base {
 			[
 				'label'         => __( 'Icon', 'zeus-elementor' ),
 				'type'          => Controls_Manager::ICONS,
-				'fa4compatibility' => 'icon',
 				'default'       => [
 					'value'     => 'fas fa-snowflake',
 					'library'   => 'fa-solid',
@@ -1362,7 +1361,6 @@ class InfoBox extends Widget_Base {
 		var wrap_tag = 'div',
 			tag = 'h3',
 			iconHTML = elementor.helpers.renderIcon( view, settings.selected_icon, { 'aria-hidden': true }, 'i' , 'object' ),
-			migrated = elementor.helpers.isIconMigrated( settings, 'selected_icon' ),
 			buttoniconHTML = elementor.helpers.renderIcon( view, settings.button_icon, { 'aria-hidden': true }, 'i' , 'object' ); #>
 
 		<{{{wrap_tag}}} class="zeus-info-box-wrap elementor-animation-{{ settings.info_box_hover_animation }}" href="{{settings.link.url}}">
@@ -1372,10 +1370,8 @@ class InfoBox extends Widget_Base {
 					<div class="zeus-info-box-icon-wrap">
 						<span class="zeus-info-box-icon elementor-animation-{{ settings.icon_hover_animation }}">
 							<# if ( 'icon' == settings.type ) { #>
-								<# if ( iconHTML && iconHTML.rendered && ( ! settings.icon || migrated ) ) { #>
+								<# if ( iconHTML && iconHTML.rendered ) { #>
 									{{{ iconHTML.value }}}
-								<# } else { #>
-									<i class="{{ settings.icon }}" aria-hidden="true"></i>
 								<# } #>
 							<# } else if ( 'text' == settings.type ) { #>
 								<span class="zeus-icon-text elementor-inline-editing" data-elementor-setting-key="text" data-elementor-inline-editing-toolbar="none">

@@ -34,6 +34,7 @@ Instagram Feed
 
     .zeus-insta-left {
         @include flex();
+        @include align();
         flex: 1;
     }
 
@@ -136,7 +137,7 @@ Instagram Feed
             left: 0;
             right: 0;
             line-height: 1;
-            background-color: rgba(19, 175, 240, 0.7);
+            background-color: rgba(229, 191, 99, 0.7);
             color: #fff;
             -webkit-transform: scale(0.8);
             -ms-transform: scale(0.8);
@@ -187,7 +188,6 @@ body.rtl {
             -webkit-flex-direction: column;
             -ms-flex-direction: column;
             flex-direction: column;
-            @include align();
             text-align: center;
         }
 

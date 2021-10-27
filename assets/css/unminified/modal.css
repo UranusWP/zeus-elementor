@@ -105,12 +105,18 @@ Modal
 	right: 10px;
 	width: 30px;
 	height: 30px;
-	background-color: transparent;
 	border: 0;
 	margin: 0;
 	padding: 0;
+	min-height: auto;
+	min-width: auto;
 	text-align: center;
 	z-index: 10000;
+}
+
+.zeus-modal-close, .zeus-modal-close:hover, .zeus-modal-close:focus {
+	background-color: transparent;
+	box-shadow: none;
 }
 
 .zeus-modal-close svg {

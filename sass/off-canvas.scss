@@ -139,6 +139,16 @@ Off Canvas
     padding: 0;
     text-align: center;
     z-index: 1000;
+    min-height: auto;
+    min-width: auto;
+
+    &,
+    &:hover,
+    &:focus {
+        background-color: transparent;
+        color: #222;
+        box-shadow: none;
+    }
 
     svg {
         @include transition( all .3s ease-in-out );

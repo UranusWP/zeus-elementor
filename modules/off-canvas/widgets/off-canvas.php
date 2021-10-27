@@ -592,7 +592,11 @@ class Off_Canvas extends Widget_Base {
 
 		$this->add_render_attribute( 'button-wrap', 'class', 'zeus-off-canvas-button' );
 		$this->add_render_attribute( 'button', 'href', '#zeus-off-canvas-' . esc_attr( $id ) );
-		$this->add_render_attribute( 'button', 'class', 'button' );
+
+		$this->add_render_attribute( 'button', 'class', [
+			'button',
+			'elementor-button',
+		] );
 
 		$this->add_render_attribute( 'icon-align', 'class', [
 			'zeus-button-icon',

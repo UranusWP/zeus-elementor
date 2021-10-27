@@ -37,6 +37,8 @@ MailChimp
             border-radius: 0;
             padding: 16px 20px;
             outline: none;
+            min-height: auto;
+            min-width: auto;
 
             &:hover {
                 background-color: #e8c573;
@@ -100,14 +102,21 @@ MailChimp
 
 /* RTL */
 body.rtl {
-    
+    .zeus-mailchimp-wrap.zeus-mc-inline .zeus-form-fields .zeus-field {
+        margin-right: 0;
+        margin-left: 5px;
+    }
 }
 
 /*------------------------------------------------------------------
 Responsive
 -------------------------------------------------------------------*/
-@media only screen and (max-width: 767px) {
-}
+@media (max-width: 960px) {
+    .zeus-mailchimp-wrap.zeus-mc-inline .zeus-form-fields {
+        flex-direction: column;
 
-@media only screen and (max-width: 360px) {
+        .zeus-field {
+            margin: 0 0 10px;
+        }
+    }
 }

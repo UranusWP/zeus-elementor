@@ -552,6 +552,7 @@ class WooAddToCart extends Widget_Base {
 					'rel'             => 'nofollow',
 				]
 			);
+			$this->add_render_attribute( 'button', 'class', 'elementor-button' );
 
 			$this->add_render_attribute( 'icon-align', 'class', [
 				'zeus-button-icon',

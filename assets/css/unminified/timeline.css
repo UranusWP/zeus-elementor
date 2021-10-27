@@ -116,8 +116,22 @@ Timeline
 	margin: 0 0 10px;
 }
 
-.zeus-timeline .zeus-timeline-item-wrap .zeus-timeline-meta .zeus-timeline-hidden {
-	display: none;
+.zeus-timeline .zeus-timeline-item-wrap .zeus-timeline-meta li {
+	display: inline-block;
+	margin-right: 8px;
+}
+
+.zeus-timeline .zeus-timeline-item-wrap .zeus-timeline-meta li:last-child {
+	margin-right: 0;
+}
+
+.zeus-timeline .zeus-timeline-item-wrap .zeus-timeline-meta li svg {
+	margin-right: 4px;
+	fill: #e5c063;
+	font-size: 12px;
+	width: 1em;
+	height: 1em;
+	vertical-align: middle;
 }
 
 .zeus-timeline .zeus-timeline-item-wrap .zeus-timeline-title {
@@ -249,6 +263,20 @@ body.rtl .zeus-timeline .zeus-timeline-item-wrap .zeus-timeline-icon span {
 body.rtl .zeus-timeline .zeus-timeline-item-wrap .zeus-timeline-arrow {
 	right: -8px;
 	left: auto;
+}
+
+body.rtl .zeus-timeline .zeus-timeline-item-wrap .zeus-timeline-meta li {
+	margin-right: 0;
+	margin-left: 8px;
+}
+
+body.rtl .zeus-timeline .zeus-timeline-item-wrap .zeus-timeline-meta li:last-child {
+	margin-left: 0;
+}
+
+body.rtl .zeus-timeline .zeus-timeline-item-wrap .zeus-timeline-meta li svg {
+	margin-right: 0;
+	margin-left: 4px;
 }
 
 body.rtl .zeus-timeline .zeus-timeline-item-wrap .zeus-timeline-readmore .zeus-align-right {

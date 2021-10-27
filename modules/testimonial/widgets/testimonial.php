@@ -58,13 +58,13 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'testimonial_style',
 			[
-				'label'         => __( 'Style', 'zeus-elementor'),
+				'label'         => __( 'Style', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SELECT,
 				'default'       => 'classic',
 				'options'       => [
-					'classic'   => __( 'Classic', 'zeus-elementor'),
-					'inline'    => __( 'Inline', 'zeus-elementor'),
-					'bubble'    => __( 'Bubble', 'zeus-elementor'),
+					'classic'   => __( 'Classic', 'zeus-elementor' ),
+					'inline'    => __( 'Inline', 'zeus-elementor' ),
+					'bubble'    => __( 'Bubble', 'zeus-elementor' ),
 				],
 			]
 		);

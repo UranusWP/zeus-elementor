@@ -130,6 +130,14 @@ Off Canvas
 	padding: 0;
 	text-align: center;
 	z-index: 1000;
+	min-height: auto;
+	min-width: auto;
+}
+
+.zeus-off-canvas-close, .zeus-off-canvas-close:hover, .zeus-off-canvas-close:focus {
+	background-color: transparent;
+	color: #222;
+	box-shadow: none;
 }
 
 .zeus-off-canvas-close svg {

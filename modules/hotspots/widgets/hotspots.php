@@ -121,14 +121,17 @@ class Hotspots extends Widget_Base {
 
 		$repeater->add_control(
 			'hotspot_icon',
-			array(
-				'label'     => __( 'Icon', 'zeus-elementor' ),
-				'type'      => Controls_Manager::ICON,
-				'default'   => '',
-				'condition' => array(
+			[
+				'label'         => __( 'Icon', 'zeus-elementor' ),
+				'type'          => Controls_Manager::ICONS,
+				'default'       => [
+					'value'     => 'fas fa-snowflake',
+					'library'   => 'fa-solid',
+				],
+				'condition'     => [
 					'hotspot_type' => 'icon',
-				),
-			)
+				],
+			]
 		);
 
 		$repeater->add_control(
@@ -511,6 +514,7 @@ class Hotspots extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'div[id*="tippy-"].zeus-hotspot-powertip-{{ID}} .tippy-box' => 'background-color: {{VALUE}};',
+					'div[id*="tippy-"].zeus-hotspot-powertip-{{ID}} .tippy-box > .tippy-arrow' => 'color: {{VALUE}};',
 					'div[id*="tippy-"].zeus-hotspot-powertip-{{ID}} .tippy-box > .tippy-svg-arrow' => 'fill: {{VALUE}};',
 				),
 			)
@@ -619,9 +623,7 @@ class Hotspots extends Widget_Base {
 								<span <?php $this->print_render_attribute_string( $text ); ?>>
 									<?php
 									if ( 'icon' === $item['hotspot_type'] && ! empty( $item['hotspot_icon'] ) ) {
-										?>
-										<i class="<?php echo esc_attr( $item['hotspot_icon'] ); ?>"></i>
-										<?php
+										\Elementor\Icons_Manager::render_icon( $item['hotspot_icon'], [ 'aria-hidden' => 'true' ] );
 									} else {
 										$this->print_text_editor( $item['hotspot_text'] );
 									}
@@ -671,7 +673,8 @@ class Hotspots extends Widget_Base {
 							var hotspot_tag 	= 'div',
 								hotspot 		= view.getRepeaterSettingKey( 'hotspot', 'hotspots', index ),
 								text 			= view.getRepeaterSettingKey( 'hotspot_text', 'hotspots', index ),
-								icon 			= view.getRepeaterSettingKey( 'hotspot_icon', 'hotspots', index );
+								icon 			= view.getRepeaterSettingKey( 'hotspot_icon', 'hotspots', index ),
+								iconHTML 		= elementor.helpers.renderIcon( view, item.hotspot_icon, { 'aria-hidden': true }, 'i' , 'object' );
 
 							view.addRenderAttribute( hotspot, 'class', [
 								'zeus-hotspot-inner',
@@ -695,8 +698,10 @@ class Hotspots extends Widget_Base {
 								<# if ( 'blank' != item.hotspot_type ) { #>
 									<span {{{ view.getRenderAttributeString( text ) }}}>
 										<# if ( 'icon' == item.hotspot_type && '' !== item.hotspot_icon ) { #>
-											<i class="{{{ item.hotspot_icon }}}"></i>
-										<# } else { #>
+											<# if ( iconHTML && iconHTML.rendered ) { #>
+												{{{ iconHTML.value }}}
+											<# }
+										} else { #>
 											{{ item.hotspot_text }}
 										<# } #>
 									</span>

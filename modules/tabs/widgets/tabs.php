@@ -174,6 +174,7 @@ class Tabs extends Widget_Base {
 			array(
 				'label'     => __( 'Alignment', 'zeus-elementor' ),
 				'type'      => Controls_Manager::CHOOSE,
+				'default'   => 'left',
 				'options'   => array(
 					'left'    => array(
 						'title' => __( 'Left', 'zeus-elementor' ),
@@ -615,62 +616,55 @@ class Tabs extends Widget_Base {
 		} ?>
 
 		<div <?php $this->print_render_attribute_string( 'wrap' ); ?>>
-
-			<?php
-			if ( 'bottom' !== $layout ) {
-				?>
-				<div <?php $this->print_render_attribute_string( 'tabs-wrap' ); ?>>
-					<?php
-					foreach ( $settings['tabs'] as $index => $item ) :
-						$tab_count     = $index + 1;
-						$active_item   = ( $tab_count === $settings['active_item'] ) ? ' zeus-active' : '';
-						$tab_title_key = $this->get_repeater_setting_key( 'tab_title', 'tabs', $index );
-
-						$this->add_render_attribute(
-							$tab_title_key,
-							array(
-								'id'            => 'zeus-tab-title-' . $id_int . $tab_count,
-								'class'         => array( 'zeus-tab-title', $active_item ),
-								'data-tab'      => $tab_count,
-								'tabindex'      => $id_int . $tab_count,
-								'role'          => 'tab',
-								'aria-controls' => 'zeus-tab-content-' . $id_int . $tab_count,
-							)
-						);
-						?>
-
-						<div <?php $this->print_render_attribute_string( $tab_title_key ); ?>>
-							<?php
-							if ( ! empty( $item['tab_icon'] )
-								&& 'left' === $settings['icon_align'] ) {
-								?>
-								<span class="zeus-icon-align-<?php echo esc_html( $settings['icon_align'] ); ?>">
-									<?php \Elementor\Icons_Manager::render_icon( $item['tab_icon'], array( 'aria-hidden' => 'true' ) ); ?>
-								</span>
-								<?php
-							}
-
-							if ( $item['tab_title'] ) {
-								$this->print_unescaped_setting( 'tab_title', 'tabs', $index );
-							}
-
-							if ( ! empty( $item['tab_icon'] )
-								&& 'right' === $settings['icon_align'] ) {
-								?>
-								<span class="zeus-icon-align-<?php echo esc_html( $settings['icon_align'] ); ?>">
-									<?php \Elementor\Icons_Manager::render_icon( $item['tab_icon'], array( 'aria-hidden' => 'true' ) ); ?>
-								</span>
-								<?php
-							}
-							?>
-						</div>
-						<?php
-					endforeach;
-					?>
-				</div>
+			<div <?php $this->print_render_attribute_string( 'tabs-wrap' ); ?>>
 				<?php
-			}
-			?>
+				foreach ( $settings['tabs'] as $index => $item ) :
+					$tab_count     = $index + 1;
+					$active_item   = ( $tab_count === $settings['active_item'] ) ? ' zeus-active' : '';
+					$tab_title_key = $this->get_repeater_setting_key( 'tab_title', 'tabs', $index );
+
+					$this->add_render_attribute(
+						$tab_title_key,
+						array(
+							'id'            => 'zeus-tab-title-' . $id_int . $tab_count,
+							'class'         => array( 'zeus-tab-title', $active_item ),
+							'data-tab'      => $tab_count,
+							'tabindex'      => $id_int . $tab_count,
+							'role'          => 'tab',
+							'aria-controls' => 'zeus-tab-content-' . $id_int . $tab_count,
+						)
+					);
+					?>
+
+					<div <?php $this->print_render_attribute_string( $tab_title_key ); ?>>
+						<?php
+						if ( ! empty( $item['tab_icon'] )
+							&& 'left' === $settings['icon_align'] ) {
+							?>
+							<span class="zeus-icon-align-<?php echo esc_html( $settings['icon_align'] ); ?>">
+								<?php \Elementor\Icons_Manager::render_icon( $item['tab_icon'], array( 'aria-hidden' => 'true' ) ); ?>
+							</span>
+							<?php
+						}
+
+						if ( $item['tab_title'] ) {
+							$this->print_unescaped_setting( 'tab_title', 'tabs', $index );
+						}
+
+						if ( ! empty( $item['tab_icon'] )
+							&& 'right' === $settings['icon_align'] ) {
+							?>
+							<span class="zeus-icon-align-<?php echo esc_html( $settings['icon_align'] ); ?>">
+								<?php \Elementor\Icons_Manager::render_icon( $item['tab_icon'], array( 'aria-hidden' => 'true' ) ); ?>
+							</span>
+							<?php
+						}
+						?>
+					</div>
+					<?php
+				endforeach;
+				?>
+			</div>
 
 			<div class="zeus-tabs-content-wrap">
 				<?php
@@ -742,63 +736,6 @@ class Tabs extends Widget_Base {
 				endforeach;
 				?>
 			</div>
-
-			<?php
-			if ( 'bottom' === $layout ) {
-				?>
-				<div <?php $this->print_render_attribute_string( 'tabs-wrap' ); ?>>
-					<?php
-					foreach ( $settings['tabs'] as $index => $item ) :
-						$tab_count     = $index + 1;
-						$active_item   = ( $tab_count === $settings['active_item'] ) ? ' zeus-active' : '';
-						$tab_title_key = $this->get_repeater_setting_key( 'tab_title', 'tabs', $index );
-
-						$this->add_render_attribute(
-							$tab_title_key,
-							array(
-								'id'            => 'zeus-tab-title-' . $id_int . $tab_count,
-								'class'         => array( 'zeus-tab-title', $active_item ),
-								'data-tab'      => $tab_count,
-								'tabindex'      => $id_int . $tab_count,
-								'role'          => 'tab',
-								'aria-controls' => 'zeus-tab-content-' . $id_int . $tab_count,
-							)
-						);
-						?>
-
-						<div <?php $this->print_render_attribute_string( $tab_title_key ); ?>>
-							<?php
-							if ( ! empty( $item['tab_icon'] )
-								&& 'left' === $settings['icon_align'] ) {
-								?>
-								<span class="zeus-icon-align-<?php echo esc_html( $settings['icon_align'] ); ?>">
-									<?php \Elementor\Icons_Manager::render_icon( $item['tab_icon'], array( 'aria-hidden' => 'true' ) ); ?>
-								</span>
-								<?php
-							}
-
-							if ( $item['tab_title'] ) {
-								$this->print_unescaped_setting( 'tab_title', 'tabs', $index );
-							}
-
-							if ( ! empty( $item['tab_icon'] )
-								&& 'right' === $settings['icon_align'] ) {
-								?>
-								<span class="zeus-icon-align-<?php echo esc_html( $settings['icon_align'] ); ?>">
-									<?php \Elementor\Icons_Manager::render_icon( $item['tab_icon'], array( 'aria-hidden' => 'true' ) ); ?>
-								</span>
-								<?php
-							}
-							?>
-						</div>
-						<?php
-					endforeach;
-					?>
-				</div>
-				<?php
-			}
-			?>
-
 		</div>
 
 		<?php

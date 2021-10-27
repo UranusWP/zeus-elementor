@@ -16,6 +16,6 @@ class Module extends Module_Base {
 	}
 
 	public function get_name() {
-		return 'zeus-switch';
+		return 'zeus-toggle';
 	}
 }

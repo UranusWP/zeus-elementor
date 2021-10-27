@@ -35,6 +35,8 @@ MailChimp
 	border-radius: 0;
 	padding: 16px 20px;
 	outline: none;
+	min-height: auto;
+	min-width: auto;
 }
 
 .zeus-mailchimp-wrap .zeus-field .zeus-mc-subscribe:hover {
@@ -95,6 +97,19 @@ MailChimp
 }
 
 /* RTL */
+body.rtl .zeus-mailchimp-wrap.zeus-mc-inline .zeus-form-fields .zeus-field {
+	margin-right: 0;
+	margin-left: 5px;
+}
+
 /*------------------------------------------------------------------
 Responsive
 -------------------------------------------------------------------*/
+@media (max-width: 960px) {
+	.zeus-mailchimp-wrap.zeus-mc-inline .zeus-form-fields {
+		flex-direction: column;
+	}
+	.zeus-mailchimp-wrap.zeus-mc-inline .zeus-form-fields .zeus-field {
+		margin: 0 0 10px;
+	}
+}

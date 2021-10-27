@@ -361,10 +361,9 @@ class Banner extends Widget_Base {
 			if ( ! empty( $link['url'] ) ) {
 				$this->add_render_attribute( 'link', 'class', 'zeus-banner-link' );
 				$this->add_link_attributes( 'link', $settings['link'] );
-
-				$this->add_render_attribute( 'link', 'class', 'zeus-brands-link' );
-
-				'<a ' . $this->print_render_attribute_string( 'link' ) . '>';
+				?>
+				<a <?php $this->print_render_attribute_string( 'link' ); ?>>
+				<?php
 			}
 			?>
 				<?php echo wp_kses_post( Group_Control_Image_Size::get_attachment_image_html( $settings ) ); ?>
@@ -377,6 +376,48 @@ class Banner extends Widget_Base {
 			<?php if ( ! empty( $link['url'] ) ) : ?>
 				</a>
 			<?php endif; ?>
+		</figure>
+		<?php
+	}
+
+	protected function content_template() {
+		?>
+		<#
+		view.addRenderAttribute( 'banner', 'class', 'zeus-banner' );
+
+		if ( settings.effect ) {
+			view.addRenderAttribute( 'banner', 'class', 'zeus-' + settings.effect );
+		}
+
+		view.addRenderAttribute( 'content', 'class', 'zeus-banner-content' );
+		view.addRenderAttribute( 'title', 'class', 'zeus-banner-title' );
+		view.addRenderAttribute( 'description', 'class', 'zeus-banner-text' );
+
+		var image = {
+			id: settings.image.id,
+			url: settings.image.url,
+			size: settings.image_size,
+			dimension: settings.image_custom_dimension,
+			model: view.getEditModel()
+		};
+
+		var imageUrl = elementor.imagesManager.getImageUrl( image );
+		#>
+
+		<figure {{{ view.getRenderAttributeString( 'banner' ) }}}>
+			<# if ( settings.link ) { #>
+				<a href="#" class="zeus-banner-link">
+			<# } #>
+				<img src="{{ imageUrl }}">
+				<figcaption>
+					<div {{{ view.getRenderAttributeString( 'content' ) }}}>
+						<h5 {{{ view.getRenderAttributeString( 'title' ) }}}>{{{ settings.title }}}</h5>
+						<div {{{ view.getRenderAttributeString( 'description' ) }}}>{{{ settings.description }}}</div>
+					</div>
+				</figcaption>
+			<# if ( settings.link ) { #>
+				</a>
+			<# } #>
 		</figure>
 		<?php
 	}

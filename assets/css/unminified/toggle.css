@@ -1,23 +1,23 @@
 /*------------------------------------------------------------------
-Switch
+Toggle
 -------------------------------------------------------------------*/
-.zeus-switch-container {
+.zeus-toggle-container {
 	text-align: center;
 }
 
-.zeus-switch-container .zeus-switch-secondary-wrap {
+.zeus-toggle-container .zeus-toggle-secondary-wrap {
 	display: none;
 }
 
-.zeus-switch-container .zeus-switch-secondary-wrap.show {
+.zeus-toggle-container .zeus-toggle-secondary-wrap.show {
 	display: block;
 }
 
-.zeus-switch-container .zeus-switch-primary-wrap.hide {
+.zeus-toggle-container .zeus-toggle-primary-wrap.hide {
 	display: none;
 }
 
-.zeus-switch-container .zeus-switch-wrap {
+.zeus-toggle-container .zeus-toggle-wrap {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -31,31 +31,31 @@ Switch
 	margin-bottom: 16px;
 }
 
-.zeus-switch-container .zeus-switch-wrap .zeus-text {
+.zeus-toggle-container .zeus-toggle-wrap .zeus-text {
 	color: #333;
 	font-size: 16px;
 	font-weight: 600;
 	text-transform: uppercase;
 }
 
-.zeus-switch-container .zeus-switch-wrap .zeus-switch {
+.zeus-toggle-container .zeus-toggle-wrap .zeus-toggle {
 	margin: 0 25px;
 	text-align: center;
 }
 
-.zeus-switch-container .zeus-switch-wrap .zeus-switch input {
+.zeus-toggle-container .zeus-toggle-wrap .zeus-toggle input {
 	position: absolute;
 	left: -9999px;
 }
 
-.zeus-switch-container .zeus-switch-wrap .zeus-switch span {
+.zeus-toggle-container .zeus-toggle-wrap .zeus-toggle span {
 	position: relative;
 	padding-left: 4em;
 	padding-top: .25em;
 	cursor: pointer;
 }
 
-.zeus-switch-container .zeus-switch-wrap .zeus-switch span:before, .zeus-switch-container .zeus-switch-wrap .zeus-switch span:after {
+.zeus-toggle-container .zeus-toggle-wrap .zeus-toggle span:before, .zeus-toggle-container .zeus-toggle-wrap .zeus-toggle span:after {
 	content: '';
 	position: absolute;
 	height: 1.80em;
@@ -66,7 +66,7 @@ Switch
 	transition: all 0.5s ease;
 }
 
-.zeus-switch-container .zeus-switch-wrap .zeus-switch span:before {
+.zeus-toggle-container .zeus-toggle-wrap .zeus-toggle span:before {
 	left: 0;
 	top: 0;
 	width: 3.70em;
@@ -75,7 +75,7 @@ Switch
 	z-index: 0;
 }
 
-.zeus-switch-container .zeus-switch-wrap .zeus-switch span:after {
+.zeus-toggle-container .zeus-toggle-wrap .zeus-toggle span:after {
 	left: .15em;
 	top: .1em;
 	background-color: #fff;
@@ -84,37 +84,37 @@ Switch
 	height: 1.60em;
 }
 
-.zeus-switch-container .zeus-switch-wrap.zeus-switch-on span:before {
+.zeus-toggle-container .zeus-toggle-wrap.zeus-toggle-on span:before {
 	background-color: #72da67;
 	border-color: #72da67;
 }
 
-.zeus-switch-container .zeus-switch-wrap.zeus-switch-on span:after {
+.zeus-toggle-container .zeus-toggle-wrap.zeus-toggle-on span:after {
 	left: 1.95em;
 }
 
 /* RTL */
-body.rtl .zeus-switch-container .zeus-switch-wrap .zeus-switch input {
+body.rtl .zeus-toggle-container .zeus-toggle-wrap .zeus-toggle input {
 	right: -9999px;
 	left: auto;
 }
 
-body.rtl .zeus-switch-container .zeus-switch-wrap .zeus-switch span {
+body.rtl .zeus-toggle-container .zeus-toggle-wrap .zeus-toggle span {
 	padding-right: 4em;
 	padding-left: 0;
 }
 
-body.rtl .zeus-switch-container .zeus-switch-wrap .zeus-switch span:before {
+body.rtl .zeus-toggle-container .zeus-toggle-wrap .zeus-toggle span:before {
 	right: 0;
 	left: auto;
 }
 
-body.rtl .zeus-switch-container .zeus-switch-wrap .zeus-switch span:after {
+body.rtl .zeus-toggle-container .zeus-toggle-wrap .zeus-toggle span:after {
 	right: .15em;
 	left: auto;
 }
 
-body.rtl .zeus-switch-container .zeus-switch-wrap.zeus-switch-on span:after {
+body.rtl .zeus-toggle-container .zeus-toggle-wrap.zeus-toggle-on span:after {
 	right: 1.95em;
 	left: auto;
 }

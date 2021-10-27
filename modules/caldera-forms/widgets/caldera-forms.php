@@ -369,7 +369,7 @@ class Caldera_Forms extends Widget_Base {
 				Group_Control_Background::get_type(),
 				[
 					'name'          => 'button_background',
-					'selector'      => '{{WRAPPER}} .caldera-grid input[type=reset], .caldera-grid input[type=submit]',
+					'selector'      => '{{WRAPPER}} .caldera-grid input[type=reset], {{WRAPPER}} .caldera-grid input[type=submit]',
 				]
 			);
 
@@ -379,7 +379,7 @@ class Caldera_Forms extends Widget_Base {
 					'label'         => __( 'Color', 'zeus-elementor' ),
 					'type'          => Controls_Manager::COLOR,
 					'selectors'     => [
-						'{{WRAPPER}} .caldera-grid input[type=reset], .caldera-grid input[type=submit]' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .caldera-grid input[type=reset], {{WRAPPER}} .caldera-grid input[type=submit]' => 'color: {{VALUE}};',
 					],
 				]
 			);
@@ -397,7 +397,7 @@ class Caldera_Forms extends Widget_Base {
 				Group_Control_Background::get_type(),
 				[
 					'name'          => 'button_hover_background',
-					'selector'      => '{{WRAPPER}} .caldera-grid input[type=reset]:hover, .caldera-grid input[type=submit]:hover',
+					'selector'      => '{{WRAPPER}} .caldera-grid input[type=reset]:hover, {{WRAPPER}} .caldera-grid input[type=submit]:hover',
 				]
 			);
 
@@ -407,7 +407,7 @@ class Caldera_Forms extends Widget_Base {
 					'label'         => __( 'Color', 'zeus-elementor' ),
 					'type'          => Controls_Manager::COLOR,
 					'selectors'     => [
-						'{{WRAPPER}} .caldera-grid input[type=reset]:hover, .caldera-grid input[type=submit]:hover' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .caldera-grid input[type=reset]:hover, {{WRAPPER}} .caldera-grid input[type=submit]:hover' => 'color: {{VALUE}};',
 					],
 				]
 			);
@@ -418,7 +418,7 @@ class Caldera_Forms extends Widget_Base {
 					'label'         => __( 'Border Color', 'zeus-elementor' ),
 					'type'          => Controls_Manager::COLOR,
 					'selectors'     => [
-						'{{WRAPPER}} .caldera-grid input[type=reset]:hover, .caldera-grid input[type=submit]:hover' => 'border-color: {{VALUE}};',
+						'{{WRAPPER}} .caldera-grid input[type=reset]:hover, {{WRAPPER}} .caldera-grid input[type=submit]:hover' => 'border-color: {{VALUE}};',
 					],
 				]
 			);
@@ -436,7 +436,7 @@ class Caldera_Forms extends Widget_Base {
 				Group_Control_Background::get_type(),
 				[
 					'name'          => 'button_focus_background',
-					'selector'      => '{{WRAPPER}} .caldera-grid input[type=reset]:focus, .caldera-grid input[type=submit]:focus',
+					'selector'      => '{{WRAPPER}} .caldera-grid input[type=reset]:focus, {{WRAPPER}} .caldera-grid input[type=submit]:focus',
 				]
 			);
 
@@ -446,7 +446,7 @@ class Caldera_Forms extends Widget_Base {
 					'label'         => __( 'Color', 'zeus-elementor' ),
 					'type'          => Controls_Manager::COLOR,
 					'selectors'     => [
-						'{{WRAPPER}} .caldera-grid input[type=reset]:focus, .caldera-grid input[type=submit]:focus' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .caldera-grid input[type=reset]:focus, {{WRAPPER}} .caldera-grid input[type=submit]:focus' => 'color: {{VALUE}};',
 					],
 				]
 			);
@@ -457,7 +457,7 @@ class Caldera_Forms extends Widget_Base {
 					'label'         => __( 'Border Color', 'zeus-elementor' ),
 					'type'          => Controls_Manager::COLOR,
 					'selectors'     => [
-						'{{WRAPPER}} .caldera-grid input[type=reset]:focus, .caldera-grid input[type=submit]:focus' => 'border-color: {{VALUE}};',
+						'{{WRAPPER}} .caldera-grid input[type=reset]:focus, {{WRAPPER}} .caldera-grid input[type=submit]:focus' => 'border-color: {{VALUE}};',
 					],
 				]
 			);
@@ -470,7 +470,7 @@ class Caldera_Forms extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name'          => 'button_typo',
-					'selector'      => '{{WRAPPER}} .caldera-grid input[type=reset], .caldera-grid input[type=submit]',
+					'selector'      => '{{WRAPPER}} .caldera-grid input[type=reset], {{WRAPPER}} .caldera-grid input[type=submit]',
 					'separator'     => 'before',
 				]
 			);
@@ -479,7 +479,7 @@ class Caldera_Forms extends Widget_Base {
 				Group_Control_Border::get_type(),
 				[
 					'name'          => 'button_border',
-					'selector'      => '{{WRAPPER}} .caldera-grid input[type=reset], .caldera-grid input[type=submit]',
+					'selector'      => '{{WRAPPER}} .caldera-grid input[type=reset], {{WRAPPER}} .caldera-grid input[type=submit]',
 				]
 			);
 
@@ -490,7 +490,7 @@ class Caldera_Forms extends Widget_Base {
 					'type'          => Controls_Manager::DIMENSIONS,
 					'size_units'    => [ 'px', '%' ],
 					'selectors'     => [
-						'{{WRAPPER}} .caldera-grid input[type=reset], .caldera-grid input[type=submit]' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .caldera-grid input[type=reset], {{WRAPPER}} .caldera-grid input[type=submit]' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -499,7 +499,7 @@ class Caldera_Forms extends Widget_Base {
 				Group_Control_Box_Shadow::get_type(),
 				[
 					'name'          => 'button_box_shadow',
-					'selector'      => '{{WRAPPER}} .caldera-grid input[type=reset], .caldera-grid input[type=submit]',
+					'selector'      => '{{WRAPPER}} .caldera-grid input[type=reset], {{WRAPPER}} .caldera-grid input[type=submit]',
 				]
 			);
 
@@ -510,7 +510,7 @@ class Caldera_Forms extends Widget_Base {
 					'type'          => Controls_Manager::DIMENSIONS,
 					'size_units'    => [ 'px', 'em', '%' ],
 					'selectors'     => [
-						'{{WRAPPER}} .caldera-grid input[type=reset], .caldera-grid input[type=submit]' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .caldera-grid input[type=reset], {{WRAPPER}} .caldera-grid input[type=submit]' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -522,7 +522,7 @@ class Caldera_Forms extends Widget_Base {
 					'type'          => Controls_Manager::DIMENSIONS,
 					'size_units'    => [ 'px', 'em', '%' ],
 					'selectors'     => [
-						'{{WRAPPER}} .caldera-grid input[type=reset], .caldera-grid input[type=submit]' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .caldera-grid input[type=reset], {{WRAPPER}} .caldera-grid input[type=submit]' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -535,7 +535,7 @@ class Caldera_Forms extends Widget_Base {
 					'default'       => '',
 					'return_value'  => 'block',
 					'selectors'     => [
-						'{{WRAPPER}} .caldera-grid input[type=reset], .caldera-grid input[type=submit]' => 'display: {{VALUE}}; width: 100%;',
+						'{{WRAPPER}} .caldera-grid input[type=reset], {{WRAPPER}} .caldera-grid input[type=submit]' => 'display: {{VALUE}}; width: 100%;',
 					],
 				]
 			);

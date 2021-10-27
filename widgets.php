@@ -199,7 +199,7 @@ $widgets = [
 	'search' => [
 		'class'         => 'Search',
 		'title'         => __( 'Search', 'zeus-elementor' ),
-		'demo_link'     => 'https://widgets.zeus-elementor.com/search/',
+		'demo_link'     => 'https://widgets.zeus-elementor.com/ajax-search/',
 	],
 	'search-icon' => [
 		'class'         => 'SearchIcon',
