@@ -1,6 +1,6 @@
 # Zeus Elementor
 
-**Contributors:** ZeusWP  
+**Contributors:** UranusWP  
 **Requires at least:** WordPress 5.3  
 **Tested up to:** WordPress 5.8  
 **Stable tag:** 1.0.0  

@@ -18,8 +18,12 @@ class Modules_Manager {
 			$class_name = __NAMESPACE__ . '\\Modules\\' . $class . '\Module';
 
 			// Check if widgets are enabled
-			$settings 	= get_option( 'zeus_settings' );
-        	$setting 	= $settings[$widget];
+			$settings = get_option( 'zeus_settings' );
+			if ( $settings ) {
+				$setting = $settings[ $widget ];
+			} else {
+				$setting = true;
+			}
 
 			if ( true === $setting ) {
 				$this->modules[ $widget ] = $class_name::instance();
@@ -32,7 +36,7 @@ class Modules_Manager {
 	}
 
 	private function require_files() {
-		require( ZEUS_ELEMENTOR_PATH . 'base/module.php' );
+		require ZEUS_ELEMENTOR_PATH . 'base/module.php';
 	}
 
 	public function __construct() {

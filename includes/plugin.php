@@ -27,7 +27,7 @@ class ZeusElementorPlugin {
 	/**
 	 * @var Plugin
 	 */
-	private static $_instance;
+	private static $instance;
 	/**
 	 * @var Module_Base[]
 	 */
@@ -153,11 +153,11 @@ class ZeusElementorPlugin {
 	 * @return Plugin
 	 */
 	public static function instance() {
-		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new self();
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
 		}
 
-		return self::$_instance;
+		return self::$instance;
 	}
 
 	/**
@@ -192,18 +192,18 @@ class ZeusElementorPlugin {
 	 */
 	public function register_scripts() {
 
-		$ajax_url  	= admin_url( 'admin-ajax.php' );
+		$ajax_url = admin_url( 'admin-ajax.php' );
 		$zeus_nonce = wp_create_nonce( 'zeus' );
-		$dir_name 	= ( SCRIPT_DEBUG ) ? 'unminified' : 'minified';
-		$suffix     = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-		$map_api 	= get_option( 'zeus_google_map_api_key' );
+		$dir_name = ( SCRIPT_DEBUG ) ? 'unminified' : 'minified';
+		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		$map_api = get_option( 'zeus_google_map_api_key' );
 
 		// Register vendors scripts.
 		wp_enqueue_script(
 			'asPieProgress',
 			ZEUS_ASSETS_URL . 'js/vendors/asPieProgress.min.js',
 			array(),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -211,21 +211,21 @@ class ZeusElementorPlugin {
 			'event-move',
 			ZEUS_ASSETS_URL . 'js/vendors/event.move.min.js',
 			array(),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 		wp_register_script(
 			'twentytwenty',
 			ZEUS_ASSETS_URL . 'js/vendors/twentytwenty.min.js',
 			array(),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 		wp_register_script(
 			'imagesloaded',
 			ZEUS_ASSETS_URL . 'js/vendors/imagesloaded.min.js',
 			array(),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -233,14 +233,14 @@ class ZeusElementorPlugin {
 			'morphext',
 			ZEUS_ASSETS_URL . 'js/vendors/morphext.min.js',
 			array(),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 		wp_register_script(
 			'typed',
 			ZEUS_ASSETS_URL . 'js/vendors/typed.min.js',
 			array(),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -248,14 +248,14 @@ class ZeusElementorPlugin {
 			'popper',
 			ZEUS_ASSETS_URL . 'js/vendors/popper.min.js',
 			array(),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 		wp_register_script(
 			'tippy',
 			ZEUS_ASSETS_URL . 'js/vendors/tippy-bundle.umd.min.js',
 			array(),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -280,7 +280,7 @@ class ZeusElementorPlugin {
 			'zeus-accordion',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/accordion' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -288,7 +288,7 @@ class ZeusElementorPlugin {
 			'zeus-alert',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/alert' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -296,7 +296,7 @@ class ZeusElementorPlugin {
 			'zeus-animated-heading',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/animated-heading' . $suffix . '.js',
 			array( 'elementor-frontend', 'morphext', 'typed' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -304,7 +304,7 @@ class ZeusElementorPlugin {
 			'zeus-blog-carousel',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/blog-carousel' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -312,7 +312,7 @@ class ZeusElementorPlugin {
 			'zeus-blog-grid',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/blog-grid' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -320,7 +320,7 @@ class ZeusElementorPlugin {
 			'zeus-circle-progress',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/circle-progress' . $suffix . '.js',
 			array( 'elementor-frontend', 'asPieProgress' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -328,7 +328,7 @@ class ZeusElementorPlugin {
 			'zeus-countdown',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/countdown' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -336,7 +336,7 @@ class ZeusElementorPlugin {
 			'zeus-google-map',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/google-map' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -344,7 +344,7 @@ class ZeusElementorPlugin {
 			'zeus-hotspots',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/hotspots' . $suffix . '.js',
 			array( 'elementor-frontend', 'popper', 'tippy' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -352,7 +352,7 @@ class ZeusElementorPlugin {
 			'zeus-image-comparison',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/image-comparison' . $suffix . '.js',
 			array( 'elementor-frontend', 'event-move', 'twentytwenty', 'imagesloaded' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -360,7 +360,7 @@ class ZeusElementorPlugin {
 			'zeus-member',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/member' . $suffix . '.js',
 			array( 'elementor-frontend', 'popper', 'tippy' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -368,7 +368,7 @@ class ZeusElementorPlugin {
 			'zeus-member-carousel',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/member-carousel' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -376,7 +376,7 @@ class ZeusElementorPlugin {
 			'zeus-menu',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/menu' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -384,7 +384,7 @@ class ZeusElementorPlugin {
 			'zeus-modal',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/modal' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -392,7 +392,7 @@ class ZeusElementorPlugin {
 			'zeus-navbar',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/navbar' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -400,7 +400,7 @@ class ZeusElementorPlugin {
 			'zeus-mailchimp',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/mailchimp' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 		wp_localize_script(
@@ -416,7 +416,7 @@ class ZeusElementorPlugin {
 			'zeus-off-canvas',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/off-canvas' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -424,7 +424,7 @@ class ZeusElementorPlugin {
 			'zeus-pricing-table',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/pricing-table' . $suffix . '.js',
 			array( 'elementor-frontend', 'popper', 'tippy' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -432,7 +432,7 @@ class ZeusElementorPlugin {
 			'zeus-scroll-up',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/scroll-up' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -440,7 +440,7 @@ class ZeusElementorPlugin {
 			'zeus-search-icon',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/search-icon' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -448,7 +448,7 @@ class ZeusElementorPlugin {
 			'zeus-search',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/search' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 		wp_localize_script(
@@ -464,7 +464,7 @@ class ZeusElementorPlugin {
 			'zeus-skillbar',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/skillbar' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -472,7 +472,7 @@ class ZeusElementorPlugin {
 			'zeus-tabs',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/tabs' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -480,7 +480,7 @@ class ZeusElementorPlugin {
 			'zeus-testimonial-carousel',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/testimonial-carousel' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -488,7 +488,7 @@ class ZeusElementorPlugin {
 			'zeus-toggle',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/toggle' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -496,7 +496,7 @@ class ZeusElementorPlugin {
 			'zeus-tooltip',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/tooltip' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -504,7 +504,7 @@ class ZeusElementorPlugin {
 			'zeus-woo-slider',
 			ZEUS_ASSETS_URL . 'js/' . $dir_name . '/woo-slider' . $suffix . '.js',
 			array( 'elementor-frontend' ),
-			false,
+			ZEUS_ELEMENTOR_VERSION,
 			true
 		);
 
@@ -522,7 +522,7 @@ class ZeusElementorPlugin {
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 		// General style (match all themes).
-		wp_enqueue_style( 'zeus-general', ZEUS_ASSETS_URL . 'css/' . $dir_name . '/general' . $suffix . '.css' );
+		wp_enqueue_style( 'zeus-general', ZEUS_ASSETS_URL . 'css/' . $dir_name . '/general' . $suffix . '.css', array(), ZEUS_ELEMENTOR_VERSION );
 
 		// Vendors.
 		wp_register_style( 'tippy', ZEUS_ASSETS_URL . 'css/vendors/tippy/tippy.css', array(), '6.3.1', 'all' );
@@ -532,13 +532,15 @@ class ZeusElementorPlugin {
 			wp_register_style(
 				'zeus-' . $module_name . '',
 				ZEUS_ASSETS_URL . 'css/' . $dir_name . '/' . $module_name . $suffix . '.css',
+				array(),
+				ZEUS_ELEMENTOR_VERSION
 			);
 		}
 
 	}
 
 	/**
-	 * Load some widgets CSS on front end to avoid styling issues 
+	 * Load some widgets CSS on front end to avoid styling issues
 	 *
 	 * @since 1.0.0
 	 *
@@ -547,13 +549,13 @@ class ZeusElementorPlugin {
 	public function widgets_styles() {
 		$dir_name = ( SCRIPT_DEBUG ) ? 'unminified' : 'minified';
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-		wp_enqueue_style( 'zeus-menu', ZEUS_ASSETS_URL . 'css/' . $dir_name . '/menu' . $suffix . '.css' );
-		wp_enqueue_style( 'zeus-site-breadcrumbs', ZEUS_ASSETS_URL . 'css/' . $dir_name . '/site-breadcrumbs' . $suffix . '.css' );
-		wp_enqueue_style( 'zeus-page-title', ZEUS_ASSETS_URL . 'css/' . $dir_name . '/page-title' . $suffix . '.css' );
+		wp_enqueue_style( 'zeus-menu', ZEUS_ASSETS_URL . 'css/' . $dir_name . '/menu' . $suffix . '.css', array(), ZEUS_ELEMENTOR_VERSION );
+		wp_enqueue_style( 'zeus-site-breadcrumbs', ZEUS_ASSETS_URL . 'css/' . $dir_name . '/site-breadcrumbs' . $suffix . '.css', array(), ZEUS_ELEMENTOR_VERSION );
+		wp_enqueue_style( 'zeus-page-title', ZEUS_ASSETS_URL . 'css/' . $dir_name . '/page-title' . $suffix . '.css', array(), ZEUS_ELEMENTOR_VERSION );
 
 		// Only load if WooCommerce activated
 		if ( is_woocommerce_active() ) {
-			wp_enqueue_style( 'zeus-woo-menu-cart', ZEUS_ASSETS_URL . 'css/' . $dir_name . '/woo-menu-cart' . $suffix . '.css' );
+			wp_enqueue_style( 'zeus-woo-menu-cart', ZEUS_ASSETS_URL . 'css/' . $dir_name . '/woo-menu-cart' . $suffix . '.css', array(), ZEUS_ELEMENTOR_VERSION );
 		}
 	}
 
@@ -581,8 +583,8 @@ class ZeusElementorPlugin {
 	 */
 	public function editor_style() {
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-		wp_enqueue_style( 'zeus-elementor-editor', ZEUS_ASSETS_URL . 'admin/css/editor' . $suffix . '.css' );
-		wp_enqueue_style( 'zeus-icons', ZEUS_ASSETS_URL . 'admin/css/zeus-icons.css' );
+		wp_enqueue_style( 'zeus-elementor-editor', ZEUS_ASSETS_URL . 'admin/css/editor' . $suffix . '.css', array(), ZEUS_ELEMENTOR_VERSION );
+		wp_enqueue_style( 'zeus-icons', ZEUS_ASSETS_URL . 'admin/css/zeus-icons.css', array(), ZEUS_ELEMENTOR_VERSION );
 	}
 
 	/**
@@ -593,7 +595,6 @@ class ZeusElementorPlugin {
 	 * @access private
 	 */
 	private function includes() {
-
 		// Modules
 		include_once ZEUS_ELEMENTOR_PATH . 'includes/managers/modules.php';
 

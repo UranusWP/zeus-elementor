@@ -57,7 +57,7 @@ class Instagram extends Widget_Base {
 			'access_token',
 			[
 				'label'         => __( 'Access Token', 'zeus-elementor' ),
-				'description'   => __( '<a href="#" target="_blank">Get Access Token</a>', 'zeus-elementor' ),
+				'description'   => __( '<a href="https://zeus-elementor.com/docs/get-instagram-access-token/" target="_blank">Get Access Token</a>', 'zeus-elementor' ),
 				'type'          => Controls_Manager::TEXT,
 				'label_block'   => true,
 			]

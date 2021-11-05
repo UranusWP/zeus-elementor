@@ -194,7 +194,7 @@ class Zeus_Settings {
 		$defaults = array_fill_keys( array_keys( $GLOBALS['zeus_widgets'] ), false );
 		$elements = array_merge( $defaults, array_fill_keys( array_keys( array_intersect_key( $settings, $defaults ) ), true ) );
 
-		// update new settings
+		// Update new settings
 		$updated = update_option( 'zeus_settings', $elements );
 
 		// Return the validated/sanitized options

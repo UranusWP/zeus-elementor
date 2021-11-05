@@ -33,8 +33,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				<h4><?php esc_html_e( 'Need Help?', 'zeus-elementor' ); ?></h4>
 				<div class="zeus-content">
-					<p><?php echo sprintf( __( 'A widget issue? Don&#039;t worry! You can reach our free support through the %1$sWordPress Forum%2$s, ask the community on the %3$sFacebook Group%2$s or directly reach our awesome %4$ssupport team%2$s who are always here to help you.', 'zeus-elementor' ), '<a href="https://wordpress.org/support/plugin/zeus-elementor/" target="_blank">', '</a>', '<a href="https://www.facebook.com/groups/zeuselementor" target="_blank">', '<a href="https://zeus-elementor.com/support/" target="_blank">' ); ?></p>
-					<a href="https://zeus-elementor.com/support/" class="zeus-btn" target="_blank"><?php esc_html_e( 'Support', 'zeus-elementor' ); ?></a>
+					<p><?php echo sprintf( __( 'A widget issue? Don&#039;t worry! You can reach our free support through the %1$sWordPress Forum%2$s, ask the community on the %3$sFacebook Group%2$s or directly reach our awesome %4$ssupport team%2$s who are always here to help you.', 'zeus-elementor' ), '<a href="https://wordpress.org/support/plugin/zeus-elementor/" target="_blank">', '</a>', '<a href="https://www.facebook.com/groups/zeuselementor" target="_blank">', '<a href="https://uranuswp.com/my-account/support/" target="_blank">' ); ?></p>
+					<a href="https://uranuswp.com/my-account/support/" class="zeus-btn" target="_blank"><?php esc_html_e( 'Support', 'zeus-elementor' ); ?></a>
 				</div>
 			</div>
 
@@ -45,8 +45,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				<h4><?php esc_html_e( 'Contribute to Zeus', 'zeus-elementor' ); ?></h4>
 				<div class="zeus-content">
-					<p><?php echo sprintf( __( 'Do you love Zeus Elementor and want to improve it? We&#039;ve got you covered! Thanks to %1$sGithub%2$s, you can make it even better by reporting bugs, creating issues or pull requests.', 'zeus-elementor' ), '<a href="https://github.com/ZeusWP/zeus-elementor" target="_blank">', '</a>' ); ?></p>
-					<a href="https://github.com/ZeusWP/zeus-elementor" class="zeus-btn" target="_blank"><?php esc_html_e( 'Report a bug', 'zeus-elementor' ); ?></a>
+					<p><?php echo sprintf( __( 'Do you love Zeus Elementor and want to improve it? We&#039;ve got you covered! Thanks to %1$sGithub%2$s, you can make it even better by reporting bugs, creating issues or pull requests.', 'zeus-elementor' ), '<a href="https://github.com/uranuswp/zeus-elementor" target="_blank">', '</a>' ); ?></p>
+					<a href="https://github.com/uranuswp/zeus-elementor" class="zeus-btn" target="_blank"><?php esc_html_e( 'Report a bug', 'zeus-elementor' ); ?></a>
 				</div>
 			</div>
 

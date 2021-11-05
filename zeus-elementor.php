@@ -4,20 +4,20 @@
  * Plugin URI:          zeus-elementor.com
  * Description:         Add many new powerful and entirely customizable widgets on top of any Elementor Package (Free, Pro). Works with any WordPress theme.
  * Version:             1.0.0
- * Author:              Zeus
+ * Author:              UranusWP
  * Author URI:          https://zeus-elementor.com/
  * Requires at least:   5.3
- * Tested up to:        5.8
+ * Tested up to:        5.8.1
  * WC tested up to: 5.6.0
- * Elementor tested up to: 3.4.4
- * Elementor Pro tested up to: 3.4.1
+ * Elementor tested up to: 3.4.7
+ * Elementor Pro tested up to: 3.5.0
  *
  * Text Domain: zeus-elementor
  * Domain Path: /languages
  *
  * @package Zeus_Elementor
  * @category Core
- * @author Zeus
+ * @author UranusWP
  */
 
 // Exit if accessed directly
@@ -284,10 +284,14 @@ final class Zeus_Elementor {
 	 * @since 1.0.0
 	 */
 	public function save_widgets_db() {
-		$defaults = array_fill_keys( array_keys( $GLOBALS['zeus_widgets'] ), 1 );
-		$values = get_option( 'zeus_settings' );
+		// If the widgets are not already in the database
+		if ( ! get_option( 'zeus_settings' ) ) {
+			$defaults = array_fill_keys( array_keys( $GLOBALS['zeus_widgets'] ), 1 );
+			$elements = array_merge( $defaults, array_fill_keys( array_keys( $defaults ), true ) );
 
-		return update_option( 'zeus_settings', wp_parse_args( $values, $defaults ) );
+			// Update new settings
+			return update_option( 'zeus_settings', $elements );
+		}
 	}
 
 	/**

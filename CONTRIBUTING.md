@@ -19,7 +19,7 @@ Reporting issues is a great way to became a contributor, because it doesn't requ
 If something doesn't function - congratulations - you've found a bug! Help us fix it by submitting an issue report:
 
 * Make sure you have a [GitHub account](https://github.com/signup/free)
-* Search the [Existing Issues](https://github.com/zeuswp/zeus-elementor/issues) to be sure that the one you've noticed isn't already there
+* Search the [Existing Issues](https://github.com/uranuswp/zeus-elementor/issues) to be sure that the one you've noticed isn't already there
 * Submit a report for your issue
   * Clearly describe the issue (including steps to reproduce it if it's a bug)
   * Make sure you fill in the earliest version that you know has the issue.
@@ -35,7 +35,7 @@ Zeus Elementor use technologies such as [Grunt](http://gruntjs.com/) and [Sass](
 
 * Install [Grunt](http://gruntjs.com/)
 * Install [Node.js](https://nodejs.org/en/)
-* [Fork](https://help.github.com/articles/fork-a-repo/) the [Zeus Elementor repository](https://github.com/zeuswp/zeus-elementor) on GitHub
+* [Fork](https://help.github.com/articles/fork-a-repo/) the [Zeus Elementor repository](https://github.com/uranuswp/zeus-elementor) on GitHub
 * Pull the Zeus Elementor project dependencies into your environment by navigating to your `/zeus-elementor/` directory in Terminal then run `npm install`.
 * Create local copies of Zeus Elementor css (we do not version control the .css files) by running `grunt sass`.
 

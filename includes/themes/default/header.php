@@ -6,7 +6,7 @@
  * @since 1.0.0
  */ ?>
 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">

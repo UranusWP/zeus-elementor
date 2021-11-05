@@ -4,16 +4,19 @@
  */
 
 class Zeus_GeneratePress_Theme {
-	private static $instance;
+	private static $instance = null;
 
 	/**
-	 * Instance
+	 * Instance.
+	 *
+	 * @return object Class object.
 	 */
-	public static function instance() {
-		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new self();
+	public static function get_instance() {
+		if ( ! isset( self::$instance ) ) {
+			self::$instance = new self();
 		}
-		return self::$_instance;
+
+		return self::$instance;
 	}
 
 	/**
@@ -54,5 +57,4 @@ class Zeus_GeneratePress_Theme {
 	}
 
 }
-
-new Zeus_GeneratePress_Theme();
+Zeus_GeneratePress_Theme::get_instance();
