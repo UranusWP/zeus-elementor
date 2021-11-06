@@ -126,6 +126,7 @@ No! Zeus Elementor is 100% and will stay that way, but we've created a templates
 2. Widgets Panel
 3. Integration Panel
 4. Header/Footer Panel
+5. Page Edit
 
 == Changelog ==
 

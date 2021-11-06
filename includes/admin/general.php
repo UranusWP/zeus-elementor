@@ -71,7 +71,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<h4><?php esc_html_e( 'Check out our Templates', 'zeus-elementor' ); ?></h4>
 					<div class="zeus-content">
 					<p><?php echo sprintf( __( 'We&#039;ve built an awesome addon to Zeus Elementor for you! This addon allows you to import any of our templates very easily and the best part is that you can import any page that you like from any template!%1$sImport a template in secondes and start a professional website for you or your clients.', 'zeus-elementor' ), '</br>' ); ?></p>
-						<a href="https://zeus-elementor.com/templates/" class="zeus-btn" target="_blank"><?php esc_html_e( 'Check Zeus Templates', 'zeus-elementor' ); ?></a>
+						<a href="https://zeus-elementor.com/zeus-templates/" class="zeus-btn" target="_blank"><?php esc_html_e( 'Check Zeus Templates', 'zeus-elementor' ); ?></a>
 					</div>
 				</div>
 
