@@ -430,6 +430,10 @@ li.zeus-search-menu .zeus-menu-dropdown form {
 	@include transition(background-color .4s);
 }
 
+.zeus-sticky-shadow {
+	@include shadow(0 0.15em 0.35em 0 rgba(0,0,0,0.14));
+}
+
 /* RTL */
 body.rtl {
 	.zeus-menu-layout-horizontal .zeus-menu {

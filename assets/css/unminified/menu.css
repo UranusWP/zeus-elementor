@@ -409,6 +409,12 @@ li.zeus-search-menu .zeus-menu-dropdown form input {
 	transition: background-color 0.4s;
 }
 
+.zeus-sticky-shadow {
+	-webkit-box-shadow: 0 0.15em 0.35em 0 rgba(0, 0, 0, 0.14);
+	-moz-box-shadow: 0 0.15em 0.35em 0 rgba(0, 0, 0, 0.14);
+	box-shadow: 0 0.15em 0.35em 0 rgba(0, 0, 0, 0.14);
+}
+
 /* RTL */
 body.rtl .zeus-menu-layout-horizontal .zeus-menu .zeus-sub-icon {
 	right: auto;

@@ -58,7 +58,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<h4><?php esc_html_e( 'Show your Love', 'zeus-elementor' ); ?></h4>
 				<div class="zeus-content">
 					<p><?php esc_html_e( 'Thanks for being part of the Zeus family! Now it is time to show us some love by sharing the word and if you can take only 1 minute of your time to rate it 5 stars on WordPress, that will encourage users to follow your path', 'zeus-elementor' ); ?></p>
-					<a href="https://wordpress.org/support/plugin/zeus-elementor/reviews/" class="zeus-btn" target="_blank"><?php esc_html_e( 'Leave a review', 'zeus-elementor' ); ?></a>
+					<a href="https://wordpress.org/support/plugin/zeus-elementor/reviews/?filter=5" class="zeus-btn" target="_blank"><?php esc_html_e( 'Leave a review', 'zeus-elementor' ); ?></a>
 				</div>
 			</div>
 
@@ -70,7 +70,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 					<h4><?php esc_html_e( 'Check out our Templates', 'zeus-elementor' ); ?></h4>
 					<div class="zeus-content">
-					<p><?php echo sprintf( __( 'We&#039;ve built an awesome addon to Zeus Elementor for you! This addon allows you to import any of our templates very easily and the best part is that you can import any page that you like from any template!%1$sImport a template in secondes and start a professional website for you or your clients.', 'zeus-elementor' ), '</br>' ); ?></p>
+					<p><?php echo sprintf( __( 'We&#039;ve built an awesome addon to Zeus Elementor for you! This addon allows you to import any of our templates very easily and the best part is that you can import any page, header or footer that you like from any template!%1$sImport a template in secondes and start a professional website for you or your clients.', 'zeus-elementor' ), '</br>' ); ?></p>
 						<a href="https://zeus-elementor.com/zeus-templates/" class="zeus-btn" target="_blank"><?php esc_html_e( 'Check Zeus Templates', 'zeus-elementor' ); ?></a>
 					</div>
 				</div>

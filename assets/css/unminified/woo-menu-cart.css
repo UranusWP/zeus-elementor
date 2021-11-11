@@ -249,8 +249,11 @@ body .zeus-menu-cart .buttons .button.checkout:hover {
 	background-color: #e8c573;
 }
 
-body .zeus-cart-count-yes .zeus-menu-cart .zeus-menu-cart-count,
-body .zeus-cart-count-yes .zeus-menu-cart .zeus-menu-cart-total {
+body .zeus-cart-count-yes .zeus-menu-cart .zeus-menu-cart-count {
+	display: inline-block;
+}
+
+body .zeus-cart-total-yes .zeus-menu-cart .zeus-menu-cart-total {
 	display: inline-block;
 }
 

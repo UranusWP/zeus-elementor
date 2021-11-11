@@ -1851,18 +1851,18 @@ class CallToAction extends Widget_Base {
 					<?php
 				endif;
 
-				if ( ! empty( $settings['btn_link']['url'] ) ) : ?>
+				if ( ! empty( $settings['btn_text'] ) && ! empty( $settings['btn_link']['url'] ) ) : ?>
 					<div <?php $this->print_render_attribute_string( 'btn-wrapper' ); ?>>
 						<<?php echo esc_attr( $btn_tag ); ?> <?php $this->print_render_attribute_string( 'btn' ); ?>>
 							<?php
 							if ( 'left' === $settings['icon_align']
-								&& ( ! empty( $settings['selected_btn_icon'] ) ) ) :
+								&& ! empty( $settings['selected_btn_icon'] ) ) :
 								Icons_Manager::render_icon( $settings['selected_btn_icon'], [ 'aria-hidden' => 'true' ] );
 							endif; ?>
 							<span><?php $this->print_unescaped_setting( 'btn_text' ); ?></span>
 							<?php
 							if ( 'right' === $settings['icon_align']
-								&& ( ! empty( $settings['selected_btn_icon'] ) ) ) :
+								&& ! empty( $settings['selected_btn_icon'] ) ) :
 								Icons_Manager::render_icon( $settings['selected_btn_icon'], [ 'aria-hidden' => 'true' ] );
 							endif; ?>
 						</<?php echo esc_attr( $btn_tag ); ?>>
@@ -1905,6 +1905,7 @@ class CallToAction extends Widget_Base {
 	protected function content_template() { ?>
 		<#
 		var wrapperTag          = 'div',
+			buttonTag          	= 'a',
 			contentAnimation    = settings.content_animation,
 			animationClass,
 			iconHTML            = elementor.helpers.renderIcon( view, settings.selected_cta_icon, { 'aria-hidden': true }, 'i' , 'object' ),
@@ -2008,7 +2009,7 @@ class CallToAction extends Widget_Base {
 
 				if ( settings.btn_text ) { #>
 					<div {{{ view.getRenderAttributeString( 'btn-wrapper' ) }}}>
-						<a href="{{ settings.btn_link.url }}" class="zeus-button elementor-button elementor-animation-{{ settings.button_animation }}">
+						<{{ buttonTag }} href="{{ settings.btn_link.url }}" class="zeus-button elementor-button elementor-animation-{{ settings.button_animation }}">
 							<#
 							if ( 'left' == settings.icon_align && ( btnIconHTML && btnIconHTML.rendered ) ) { #>
 								{{{ btnIconHTML.value }}}
@@ -2018,17 +2019,15 @@ class CallToAction extends Widget_Base {
 							if ( 'right' == settings.icon_align && ( btnIconHTML && btnIconHTML.rendered ) ) { #>
 								{{{ btnIconHTML.value }}}
 							<# } #>
-						</a>
+						</{{ buttonTag }}>
 
 						<# if ( 'yes' == settings.secondary_btn && settings.s_btn_text ) { #>
 							<a href="{{ settings.s_btn_link.url }}" class="zeus-button zeus-cta-s-btn elementor-button elementor-animation-{{ settings.button_animation }}">
-								<#
-								if ( 'left' == settings.s_icon_align && ( sbtnIconHTML && sbtnIconHTML.rendered ) ) { #>
+								<# if ( 'left' == settings.s_icon_align && sbtnIconHTML && sbtnIconHTML.rendered ) { #>
 									{{{ sbtnIconHTML.value }}}
 								<# } #>
 								<span>{{{ settings.s_btn_text }}}</span>
-								<#
-								if ( 'right' == settings.s_icon_align && ( sbtnIconHTML && sbtnIconHTML.rendered ) ) { #>
+								<# if ( 'right' == settings.s_icon_align && sbtnIconHTML && sbtnIconHTML.rendered ) { #>
 									{{{ sbtnIconHTML.value }}}
 								<# } #>
 							</a>

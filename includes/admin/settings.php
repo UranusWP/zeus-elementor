@@ -15,16 +15,49 @@ class Zeus_Settings {
 	 * Start things up
 	 */
 	public function __construct() {
+		// Add footer text.
+		add_filter( 'admin_footer_text', [ $this, 'admin_footer_text' ], 99 );
+
 		// Add panel menu
-		add_action( 'admin_menu', array( $this, 'admin_menu' ), 0 );
+		add_action( 'admin_menu', [ $this, 'admin_menu' ], 0 );
 
 		// Add scripts
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
 
 		// Save settings
 		if ( is_admin() ) {
-			add_action( 'wp_ajax_zeus_save_settings', array( $this, 'save_settings' ) );
+			add_action( 'wp_ajax_zeus_save_settings', [ $this, 'save_settings' ] );
 		}
+	}
+
+	/**
+	 * Admin footer text.
+	 *
+	 * Modifies the "Thank you" text displayed in the admin footer.
+	 *
+	 * Fired by `admin_footer_text` filter.
+	 *
+	 * @since 1.0.4
+	 * @access public
+	 *
+	 * @param string $footer_text The content that will be printed.
+	 *
+	 * @return string The content that will be printed.
+	 */
+	public function admin_footer_text( $footer_text ) {
+		$current_screen = get_current_screen();
+		$is_ze_screen = ( $current_screen && false !== strpos( $current_screen->id, 'zeus' ) );
+
+		if ( $is_ze_screen ) {
+			$footer_text = sprintf(
+				/* translators: 1: Zeus Elementor, 2: Link to plugin review */
+				__( 'Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!', 'zeus-elementor' ),
+				'<strong>' . esc_html__( 'Zeus Elementor', 'zeus-elementor' ) . '</strong>',
+				'<a href="https://wordpress.org/support/plugin/zeus-elementor/reviews/?filter=5" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
+			);
+		}
+
+		return $footer_text;
 	}
 
 	/**

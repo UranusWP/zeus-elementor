@@ -2,7 +2,7 @@
 Contributors: olympuswp
 Tags: elementor, widgets, elements, addons, elementor addons, elementor widget, elementor form, woocommerce elementor, page builder, builder, visual editor, wordpress page builder
 Requires at least: 5.0
-Tested up to: 5.8.1
+Tested up to: 5.8.2
 Stable tag: 1.0.0
 Requires PHP: 5.6
 License: GPLv3

@@ -7,8 +7,8 @@
  * Author:              UranusWP
  * Author URI:          https://zeus-elementor.com/
  * Requires at least:   5.3
- * Tested up to:        5.8.1
- * WC tested up to: 5.6.0
+ * Tested up to:        5.8.2
+ * WC tested up to: 5.9.0
  * Elementor tested up to: 3.4.7
  * Elementor Pro tested up to: 3.5.0
  *

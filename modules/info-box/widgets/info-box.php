@@ -136,8 +136,19 @@ class InfoBox extends Widget_Base {
 					],
 				],
 				'default'       => 'center',
+				'prefix_class'  => 'zeus-info-box-align%s-',
 				'selectors'     => [
-					'{{WRAPPER}} .zeus-info-box' => 'text-align: {{VALUE}};',
+					'(desktop){{WRAPPER}} .zeus-info-box' => '-webkit-justify-content: {{VALUE}}; justify-content: {{VALUE}};',
+					'(desktop){{WRAPPER}} .zeus-info-box' => '-webkit-justify-content: {{VALUE}}; justify-content: {{VALUE}};',
+					'(tablet){{WRAPPER}} .zeus-info-box' => '-webkit-justify-content: {{VALUE}}; justify-content: {{VALUE}};',
+					'(tablet){{WRAPPER}} .zeus-info-box' => '-webkit-justify-content: {{VALUE}}; justify-content: {{VALUE}};',
+					'(mobile){{WRAPPER}} .zeus-info-box' => '-webkit-justify-content: {{VALUE}}; justify-content: {{VALUE}};',
+					'(mobile){{WRAPPER}} .zeus-info-box' => '-webkit-justify-content: {{VALUE}}; justify-content: {{VALUE}};',
+				],
+				'selectors_dictionary' => [
+					'left'        => 'flex-start',
+					'center'      => 'center',
+					'right'       => 'flex-end',
 				],
 			]
 		);

@@ -9,6 +9,10 @@ img {
     margin: 0 !important;
 }
 
+body.home .hide-on-home {
+    display: none;
+}
+
 .screen-reader-text {
     clip: rect(1px,1px,1px,1px);
     height: 1px;

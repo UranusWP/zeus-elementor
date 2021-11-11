@@ -376,6 +376,18 @@ class Menu extends Widget_Base {
 		);
 
 		$this->add_control(
+			'has_shadow',
+			[
+				'label'         => __( 'Add Shadow On Sticky', 'zeus-elementor' ),
+				'type'          => Controls_Manager::SWITCHER,
+				'default'       => 'no',
+				'condition'     => [
+					'is_sticky' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
 			'sticky_breakpoint',
 			[
 				'label'         => __( 'Sticky Breakpoint', 'zeus-elementor' ),
@@ -1298,6 +1310,10 @@ class Menu extends Widget_Base {
 
 		if ( 'none' !== $settings['sticky_breakpoint'] ) {
 			$this->add_render_attribute( 'menu-wrapper', 'data-destroy-sticky', $settings['sticky_breakpoint'] );
+		}
+
+		if ( 'yes' === $settings['has_shadow'] ) {
+			$this->add_render_attribute( 'menu-wrapper', 'class', 'zeus-has-shadow' );
 		}
 
 		$this->add_render_attribute( 'menu-toggle', [

@@ -214,12 +214,24 @@ Admin Styling
 
 		&-inner {
 			padding: 50px;
-	    	flex: 1 1 100%;
+	    	width: 40%;
 		}
 
-		&-image img {
-			max-width: 100%;
+		&-image {
+			width: 60%;
+			
+			img {
+				max-width: 100%;
+			}
 		}
+
+    	.zeus-btn {
+	    	background-color: #e5c063;
+
+	    	&:hover {
+	    		background-color: #585858;
+	    	}
+	    }
 	}
 
 	.zeus-donation {

@@ -181,7 +181,7 @@ module.exports = function (grunt) {
         compress: {
             main: {
                 options: {
-                    archive: '<%= pkg.name %>-' + pkgInfo.version + '.zip',
+                    archive: '<%= pkg.name %>.zip',
                     mode: 'zip',
                     level: 5
                 },

@@ -253,7 +253,12 @@ body .zeus-menu-cart {
 }
 
 body .zeus-cart-count-yes .zeus-menu-cart {
-    .zeus-menu-cart-count,
+    .zeus-menu-cart-count {
+        display: inline-block;
+    }
+}
+
+body .zeus-cart-total-yes .zeus-menu-cart {
     .zeus-menu-cart-total {
         display: inline-block;
     }

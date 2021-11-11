@@ -180,11 +180,23 @@ Admin Styling
 
 .zeus-settings-wrap .zeus-templates-inner {
 	padding: 50px;
-	flex: 1 1 100%;
+	width: 40%;
+}
+
+.zeus-settings-wrap .zeus-templates-image {
+	width: 60%;
 }
 
 .zeus-settings-wrap .zeus-templates-image img {
 	max-width: 100%;
+}
+
+.zeus-settings-wrap .zeus-templates .zeus-btn {
+	background-color: #e5c063;
+}
+
+.zeus-settings-wrap .zeus-templates .zeus-btn:hover {
+	background-color: #585858;
 }
 
 .zeus-settings-wrap .zeus-donation {
