@@ -10,8 +10,8 @@
 
 ## Description ##
 
-The only Elementor addon that you will ever need to create stunning and very professional websites! Every widget are entirely customizable and has been built to make things easier for you.
-Works with all your favorite themes and plugins like WooCommerce to create stunning stores. 
+The only Elementor addon that you will ever need to create stunning and very professional websites! Every widget is entirely customizable and built to make things easier for you.
+Works with all your favorite themes and plugins like WooCommerce to create stunning stores.
 
 ### Completely Customizable
 All widgets can be customized the way you want, you imagined it, you can build it!
@@ -114,7 +114,7 @@ No. You cannot use without Elementor since it's an addon for Elementor.
 
 ### Does it work with any theme? ###
 
-Yes! It will work with any theme where Elementor works.
+Yes! It will work with any theme where Elementor is installed.
 
 ### Is there a Premium version? ###
 
