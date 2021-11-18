@@ -10,7 +10,7 @@ License URI: https://opensource.org/licenses/GPL-3.0
 
 == Description ==
 
-The only Elementor addon that you will ever need to create stunning and very professional websites! Every widget are entirely customizable and has been built to make things easier for you.
+The only Elementor addon that you will ever need to create stunning and very professional websites! Every widget is entirely customizable and built to make things easier for you.
 Works with all your favorite themes and plugins like WooCommerce to create stunning stores. 
 
 ### Completely Customizable
@@ -84,7 +84,7 @@ No messy codes to slow down your websites, Zeus Elementor has been built with sp
 ### Looking for the perfect theme?
 
 We’ve created the fastest WordPress theme ever with unparalleled performance [OlympusWP](https://wordpress.org/themes/olympuswp/). Every line of code in the theme has been created with speed & performance in mind!
-Try it out, it is **completely free** too.
+Try it out, it is **completely free** too!
 
 ### Documentation and Support
 
@@ -114,7 +114,7 @@ No. You cannot use without Elementor since it's an addon for Elementor.
 
 = Does it work with any theme? =
 
-Yes! It will work with any theme where Elementor works.
+Yes! It will work with any theme where Elementor is installed.
 
 = Is there a Premium version? =
 
