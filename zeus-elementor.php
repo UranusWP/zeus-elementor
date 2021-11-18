@@ -2,15 +2,15 @@
 /**
  * Plugin Name:         Zeus Elementor
  * Plugin URI:          zeus-elementor.com
- * Description:         Add many new powerful and entirely customizable widgets on top of any Elementor Package (Free, Pro). Works with any WordPress theme.
+ * Description:         Provides a collection of powerful, fully customizable, and extendable widgets on top of any Elementor version and works independently with any WordPress theme.
  * Version:             1.0.0
  * Author:              UranusWP
  * Author URI:          https://zeus-elementor.com/
  * Requires at least:   5.3
  * Tested up to:        5.8.2
  * WC tested up to: 5.9.0
- * Elementor tested up to: 3.4.7
- * Elementor Pro tested up to: 3.5.0
+ * Elementor tested up to: 3.4.8
+ * Elementor Pro tested up to: 3.5.1
  *
  * Text Domain: zeus-elementor
  * Domain Path: /languages
@@ -83,7 +83,7 @@ final class Zeus_Elementor {
 	public $admin;
 
 	/**
-	 * Current theme template
+	 * Current theme template.
 	 *
 	 * @var String
 	 */
@@ -109,7 +109,7 @@ final class Zeus_Elementor {
 		define( 'ZEUS_ASSETS_URL', ZEUS_URL . 'assets/' );
 		define( 'ZEUS_ELEMENTOR_VERSION', $this->version );
 
-		// If Elementor plugin is not activated.
+		// If Elementor is not activated.
 		if ( ! did_action( 'elementor/loaded' ) ) {
 			add_action( 'admin_notices', array( $this, 'show_notices' ), 30 );
 		} else {
@@ -129,9 +129,9 @@ final class Zeus_Elementor {
 	}
 
 	/**
-	 * Main Zeus_Elementor Instance
+	 * Main Zeus_Elementor instance.
 	 *
-	 * Ensures only one instance of Zeus_Elementor is loaded or can be loaded.
+	 * Ensures that only one instance of Zeus_Elementor is loaded or can be loaded.
 	 *
 	 * @since 1.0.0
 	 * @static
@@ -213,7 +213,7 @@ final class Zeus_Elementor {
 	}
 
 	/**
-	 * Add notice if Elementor not activated.
+	 * Add notice if Elementor is not activated.
 	 *
 	 * @return void
 	 */
@@ -258,7 +258,7 @@ final class Zeus_Elementor {
 		require_once ZEUS_ELEMENTOR_PATH . 'includes/admin/settings.php';
 		require_once ZEUS_ELEMENTOR_PATH . 'includes/helpers.php';
 
-		// If header or footer selected
+		// If header or footer selected.
 		if ( zeus_header_enabled() || zeus_footer_enabled() ) {
 			if ( 'hello-elementor' === $this->template ) {
 				require_once ZEUS_ELEMENTOR_PATH . 'includes/themes/class-hello-elementor-theme.php';
@@ -279,17 +279,17 @@ final class Zeus_Elementor {
 	}
 
 	/**
-	 * Save default widgets values to db
+	 * Save default widgets values to database.
 	 *
 	 * @since 1.0.0
 	 */
 	public function save_widgets_db() {
-		// If the widgets are not already in the database
+		// If the widgets are not already in the database.
 		if ( ! get_option( 'zeus_settings' ) ) {
 			$defaults = array_fill_keys( array_keys( $GLOBALS['zeus_widgets'] ), 1 );
 			$elements = array_merge( $defaults, array_fill_keys( array_keys( $defaults ), true ) );
 
-			// Update new settings
+			// Update new settings.
 			return update_option( 'zeus_settings', $elements );
 		}
 	}
