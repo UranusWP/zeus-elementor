@@ -27,7 +27,7 @@ abstract class Module_Base {
 	protected static $instances = [];
 
 	/**
-	 * Abstract method for retrieveing the module name
+	 * Abstract method for retrieveing the module name.
 	 *
 	 * @access public
 	 * @since 1.0.0
@@ -35,7 +35,7 @@ abstract class Module_Base {
 	abstract public function get_name();
 
 	/**
-	 * Return the current module class name
+	 * Return the current module class name.
 	 *
 	 * @access public
 	 * @since 1.0.0
@@ -74,7 +74,7 @@ abstract class Module_Base {
 	/**
 	 * Constructor
 	 *
-	 * Hook into Elementor to register the widgets
+	 * Hook into Elementor to register the widgets.
 	 *
 	 * @access public
 	 * @since 1.0.0
@@ -88,7 +88,7 @@ abstract class Module_Base {
 	}
 
 	/**
-	 * Initializes all widget for the current module
+	 * Initializes all widget for the current module.
 	 *
 	 * @access public
 	 * @since 1.0.0
@@ -106,7 +106,7 @@ abstract class Module_Base {
 	}
 
 	/**
-	 * Method for retrieveing this module's widgets
+	 * Method for retrieveing this module's widgets.
 	 *
 	 * @access public
 	 * @since 1.0.0
