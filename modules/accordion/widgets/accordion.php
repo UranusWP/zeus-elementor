@@ -112,6 +112,29 @@ class Accordion extends Widget_Base {
 			]
 		);
 
+		$repeater->add_control(
+			'custom_icon',
+			[
+				'label'         => __( 'Custom Icon', 'zeus-elementor' ),
+				'type'          => Controls_Manager::ICONS,
+				'label_block'   => false,
+				'skin'          => 'inline',
+			]
+		);
+
+		$repeater->add_control(
+			'custom_active_icon',
+			[
+				'label'         => __( 'Custom Active Icon', 'zeus-elementor' ),
+				'type'          => Controls_Manager::ICONS,
+				'label_block'   => false,
+				'skin'          => 'inline',
+				'condition'     => [
+					'custom_icon[value]!' => '',
+				],
+			]
+		);
+
 		$this->add_control(
 			'tabs',
 			[
@@ -141,11 +164,12 @@ class Accordion extends Widget_Base {
 			[
 				'label'         => __( 'Icon', 'zeus-elementor' ),
 				'type'          => Controls_Manager::ICONS,
-				'label_block'   => true,
+				'label_block'   => false,
 				'default'       => [
 					'value'   => 'fas fa-plus',
 					'library' => 'solid',
 				],
+				'skin'          => 'inline',
 			]
 		);
 
@@ -154,13 +178,14 @@ class Accordion extends Widget_Base {
 			[
 				'label'         => __( 'Active Icon', 'zeus-elementor' ),
 				'type'          => Controls_Manager::ICONS,
-				'label_block'   => true,
+				'label_block'   => false,
 				'default'       => [
 					'value'   => 'fas fa-minus',
 					'library' => 'solid',
 				],
+				'skin'          => 'inline',
 				'condition'     => [
-					'icon!' => '',
+					'icon[value]!' => '',
 				],
 			]
 		);
@@ -231,7 +256,7 @@ class Accordion extends Widget_Base {
 					'px' => [
 						'min' => 0,
 						'max' => 100,
-					]
+					],
 				],
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-accordion .zeus-accordion-item + .zeus-accordion-item' => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -398,9 +423,6 @@ class Accordion extends Widget_Base {
 			[
 				'label'         => __( 'Icon', 'zeus-elementor' ),
 				'tab'           => Controls_Manager::TAB_STYLE,
-				'condition'     => [
-					'icon!' => '',
-				],
 			]
 		);
 
@@ -422,9 +444,6 @@ class Accordion extends Widget_Base {
 				'default'       => is_rtl() ? 'left' : 'right',
 				'toggle'        => false,
 				'label_block'   => false,
-				'condition'     => [
-					'icon!' => '',
-				],
 			]
 		);
 
@@ -442,9 +461,6 @@ class Accordion extends Widget_Base {
 			[
 				'label'         => __( 'Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
-				'condition'     => [
-					'icon!' => '',
-				],
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-accordion .zeus-accordion-title .zeus-accordion-icon i' => 'color: {{VALUE}};',
 				],
@@ -465,9 +481,6 @@ class Accordion extends Widget_Base {
 			[
 				'label'         => __( 'Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
-				'condition'     => [
-					'icon!' => '',
-				],
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-accordion .zeus-accordion-item.zeus-active .zeus-accordion-title .zeus-accordion-icon i' => 'color: {{VALUE}};',
 				],
@@ -488,9 +501,6 @@ class Accordion extends Widget_Base {
 						'min' => 0,
 						'max' => 100,
 					],
-				],
-				'condition'     => [
-					'icon!' => '',
 				],
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-accordion .zeus-accordion-icon.zeus-accordion-icon-left'  => 'margin-right: {{SIZE}}{{UNIT}};',
@@ -630,17 +640,34 @@ class Accordion extends Widget_Base {
 				<div class="zeus-accordion-item<?php echo ( $tab_count === $settings['active_item'] ) ? ' zeus-active' : ''; ?>">
 					<<?php echo esc_attr( $title_tag ); ?> <?php $this->print_render_attribute_string( $tab_title_key ); ?>>
 						<?php
-						if ( ! empty( $settings['icon']['value'] ) ) {
+						if ( ! empty( $settings['icon']['value'] ) || ! empty( $item['custom_icon']['value'] ) ) {
 							?>
 							<span class="zeus-accordion-icon zeus-accordion-icon-<?php echo esc_attr( $settings['icon_align'] ); ?>" aria-hidden="true">
-								<span class="zeus-accordion-icon-closed"><?php Icons_Manager::render_icon( $settings['icon'] ); ?></span>
-								<span class="zeus-accordion-icon-opened"><?php Icons_Manager::render_icon( $settings['active_icon'] ); ?></span>
+								<?php
+								if ( ! empty( $item['custom_icon']['value'] ) ) {
+									?>
+									<span class="zeus-accordion-icon-closed"><?php Icons_Manager::render_icon( $item['custom_icon'] ); ?></span>
+									<?php
+								} else {
+									?>
+									<span class="zeus-accordion-icon-closed"><?php Icons_Manager::render_icon( $settings['icon'] ); ?></span>
+									<?php
+								}
+								if ( ! empty( $item['custom_active_icon']['value'] ) ) {
+									?>
+									<span class="zeus-accordion-icon-opened"><?php Icons_Manager::render_icon( $item['custom_active_icon'] ); ?></span>
+									<?php
+								} else {
+									?>
+									<span class="zeus-accordion-icon-opened"><?php Icons_Manager::render_icon( $settings['active_icon'] ); ?></span>
+									<?php
+								}
+								?>
 							</span>
 							<?php
 						}
-						?>
 
-						<?php $this->print_unescaped_setting( 'tab_title', 'tabs', $index ); ?>
+						$this->print_unescaped_setting( 'tab_title', 'tabs', $index ); ?>
 					</<?php echo esc_attr( $title_tag ); ?>>
 
 					<div <?php $this->print_render_attribute_string( $tab_content_key ); ?>>
