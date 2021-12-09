@@ -1,5 +1,5 @@
 === Zeus For Elementor ===
-Contributors: olympuswp, alexdeborba
+Contributors: olympuswp
 Tags: elementor, widgets, elements, addons, elementor addons, elementor widget, elementor form, woocommerce elementor, page builder, builder, visual editor, wordpress page builder
 Requires at least: 5.0
 Tested up to: 5.8.2
