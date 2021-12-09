@@ -203,6 +203,18 @@ class SearchIcon extends Widget_Base {
 
 		$this->end_controls_tabs();
 
+		$this->add_control(
+			'icon_padding',
+			[
+				'label'         => __( 'Padding', 'zeus-elementor' ),
+				'type'          => Controls_Manager::DIMENSIONS,
+				'size_units'    => [ 'px', 'em', '%' ],
+				'selectors'     => [
+					'{{WRAPPER}} .zeus-search-icon-wrap .zeus-search-toggle' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(

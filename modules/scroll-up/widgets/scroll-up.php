@@ -145,6 +145,33 @@ class Scroll_Up extends Widget_Base {
 			]
 		);
 
+		$this->add_responsive_control(
+			'button_alignment',
+			[
+				'label'         => __( 'Alignment', 'zeus-elementor' ),
+				'type'          => Controls_Manager::CHOOSE,
+				'options'       => [
+					'left' => [
+						'title' => __( 'Left', 'zeus-elementor' ),
+						'icon'  => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => __( 'Center', 'zeus-elementor' ),
+						'icon'  => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => __( 'Right', 'zeus-elementor' ),
+						'icon'  => 'eicon-text-align-right',
+					],
+				],
+				'default'       => 'center',
+				'prefix_class'  => 'elementor-align%s-',
+				'condition'     => [
+					'fixed_position!' => 'yes',
+				],
+			]
+		);
+
 		$this->add_control(
 			'add_text',
 			[

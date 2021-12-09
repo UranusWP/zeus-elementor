@@ -487,10 +487,8 @@ body.rtl {
 Responsive
 -------------------------------------------------------------------*/
 @media (min-width: 1025px) {
-	.zeus-menu-dropdown-tablet {
-	    .zeus-menu-toggle {
-		    display: none;
-		}
+	.zeus-menu-dropdown-tablet .zeus-menu-toggle {
+		display: none;
 	}
 }
 
@@ -501,10 +499,8 @@ Responsive
 }
 
 @media (min-width: 768px) {
-	.zeus-menu-dropdown-mobile {
-	    .zeus-menu-toggle {
-		    display: none;
-		}
+	.zeus-menu-dropdown-mobile .zeus-menu-toggle {
+		display: none;
 	}
 }
 

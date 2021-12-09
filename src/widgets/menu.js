@@ -149,25 +149,29 @@ class Zeus_Menu extends elementorModules.frontend.handlers.Base {
             });
         });
 
-        // Dropdown toggle
-        this.elements.menuToggleIcon.addEventListener('click', this.onToggleClick.bind(this));
+        // If dropdown
+        var dropdownMenu = this.elements.dropdownMenu;
+        if ( dropdownMenu ) {
+            // Dropdown toggle
+            this.elements.menuToggleIcon.addEventListener('click', this.onToggleClick.bind(this));
 
-        // Open submenu on dropdown toggle
-        this.elements.subDropdown.forEach((toggle) => {
-            toggle.setAttribute('aria-expanded', 'false');
+            // Open submenu on dropdown toggle
+            this.elements.subDropdown.forEach((toggle) => {
+                toggle.setAttribute('aria-expanded', 'false');
 
-            toggle.onclick = function () {
-                if (toggle.getAttribute('aria-expanded') === 'true') {
-                    toggle.setAttribute('aria-expanded', 'false');
-                    toggle.parentNode.classList.remove('zeus-dropdown-open');
+                toggle.onclick = function () {
+                    if (toggle.getAttribute('aria-expanded') === 'true') {
+                        toggle.setAttribute('aria-expanded', 'false');
+                        toggle.parentNode.classList.remove('zeus-dropdown-open');
+                        return;
+                    }
+
+                    toggle.setAttribute('aria-expanded', 'true');
+                    toggle.parentNode.classList.add('zeus-dropdown-open');
                     return;
                 }
-
-                toggle.setAttribute('aria-expanded', 'true');
-                toggle.parentNode.classList.add('zeus-dropdown-open');
-                return;
-            }
-        });
+            });
+        }
 
         // Open search form
         var searchLink = this.elements.dropdownSearchLink;
@@ -175,9 +179,12 @@ class Zeus_Menu extends elementorModules.frontend.handlers.Base {
             searchLink.addEventListener('click', this.toggleDropdownSearch.bind(this));
         }
 
-        // Full width dropdown
-        window.addEventListener('resize', this.fullWidthDropdown.bind(this));
-        window.addEventListener('orientationchange', this.fullWidthDropdown.bind(this));
+
+        if ( dropdownMenu ) {
+            // Full width dropdown
+            window.addEventListener('resize', this.fullWidthDropdown.bind(this));
+            window.addEventListener('orientationchange', this.fullWidthDropdown.bind(this));
+        }
 
         // Close elements when clicking elsewhere
         document.addEventListener('click', this.onDocumentClick.bind(this));
@@ -227,14 +234,17 @@ class Zeus_Menu extends elementorModules.frontend.handlers.Base {
     }
 
     fullWidthDropdown(event) {
-        this.stretchElement = new elementorModules.frontend.tools.StretchElement({
-          element: this.elements.dropdownMenu
-        });
+        var dropdownMenu = this.elements.dropdownMenu;
+        if ( dropdownMenu ) {
+            this.stretchElement = new elementorModules.frontend.tools.StretchElement({
+              element: dropdownMenu
+            });
 
-        if (this.getElementSettings('dropdown_full_width')) {
-            this.stretchElement.stretch();
-        } else {
-            this.stretchElement.reset();
+            if (this.getElementSettings('dropdown_full_width')) {
+                this.stretchElement.stretch();
+            } else {
+                this.stretchElement.reset();
+            }
         }
     }
 
@@ -387,8 +397,9 @@ class Zeus_Menu extends elementorModules.frontend.handlers.Base {
             window.requestAnimationFrame(fade);
         }
 
-        if (!event.target.closest(this.getSettings('selectors.menuToggle'))) {
-            this.elements.menuToggle.classList.remove('zeus-active');
+        var menuToggle = this.elements.menuToggle;
+        if (menuToggle && !event.target.closest(this.getSettings('selectors.menuToggle'))) {
+            menuToggle.classList.remove('zeus-active');
         }
     }
 }

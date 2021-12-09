@@ -1,16 +1,16 @@
-# Zeus Elementor #
-**Contributors:** [olympuswp](https://profiles.wordpress.org/olympuswp/)  
+# Zeus For Elementor #
+**Contributors:** [olympuswp](https://profiles.wordpress.org/olympuswp/), [alexdeborba](https://profiles.wordpress.org/alexdeborba/)  
 **Tags:** elementor, widgets, elements, addons, elementor addons, elementor widget, elementor form, woocommerce elementor, page builder, builder, visual editor, wordpress page builder  
 **Requires at least:** 5.0  
 **Tested up to:** 5.8.2  
-**Stable tag:** 1.0.0  
+**Stable tag:** 1.0.1  
 **Requires PHP:** 5.6  
 **License:** GPLv3  
 **License URI:** https://opensource.org/licenses/GPL-3.0  
 
 ## Description ##
 
-The only Elementor addon that you will ever need to create stunning and very professional websites! Every widget are entirely customizable and has been built to make things easier for you.
+The only Elementor addon that you will ever need to create stunning and very professional websites! Every widget is entirely customizable and built to make things easier for you.
 Works with all your favorite themes and plugins like WooCommerce to create stunning stores. 
 
 ### Completely Customizable
@@ -84,7 +84,7 @@ No messy codes to slow down your websites, Zeus Elementor has been built with sp
 ### Looking for the perfect theme?
 
 We’ve created the fastest WordPress theme ever with unparalleled performance [OlympusWP](https://wordpress.org/themes/olympuswp/). Every line of code in the theme has been created with speed & performance in mind!
-Try it out, it is **completely free** too.
+Try it out, it is **completely free** too!
 
 ### Documentation and Support
 
@@ -114,7 +114,7 @@ No. You cannot use without Elementor since it's an addon for Elementor.
 
 ### Does it work with any theme? ###
 
-Yes! It will work with any theme where Elementor works.
+Yes! It will work with any theme where Elementor is installed.
 
 ### Is there a Premium version? ###
 
@@ -130,5 +130,16 @@ No! Zeus Elementor is 100% and will stay that way, but we've created a templates
 
 ## Changelog ##
 
+### 1.0.1 ###
+* Added: Two filters have been added for the Menu widget to allow you to change the search and cart icon via a child theme. The filters are, zeus_elementor_menu_search_icon and zeus_elementor_menu_cart_icon.
+* Added: Custom Icons option for each Accordion repeater so you can add different icons for each accordion.
+* Added: New Column option for the Price List widget to allow you to show your list in columns.
+* Added: Alignment for scroll up widget if not fixed position.
+* Added: Padding for the Search Icon widget.
+* Fixed: Breakpoint issue on the Menu widget.
+* Fixed: Lightbox issue on the Image Gallery widget.
+* Fixed: Buttons issue with the Google Map widget.
+* Fixed: Input issue on the admin panel.
+
 ### 1.0.0 ###
-- Initial release.
+* Initial release.

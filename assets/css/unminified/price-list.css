@@ -8,9 +8,6 @@ Price List
 	display: flex;
 	-webkit-align-items: center;
 	align-items: center;
-}
-
-.zeus-price-list .zeus-price-list-item:not(:last-child) {
 	margin-bottom: 15px;
 }
 

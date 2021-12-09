@@ -47,10 +47,7 @@ Price List
     .zeus-price-list-item {
         @include display();
         @include align-items( center );
-    
-        &:not(:last-child) {
-            margin-bottom: 15px;
-        }
+        margin-bottom: 15px;
     }
 
     .zeus-price-list-text {
