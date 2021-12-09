@@ -491,9 +491,6 @@ class ImageGallery extends Widget_Base {
 						$this->add_render_attribute( $inner_key, 'data-width', $full_image[1] );
 						$this->add_render_attribute( $inner_key, 'data-height', $full_image[2] );
 					}
-
-					$this->add_render_attribute( $inner_key, 'class', 'no-lightbox' );
-					$this->add_render_attribute( $inner_key, 'data-elementor-open-lightbox', 'no' );
 				}
 
 				$this->add_render_attribute( $overlay_key, 'class', 'zeus-gallery-overlay' );
