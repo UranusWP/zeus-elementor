@@ -18,7 +18,7 @@ class Banner extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Banner', 'zeus-elementor' );
+		return esc_html__( 'Banner', 'zeus-elementor' );
 	}
 
 	public function get_icon() {
@@ -46,31 +46,32 @@ class Banner extends Widget_Base {
 		$this->start_controls_section(
 			'section_banner',
 			[
-				'label'         => __( 'Banner', 'zeus-elementor' ),
+				'label'         => esc_html__( 'Banner', 'zeus-elementor' ),
 			]
 		);
 
 		$this->add_control(
 			'effect',
 			[
-				'label'   => __( 'Animation Effect', 'zeus-elementor' ),
+				'label'   => esc_html__( 'Animation Effect', 'zeus-elementor' ),
+				'description'   => sprintf( __( 'You can see all animations on the <a href="%s" target="_blank">demonstration page</a>.', 'zeus-elementor' ), 'https://widgets.zeus-elementor.com/banner/' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'gaia',
 				'options' => [
-					'gaia'      => __( 'Gaia', 'zeus-elementor' ),
-					'poseidon'  => __( 'Poseidon', 'zeus-elementor' ),
-					'cronos'    => __( 'Cronos', 'zeus-elementor' ),
-					'hades'     => __( 'Hades', 'zeus-elementor' ),
-					'demeter'   => __( 'Demeter', 'zeus-elementor' ),
-					'apollo'    => __( 'Apollo', 'zeus-elementor' ),
-					'athena'    => __( 'Athena', 'zeus-elementor' ),
-					'artemis'   => __( 'Artemis', 'zeus-elementor' ),
-					'ares'      => __( 'Ares', 'zeus-elementor' ),
-					'hermes'    => __( 'Hermes', 'zeus-elementor' ),
-					'eros'      => __( 'Eros', 'zeus-elementor' ),
-					'hera'      => __( 'Hera', 'zeus-elementor' ),
-					'aphrodite' => __( 'Aphrodite', 'zeus-elementor' ),
-					'zeus'      => __( 'Zeus', 'zeus-elementor' ),
+					'gaia'      => esc_html__( 'Gaia', 'zeus-elementor' ),
+					'poseidon'  => esc_html__( 'Poseidon', 'zeus-elementor' ),
+					'cronos'    => esc_html__( 'Cronos', 'zeus-elementor' ),
+					'hades'     => esc_html__( 'Hades', 'zeus-elementor' ),
+					'demeter'   => esc_html__( 'Demeter', 'zeus-elementor' ),
+					'apollo'    => esc_html__( 'Apollo', 'zeus-elementor' ),
+					'athena'    => esc_html__( 'Athena', 'zeus-elementor' ),
+					'artemis'   => esc_html__( 'Artemis', 'zeus-elementor' ),
+					'ares'      => esc_html__( 'Ares', 'zeus-elementor' ),
+					'hermes'    => esc_html__( 'Hermes', 'zeus-elementor' ),
+					'eros'      => esc_html__( 'Eros', 'zeus-elementor' ),
+					'hera'      => esc_html__( 'Hera', 'zeus-elementor' ),
+					'aphrodite' => esc_html__( 'Aphrodite', 'zeus-elementor' ),
+					'zeus'      => esc_html__( 'Zeus', 'zeus-elementor' ),
 				],
 			]
 		);
@@ -78,7 +79,7 @@ class Banner extends Widget_Base {
 		$this->add_control(
 			'image',
 			[
-				'label'         => __( 'Image', 'zeus-elementor' ),
+				'label'         => esc_html__( 'Image', 'zeus-elementor' ),
 				'type'          => Controls_Manager::MEDIA,
 				'default'       => [
 					'url' => Utils::get_placeholder_image_src(),
@@ -91,7 +92,7 @@ class Banner extends Widget_Base {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'          => 'image',
-				'label'         => __( 'Image Size', 'zeus-elementor' ),
+				'label'         => esc_html__( 'Image Size', 'zeus-elementor' ),
 				'default'       => 'large',
 			]
 		);
@@ -99,8 +100,8 @@ class Banner extends Widget_Base {
 		$this->add_control(
 			'title',
 			[
-				'label'         => __( 'Title', 'zeus-elementor' ),
-				'default'       => __( 'This is the title', 'zeus-elementor' ),
+				'label'         => esc_html__( 'Title', 'zeus-elementor' ),
+				'default'       => esc_html__( 'This is the title', 'zeus-elementor' ),
 				'type'          => Controls_Manager::TEXT,
 				'label_block'   => true,
 				'dynamic'       => [ 'active' => true ],
@@ -110,8 +111,8 @@ class Banner extends Widget_Base {
 		$this->add_control(
 			'description',
 			[
-				'label'         => __( 'Description', 'zeus-elementor' ),
-				'default'       => __( 'Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel.', 'zeus-elementor' ),
+				'label'         => esc_html__( 'Description', 'zeus-elementor' ),
+				'default'       => esc_html__( 'Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel.', 'zeus-elementor' ),
 				'type'          => Controls_Manager::TEXTAREA,
 				'dynamic'       => [ 'active' => true ],
 			]
@@ -120,9 +121,9 @@ class Banner extends Widget_Base {
 		$this->add_control(
 			'link',
 			[
-				'label'         => __( 'Link', 'zeus-elementor' ),
+				'label'         => esc_html__( 'Link', 'zeus-elementor' ),
 				'type'          => Controls_Manager::URL,
-				'placeholder'   => __( 'https://your-link.com', 'zeus-elementor' ),
+				'placeholder'   => esc_html__( 'https://your-link.com', 'zeus-elementor' ),
 				'dynamic'       => [ 'active' => true ],
 			]
 		);
@@ -142,14 +143,14 @@ class Banner extends Widget_Base {
 		$this->start_controls_tab(
 			'tab_banner_normal',
 			[
-				'label'         => __( 'Normal', 'zeus-elementor' ),
+				'label'         => esc_html__( 'Normal', 'zeus-elementor' ),
 			]
 		);
 
 		$this->add_control(
 			'banner_normal_opacity',
 			[
-				'label'         => __( 'Opacity', 'zeus-elementor' ),
+				'label'         => esc_html__( 'Opacity', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SLIDER,
 				'range'         => [
 					'px' => [
@@ -169,14 +170,14 @@ class Banner extends Widget_Base {
 		$this->start_controls_tab(
 			'tab_banner_hover',
 			[
-				'label'         => __( 'Hover', 'zeus-elementor' ),
+				'label'         => esc_html__( 'Hover', 'zeus-elementor' ),
 			]
 		);
 
 		$this->add_control(
 			'banner_hover_opacity',
 			[
-				'label'         => __( 'Opacity', 'zeus-elementor' ),
+				'label'         => esc_html__( 'Opacity', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SLIDER,
 				'range'         => [
 					'px' => [
@@ -207,7 +208,7 @@ class Banner extends Widget_Base {
 		$this->add_control(
 			'banner_additional_color',
 			[
-				'label'         => __( 'Additional Color', 'zeus-elementor' ),
+				'label'         => esc_html__( 'Additional Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-banner.zeus-apolo .zeus-banner-text' => 'border-color: {{VALUE}};',
@@ -239,7 +240,7 @@ class Banner extends Widget_Base {
 		$this->add_responsive_control(
 			'banner_padding',
 			[
-				'label'         => __( 'Padding', 'zeus-elementor' ),
+				'label'         => esc_html__( 'Padding', 'zeus-elementor' ),
 				'type'          => Controls_Manager::DIMENSIONS,
 				'size_units'    => [ 'px', '%' ],
 				'selectors'     => [
@@ -251,7 +252,7 @@ class Banner extends Widget_Base {
 		$this->add_responsive_control(
 			'banner_margin',
 			[
-				'label'         => __( 'Margin', 'zeus-elementor' ),
+				'label'         => esc_html__( 'Margin', 'zeus-elementor' ),
 				'type'          => Controls_Manager::DIMENSIONS,
 				'size_units'    => [ 'px', '%' ],
 				'selectors'     => [
@@ -263,7 +264,7 @@ class Banner extends Widget_Base {
 		$this->add_responsive_control(
 			'banner_border_radius',
 			[
-				'label'         => __( 'Border Radius', 'zeus-elementor' ),
+				'label'         => esc_html__( 'Border Radius', 'zeus-elementor' ),
 				'type'          => Controls_Manager::DIMENSIONS,
 				'size_units'    => [ 'px', '%' ],
 				'selectors'     => [
@@ -293,7 +294,7 @@ class Banner extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			[
-				'label'         => __( 'Color', 'zeus-elementor' ),
+				'label'         => esc_html__( 'Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-banner .zeus-banner-title' => 'color: {{VALUE}};',
@@ -322,7 +323,7 @@ class Banner extends Widget_Base {
 		$this->add_control(
 			'description_color',
 			[
-				'label'         => __( 'Color', 'zeus-elementor' ),
+				'label'         => esc_html__( 'Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-banner .zeus-banner-text' => 'color: {{VALUE}};',
