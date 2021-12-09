@@ -169,6 +169,27 @@ class Price_List extends Widget_Base {
 			]
 		);
 
+		$this->add_responsive_control(
+			'columns',
+			array(
+				'label'          => __( 'Columns', 'zeus-elementor' ),
+				'type'           => Controls_Manager::SELECT,
+				'default'        => '1',
+				'options'        => array(
+					'1' => '1',
+					'2' => '2',
+					'3' => '3',
+					'4' => '4',
+					'5' => '5',
+					'6' => '6',
+				),
+				'selectors'      => array(
+					'{{WRAPPER}} .zeus-price-list' => 'display: flex; flex-wrap: wrap; margin: 0 -10px;',
+					'{{WRAPPER}} .zeus-price-list .zeus-price-list-item' => 'width: calc( 100% / {{VALUE}} - 20px ); margin-left: 10px; margin-right: 10px;',
+				),
+			)
+		);
+
 		$this->add_control(
 			'style',
 			[
