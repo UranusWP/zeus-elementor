@@ -1,0 +1,27 @@
+/*------------------------------------------------------------------
+Woo Categories
+-------------------------------------------------------------------*/
+.zeus-woo .woocommerce ul.products {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -15px;
+}
+
+.zeus-woo .woocommerce ul.products li.product {
+	border: 1px solid #eee;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+	text-align: center;
+	margin: 0 15px 25px;
+}
+
+.zeus-woo .woocommerce ul.products li.product a img {
+	margin: 0;
+}
+
+.zeus-woo .woocommerce ul.products li.product .woocommerce-loop-category__title {
+	padding: 15px 0;
+}
+
+.zeus-woo .woocommerce ul.products.columns-1 ul.products {
+	margin: 0;
+}

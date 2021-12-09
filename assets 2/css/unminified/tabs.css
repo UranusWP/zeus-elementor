@@ -1,0 +1,148 @@
+/*------------------------------------------------------------------
+Tabs
+-------------------------------------------------------------------*/
+.zeus-tabs .zeus-tabs-wrap {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+.zeus-tabs .zeus-tabs-wrap.zeus-tabs-normal.zeus-tabs-center {
+	-webkit-justify-content: center;
+	justify-content: center;
+}
+
+.zeus-tabs .zeus-tabs-wrap.zeus-tabs-normal.zeus-tabs-right {
+	-webkit-justify-content: flex-end;
+	justify-content: flex-end;
+}
+
+.zeus-tabs .zeus-tabs-wrap.zeus-tabs-normal.zeus-tabs-justify .zeus-tab-title {
+	flex: 1;
+	flex-basis: 1px;
+	text-align: center;
+}
+
+.zeus-tabs.zeus-tabs-left, .zeus-tabs.zeus-tabs-right {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+.zeus-tabs.zeus-tabs-left .zeus-tabs-wrap, .zeus-tabs.zeus-tabs-right .zeus-tabs-wrap {
+	-webkit-flex-direction: column;
+	flex-direction: column;
+}
+
+.zeus-tabs.zeus-tabs-left .zeus-tabs-content-wrap, .zeus-tabs.zeus-tabs-right .zeus-tabs-content-wrap {
+	flex: 1;
+	flex-basis: 1px;
+}
+
+.zeus-tabs.zeus-tabs-right .zeus-tabs-wrap {
+	order: 2;
+}
+
+.zeus-tabs .zeus-tab-title {
+	position: relative;
+	padding: 20px 25px;
+	font-weight: 600;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.zeus-tabs .zeus-tab-title.zeus-active {
+	background-color: #e5c063;
+	color: #fff;
+}
+
+.zeus-tabs .zeus-tab-title .zeus-icon-align-left {
+	margin-right: 3px;
+}
+
+.zeus-tabs .zeus-tab-title .zeus-icon-align-right {
+	margin-left: 3px;
+}
+
+.zeus-tabs .zeus-tab-title i, .zeus-tabs .zeus-tab-title svg {
+	width: 1em;
+	height: 1em;
+	vertical-align: bottom;
+}
+
+.zeus-tabs .zeus-tab-mobile-title {
+	display: block;
+	width: 100%;
+	padding: 15px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-top-width: 0 !important;
+}
+
+.zeus-tabs .zeus-tab-mobile-title:first-child {
+	border-top-width: 0 !important;
+}
+
+.zeus-tabs .zeus-tabs-content-wrap {
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.zeus-tabs .zeus-tabs-content-wrap .zeus-tab-content {
+	display: none;
+	padding: 20px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-top: 0;
+}
+
+.zeus-tabs .zeus-tabs-content-wrap .zeus-tab-content.zeus-active {
+	display: block;
+}
+
+.zeus-tabs .zeus-tabs-content-wrap p:last-child {
+	margin-bottom: 0;
+}
+
+.zeus-tabs.zeus-tabs-bottom {
+	display: flex;
+	flex-direction: column;
+}
+
+.zeus-tabs.zeus-tabs-bottom .zeus-tabs-wrap {
+	order: 2;
+}
+
+/* RTL */
+body.rtl .zeus-tabs .zeus-tab-title .zeus-icon-align-left {
+	margin-left: 3px;
+	margin-right: 0;
+}
+
+body.rtl .zeus-tabs .zeus-tab-title .zeus-icon-align-right {
+	margin-right: 3px;
+	margin-left: 0;
+}
+
+/*------------------------------------------------------------------
+Responsive
+-------------------------------------------------------------------*/
+@media (min-width: 767px) {
+	.zeus-tabs .zeus-tab-mobile-title {
+		display: none;
+	}
+}
+
+@media (max-width: 767px) {
+	.zeus-tabs .zeus-tabs-wrap {
+		display: none;
+	}
+	.zeus-tabs .zeus-tab-content {
+		border-top: 0 !important;
+	}
+}

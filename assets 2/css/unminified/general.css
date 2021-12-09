@@ -1,0 +1,29 @@
+/*------------------------------------------------------------------
+General Styling to Match All Themes
+-------------------------------------------------------------------*/
+img {
+	vertical-align: middle;
+}
+
+.nom {
+	margin: 0 !important;
+}
+
+body.home .hide-on-home {
+	display: none;
+}
+
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px;
+	overflow: hidden;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+.zeus-swiper-buttons svg {
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
+}

@@ -1,0 +1,84 @@
+/*------------------------------------------------------------------
+Animated Heading
+-------------------------------------------------------------------*/
+.zeus-heading-wrap .zeus-heading-tag,
+.zeus-heading-wrap .zeus-pre-heading,
+.zeus-heading-wrap .zeus-animated-heading,
+.zeus-heading-wrap .zeus-post-heading,
+.zeus-heading-wrap span {
+	display: inline-block;
+}
+
+.zeus-heading-wrap .zeus-heading-tag {
+	margin: 0;
+}
+
+.zeus-heading-wrap .typed-cursor {
+	opacity: 1;
+	font-weight: 100;
+	-webkit-animation: typed-blink 0.7s infinite;
+	-moz-animation: typed-blink 0.7s infinite;
+	-ms-animation: typed-blink 0.7s infinite;
+	-o-animation: typed-blink 0.7s infinite;
+	animation: typed-blink 0.7s infinite;
+}
+
+@-o-keyframes typed-blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-ms-keyframes typed-blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-moz-keyframes typed-blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes typed-blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes typed-blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

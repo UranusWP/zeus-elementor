@@ -1,0 +1,53 @@
+/*------------------------------------------------------------------
+Member
+-------------------------------------------------------------------*/
+.zeus-member-wrap {
+	position: relative;
+	width: 100%;
+}
+
+.zeus-member-wrap .zeus-member-image {
+	margin-bottom: 15px;
+}
+
+.zeus-member-wrap .zeus-member-image img {
+	width: 100%;
+}
+
+.zeus-member-wrap .zeus-member-content {
+	margin-bottom: 15px;
+}
+
+.zeus-member-wrap .zeus-member-name {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.zeus-member-wrap .zeus-member-role {
+	display: block;
+	font-size: 13px;
+	margin-bottom: 13px;
+}
+
+.zeus-member-wrap .zeus-member-icons {
+	margin: 0 -5px;
+}
+
+.zeus-member-wrap .zeus-member-icons a {
+	display: inline-block;
+	font-size: 18px;
+	line-height: 1;
+	padding: 5px;
+	text-align: center;
+}
+
+.zeus-member-wrap .zeus-member-icons a i, .zeus-member-wrap .zeus-member-icons a svg {
+	width: 1em;
+	height: 1em;
+	text-align: center;
+	display: inline-block;
+}
+
+#powerTip.zeus-member-powertip {
+	padding: 4px 10px;
+}

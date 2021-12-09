@@ -1,0 +1,90 @@
+/*------------------------------------------------------------------
+Off Canvas
+-------------------------------------------------------------------*/
+.zeus-circle-progress-wrap {
+	text-align: center;
+}
+
+.zeus-circle-progress-wrap .zeus-circle-progress {
+	text-align: center;
+	position: relative;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.zeus-circle-progress-wrap .zeus-circle-progress svg {
+	margin: 0 auto;
+}
+
+.zeus-circle-progress-wrap .zeus-circle-progress svg ellipse {
+	stroke: #f6f6f6;
+}
+
+.zeus-circle-progress-wrap .zeus-circle-progress svg path {
+	stroke: #e5c063;
+}
+
+.zeus-circle-progress-wrap .zeus-circle-progress .zeus-circle-progress-middle {
+	font-size: 45px;
+	font-weight: 700;
+}
+
+.zeus-circle-progress-wrap .zeus-circle-progress.zeus-cp-square svg path {
+	stroke-linecap: square;
+}
+
+.zeus-circle-progress-wrap .zeus-circle-progress.zeus-cp-round svg path {
+	stroke-linecap: round;
+}
+
+.zeus-circle-progress-wrap .zeus-circle-progress.zeus-cp-butt svg path {
+	stroke-linecap: butt;
+}
+
+.zeus-circle-progress-wrap .zeus-circle-progress .zeus-circle-progress-label {
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.zeus-circle-progress-wrap .zeus-circle-progress .zeus-circle-progress-label div {
+	line-height: 1.3;
+}
+
+.zeus-circle-progress-wrap .zeus-circle-progress .zeus-circle-progress-svg {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	padding-bottom: 100%;
+	vertical-align: middle;
+	overflow: hidden;
+}
+
+.zeus-circle-progress-wrap .zeus-circle-progress .zeus-circle-progress-svg svg {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: auto;
+	width: auto;
+}
+
+.zeus-circle-progress-wrap .zeus-circle-progress-content {
+	margin-top: 15px;
+}
+
+/* RTL */
+body.rtl .zeus-circle-progress-label {
+	right: 0;
+	left: auto;
+}
+
+/*------------------------------------------------------------------
+Responsive
+-------------------------------------------------------------------*/

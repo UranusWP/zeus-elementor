@@ -1,0 +1,104 @@
+/*------------------------------------------------------------------
+Woo Add To Cart
+-------------------------------------------------------------------*/
+.zeus-addtocart {
+	position: relative;
+}
+
+.zeus-addtocart .elementor-align-icon-left {
+	margin-right: 4px;
+}
+
+.zeus-addtocart .elementor-align-icon-right {
+	margin-left: 4px;
+}
+
+.zeus-addtocart .zeus-addtocart-text {
+	vertical-align: middle;
+}
+
+.zeus-addtocart.loading {
+	opacity: 1;
+}
+
+.zeus-addtocart.loading:after {
+	display: inline-block;
+	content: '';
+	background: transparent url("../../img/loader.svg") no-repeat center center;
+	background-size: 100%;
+	margin-left: 6px;
+	width: 16px;
+	height: 16px;
+	vertical-align: middle;
+}
+
+.zeus-addtocart .zeus-button-icon i, .zeus-addtocart .zeus-button-icon svg {
+	width: 1em;
+	height: 1em;
+	position: relative;
+	vertical-align: middle;
+}
+
+.zeus-align-left {
+	text-align: left;
+}
+
+.zeus-align-center {
+	text-align: center;
+}
+
+.zeus-align-right {
+	text-align: right;
+}
+
+.zeus-align-justify .zeus-addtocart {
+	width: 100%;
+}
+
+.zeus-addtocart-wrap .added_to_cart {
+	font-size: 12px;
+	font-weight: 600;
+	padding-bottom: 1px;
+	border-bottom: 2px solid;
+	margin-left: 6px;
+	text-transform: uppercase;
+	letter-spacing: 0.6px;
+}
+
+/* RTL */
+body.rtl .zeus-zeus-addtocart .elementor-align-icon-left {
+	margin-left: 4px;
+	margin-right: 0;
+}
+
+body.rtl .zeus-zeus-addtocart .elementor-align-icon-right {
+	margin-right: 4px;
+	margin-left: 0;
+}
+
+/*------------------------------------------------------------------
+Responsive
+-------------------------------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+	.zeus-tablet-align-left {
+		text-align: left;
+	}
+	.zeus-tablet-align-center {
+		text-align: center;
+	}
+	.zeus-tablet-align-right {
+		text-align: right;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.zeus-mobile-align-left {
+		text-align: left;
+	}
+	.zeus-mobile-align-center {
+		text-align: center;
+	}
+	.zeus-mobile-align-right {
+		text-align: right;
+	}
+}

@@ -199,7 +199,7 @@ class ZeusElementorPlugin {
 		$map_api = get_option( 'zeus_google_map_api_key' );
 
 		// Register vendors scripts.
-		wp_enqueue_script(
+		wp_register_script(
 			'asPieProgress',
 			ZEUS_ASSETS_URL . 'js/vendors/asPieProgress.min.js',
 			array(),

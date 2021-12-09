@@ -1,0 +1,110 @@
+/*------------------------------------------------------------------
+Countdown
+-------------------------------------------------------------------*/
+.zeus-countdown-wrap {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.zeus-countdown-wrap .zeus-countdown-item-wrap {
+	padding: 0 8px;
+}
+
+.zeus-countdown-wrap .zeus-countdown-number {
+	font-size: 60px;
+	color: #333;
+}
+
+.zeus-countdown-label-block .zeus-countdown-wrap {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-ms-flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+.zeus-countdown-label-block .zeus-countdown-wrap .zeus-countdown-item-wrap {
+	-ms-flex-positive: 1;
+	-webkit-box-flex: 1;
+	-webkit-flex-grow: 1;
+	flex-grow: 1;
+}
+
+.zeus-countdown-label-block .zeus-countdown-wrap .zeus-countdown-number {
+	display: block;
+}
+
+.zeus-countdown-label-block .zeus-countdown-wrap .zeus-countdown-label {
+	display: block;
+	margin-top: 8px;
+}
+
+.zeus-countdown-label-inline .zeus-countdown-wrap .zeus-countdown-item-wrap {
+	display: inline-block;
+}
+
+.zeus-countdown-label-inline .zeus-countdown-wrap .zeus-countdown-label {
+	margin-left: 4px;
+}
+
+.zeus-countdown-align-left .zeus-countdown-wrap {
+	margin-left: 0;
+}
+
+.zeus-countdown-align-right .zeus-countdown-wrap {
+	margin-right: 0;
+}
+
+.zeus-countdown-column-1 .zeus-countdown-wrap .zeus-countdown-item-wrap {
+	width: 100%;
+}
+
+.zeus-countdown-column-2 .zeus-countdown-wrap .zeus-countdown-item-wrap {
+	width: calc( 100% * 1 / 2);
+}
+
+.zeus-countdown-column-3 .zeus-countdown-wrap .zeus-countdown-item-wrap {
+	width: calc( 100% * 1 / 3);
+}
+
+.zeus-countdown-column-4 .zeus-countdown-wrap .zeus-countdown-item-wrap {
+	width: calc( 100% * 1 / 4);
+}
+
+/* RTL */
+/*------------------------------------------------------------------
+Responsive
+-------------------------------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+	.zeus-tablet-countdown-column-1 .zeus-countdown-wrap .zeus-countdown-item-wrap {
+		width: 100%;
+	}
+	.zeus-tablet-countdown-column-2 .zeus-countdown-wrap .zeus-countdown-item-wrap {
+		width: calc( 100% * 1 / 2);
+	}
+	.zeus-tablet-countdown-column-3 .zeus-countdown-wrap .zeus-countdown-item-wrap {
+		width: calc( 100% * 1 / 3);
+	}
+	.zeus-tablet-countdown-column-4 .zeus-countdown-wrap .zeus-countdown-item-wrap {
+		width: calc( 100% * 1 / 4);
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.zeus-mobile-countdown-column-1 .zeus-countdown-wrap .zeus-countdown-item-wrap {
+		width: 100%;
+	}
+	.zeus-mobile-countdown-column-2 .zeus-countdown-wrap .zeus-countdown-item-wrap {
+		width: calc( 100% * 1 / 2);
+	}
+	.zeus-mobile-countdown-column-3 .zeus-countdown-wrap .zeus-countdown-item-wrap {
+		width: calc( 100% * 1 / 3);
+	}
+	.zeus-mobile-countdown-column-4 .zeus-countdown-wrap .zeus-countdown-item-wrap {
+		width: calc( 100% * 1 / 4);
+	}
+}

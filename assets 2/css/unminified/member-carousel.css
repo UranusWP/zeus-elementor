@@ -1,0 +1,135 @@
+/*------------------------------------------------------------------
+Member
+-------------------------------------------------------------------*/
+.zeus-member-carousel-wrap {
+	position: relative;
+	width: 100%;
+}
+
+.zeus-member-carousel-wrap .swiper-container {
+	width: 95%;
+}
+
+.zeus-member-carousel-wrap .swiper-container.has-dots {
+	padding-bottom: 10px;
+}
+
+.zeus-member-carousel-wrap .swiper-slide {
+	padding: 0 15px;
+	text-align: center;
+}
+
+.zeus-member-carousel-wrap .zeus-member-carousel-image {
+	margin-bottom: 15px;
+}
+
+.zeus-member-carousel-wrap .zeus-member-carousel-image img {
+	width: 100%;
+}
+
+.zeus-member-carousel-wrap .zeus-member-carousel-content {
+	margin-bottom: 15px;
+}
+
+.zeus-member-carousel-wrap .zeus-member-carousel-name {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.zeus-member-carousel-wrap .zeus-member-carousel-role {
+	display: block;
+	font-size: 13px;
+	margin-bottom: 13px;
+}
+
+.zeus-member-carousel-wrap .zeus-member-carousel-social {
+	list-style: none;
+	margin: 10px 0 0;
+}
+
+.zeus-member-carousel-wrap .zeus-member-carousel-social li {
+	display: inline-block;
+	text-align: center;
+}
+
+.zeus-member-carousel-wrap .zeus-member-carousel-social li:not(:last-child) {
+	margin-right: 10px;
+}
+
+.zeus-member-carousel-wrap .zeus-member-carousel-social li a {
+	font-size: 18px;
+	line-height: 1;
+}
+
+.zeus-member-carousel-wrap .zeus-member-carousel-social li a i {
+	width: 1em;
+	height: 1em;
+	text-align: center;
+	display: inline-block;
+}
+
+.zeus-member-carousel-wrap .zeus-swiper-buttons {
+	background-image: none;
+	color: #222;
+	outline: none;
+	margin-top: 0;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+	top: calc(50% - (20px/2));
+	text-align: center;
+	-webkit-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.zeus-member-carousel-wrap .swiper-button-next {
+	right: 0;
+}
+
+.zeus-member-carousel-wrap .swiper-button-prev {
+	left: 0;
+}
+
+.zeus-member-carousel-wrap .swiper-pagination {
+	position: static;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+.zeus-member-carousel-wrap .swiper-pagination-bullet {
+	background: #ccc;
+	margin: 0 4px;
+	height: 8px;
+	width: 8px;
+	opacity: 1;
+	-webkit-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+
+.zeus-member-carousel-wrap .swiper-pagination-bullet-active {
+	background: #000;
+}
+
+.zeus-member-carousel-wrap .swiper-container-coverflow .swiper-slide {
+	padding: 0;
+}
+
+/* RTL */
+body.rtl .zeus-member-carousel-wrap .zeus-member-carousel-social li:not(:last-child) {
+	margin-left: 10px;
+	margin-right: 0;
+}
+
+body.rtl .zeus-member-carousel-wrap .swiper-button-next {
+	right: auto;
+	left: 0;
+}
+
+body.rtl .zeus-member-carousel-wrap .swiper-button-prev {
+	left: auto;
+	right: 0;
+}

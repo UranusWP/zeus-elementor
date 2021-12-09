@@ -1,0 +1,103 @@
+/*------------------------------------------------------------------
+Hotspots
+-------------------------------------------------------------------*/
+.zeus-hotspots-wrap {
+	position: relative;
+}
+
+.zeus-hotspot-wrap {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.zeus-hotspot-inner {
+	position: absolute;
+	left: 50px;
+	top: 50px;
+	cursor: pointer;
+	text-align: center;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.zeus-hotspot-inner, .zeus-hotspot-inner:before {
+	display: block;
+	min-width: 40px;
+	min-height: 40px;
+	border-radius: 50%;
+	background-color: #000;
+	color: #fff;
+}
+
+.zeus-hotspot-inner,
+.zeus-hotspot-inner i {
+	line-height: 40px;
+}
+
+.zeus-hotspot-inner:hover {
+	color: #fff;
+}
+
+.zeus-hotspot-inner:before {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	-o-transform: scale(1);
+	transform: scale(1);
+	-ms-animation: 2s pulse infinite;
+	-webkit-animation: 2s pulse infinite;
+	-o-animation: 2s pulse infinite;
+	-moz-animation: 2s pulse infinite;
+	animation: 2s pulse infinite;
+}
+
+.tippy-content p {
+	margin: 0;
+}
+
+@-webkit-keyframes pulse {
+	0% {
+		-webkit-transform: scale(1);
+		opacity: 1;
+	}
+	100% {
+		-webkit-transform: scale(1.5);
+		opacity: 0;
+	}
+}
+
+@-moz-keyframes pulse {
+	0% {
+		-moz-transform: scale(1);
+		opacity: 1;
+	}
+	100% {
+		-moz-transform: scale(1.5);
+		opacity: 0;
+	}
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1.5);
+		opacity: 0;
+	}
+}

@@ -12,12 +12,12 @@ class Modules_Manager {
 
 	public function register_modules() {
 
-		// Register all activated widgets from the settings page
+		// Register all activated widgets from the settings page.
 		foreach ( $GLOBALS['zeus_widgets'] as $widget => $val ) {
 			$class = $val['class'];
 			$class_name = __NAMESPACE__ . '\\Modules\\' . $class . '\Module';
 
-			// Check if widgets are enabled
+			// Check if widgets are enabled.
 			$settings = get_option( 'zeus_settings' );
 			if ( $settings ) {
 				$setting = $settings[ $widget ];
@@ -30,7 +30,7 @@ class Modules_Manager {
 			}
 		}
 
-		// Add query custom control for some widgets
+		// Add query custom control for some widgets.
 		$q_name = __NAMESPACE__ . '\\Modules\\QueryPost\Module';
 		$this->modules['query-post'] = $q_name::instance();
 	}
