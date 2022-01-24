@@ -103,10 +103,21 @@ class Zeus_Carousel extends elementorModules.frontend.handlers.Base {
     }
 
     initSwiper() {
-        const swiper = new Swiper(this.elements.carousel, this.swiperOptions());
+        var swiperSlider;
+
+        if ( 'undefined' === typeof Swiper ) {
+            // Improved Asset Loading enabled
+            var asyncSwiper = elementorFrontend.utils.swiper;
+            new asyncSwiper( this.elements.carousel, this.swiperOptions() ).then( function( newSwiperSliderInstance ) {
+                swiperSlider = newSwiperSliderInstance;
+            } );
+        } else {
+            // Improved Asset Loading disabled
+            swiperSlider = new Swiper( this.elements.carousel, this.swiperOptions() );
+        }
 
         this.setSettings({
-            swiperInstance: swiper,
+            swiperInstance: swiperSlider,
         });
     }
 

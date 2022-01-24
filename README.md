@@ -2,8 +2,8 @@
 **Contributors:** [olympuswp](https://profiles.wordpress.org/olympuswp/)  
 **Tags:** elementor, widgets, elements, addons, elementor addons, elementor widget, elementor form, woocommerce elementor, page builder, builder, visual editor, wordpress page builder  
 **Requires at least:** 5.0  
-**Tested up to:** 5.8.2  
-**Stable tag:** 1.0.1  
+**Tested up to:** 5.8.3  
+**Stable tag:** 1.0.2  
 **Requires PHP:** 5.6  
 **License:** GPLv3  
 **License URI:** https://opensource.org/licenses/GPL-3.0  
@@ -129,6 +129,9 @@ No! Zeus Elementor is 100% and will stay that way, but we've created a templates
 5. Page Edit
 
 ## Changelog ##
+
+### 1.0.2 ###
+* Fixed: Swiper issue on carousel widgets.
 
 ### 1.0.1 ###
 * Added: Two filters have been added for the Menu widget to allow you to change the search and cart icon via a child theme. The filters are, zeus_elementor_menu_search_icon and zeus_elementor_menu_cart_icon.
