@@ -7,10 +7,10 @@
  * Author:              UranusWP
  * Author URI:          https://zeus-elementor.com/
  * Requires at least:   5.3
- * Tested up to:        5.8.2
- * WC tested up to: 5.9.0
- * Elementor tested up to: 3.4.8
- * Elementor Pro tested up to: 3.5.1
+ * Tested up to:        5.8.3
+ * WC tested up to: 6.1.1
+ * Elementor tested up to: 3.5.4
+ * Elementor Pro tested up to: 3.5.2
  *
  * Text Domain: zeus-elementor
  * Domain Path: /languages
