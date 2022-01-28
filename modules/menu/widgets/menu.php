@@ -792,6 +792,24 @@ class Menu extends Widget_Base {
 		);
 
 		$this->add_responsive_control(
+			'dropdown_width',
+			[
+				'label'         => esc_html__( 'Width', 'zeus-elementor' ),
+				'type'          => Controls_Manager::SLIDER,
+				'range'         => [
+					'px' => [
+						'max' => 500,
+					],
+				],
+				'selectors'     => [
+					'{{WRAPPER}} .zeus-menu-layout-horizontal .zeus-menu ul' => 'width: {{SIZE}}{{UNIT}}',
+				],
+				'separator'     => 'before',
+
+			]
+		);
+
+		$this->add_responsive_control(
 			'padding_horizontal_dropdown',
 			[
 				'label'         => esc_html__( 'Horizontal Padding', 'zeus-elementor' ),
@@ -799,7 +817,6 @@ class Menu extends Widget_Base {
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-menu-dropdown a, {{WRAPPER}} .zeus-menu-toggle-dropdown ul a' => 'padding-left: {{SIZE}}{{UNIT}}; padding-right: {{SIZE}}{{UNIT}}',
 				],
-				'separator'     => 'before',
 
 			]
 		);
