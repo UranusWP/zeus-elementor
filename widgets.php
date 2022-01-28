@@ -56,11 +56,6 @@ $widgets = [
 		'title'         => __( 'Buttons', 'zeus-elementor' ),
 		'demo_link'     => 'https://widgets.zeus-elementor.com/buttons/',
 	],
-	'caldera-forms' => [
-		'class'         => 'CalderaForms',
-		'title'         => __( 'Caldera Forms', 'zeus-elementor' ),
-		'demo_link'     => 'https://widgets.zeus-elementor.com/caldera-forms/',
-	],
 	'call-to-action' => [
 		'class'         => 'CallToAction',
 		'title'         => __( 'Call To Action', 'zeus-elementor' ),
