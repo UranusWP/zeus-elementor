@@ -48,6 +48,7 @@ Info Box
 
 .zeus-info-box img {
 	display: block;
+	width: 90px;
 }
 
 .zeus-info-box .zeus-info-box-divider-wrap {
@@ -78,8 +79,7 @@ Info Box
 	margin-bottom: 0;
 }
 
-.zeus-info-box-left .zeus-info-box .zeus-info-box-icon,
-.zeus-info-box-left .zeus-info-box img {
+.zeus-info-box-left .zeus-info-box .zeus-info-box-icon {
 	width: 100%;
 }
 
@@ -106,8 +106,7 @@ Info Box
 	margin-bottom: 0;
 }
 
-.zeus-info-box-right .zeus-info-box .zeus-info-box-icon,
-.zeus-info-box-right .zeus-info-box img {
+.zeus-info-box-right .zeus-info-box .zeus-info-box-icon {
 	width: 100%;
 }
 
@@ -141,6 +140,7 @@ Info Box
 	}
 	.zeus-info-box-tablet-top .zeus-info-box .zeus-info-box-icon-wrap {
 		display: inline-block;
+		margin: 0;
 	}
 	.zeus-info-box-tablet-top .zeus-info-box .zeus-info-box-icon {
 		margin-right: auto;
@@ -195,6 +195,7 @@ Info Box
 	}
 	.zeus-info-box-mobile-top .zeus-info-box .zeus-info-box-icon-wrap {
 		display: inline-block;
+		margin: 0;
 	}
 	.zeus-info-box-mobile-top .zeus-info-box .zeus-info-box-icon {
 		margin-right: auto;

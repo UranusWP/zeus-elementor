@@ -58,6 +58,7 @@ Info Box
 
     img {
         display: block;
+        width: 90px;
     }
 
     .zeus-info-box-divider-wrap {
@@ -85,8 +86,7 @@ Info Box
             margin-bottom: 0;
         }
 
-        .zeus-info-box-icon,
-        img {
+        .zeus-info-box-icon {
             width: 100%;
         }
     }
@@ -111,8 +111,7 @@ Info Box
             margin-bottom: 0;
         }
 
-        .zeus-info-box-icon,
-        img {
+        .zeus-info-box-icon {
             width: 100%;
         }
     }
@@ -152,6 +151,7 @@ Info Box
 
             .zeus-info-box-icon-wrap {
                 display: inline-block;
+                margin: 0;
             }
 
             .zeus-info-box-icon {
@@ -213,6 +213,7 @@ Info Box
 
             .zeus-info-box-icon-wrap {
                 display: inline-block;
+                margin: 0;
             }
 
             .zeus-info-box-icon {

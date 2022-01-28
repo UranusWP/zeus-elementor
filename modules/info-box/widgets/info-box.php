@@ -4,6 +4,8 @@ namespace ZeusElementor\Modules\InfoBox\Widgets;
 // Elementor Classes
 use Elementor\Controls_Manager;
 use Elementor\Icons_Manager;
+use Elementor\Group_Control_Image_Size;
+use Elementor\Utils;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
@@ -17,7 +19,7 @@ class InfoBox extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Info Box', 'zeus-elementor' );
+		return esc_html__('Info Box', 'zeus-elementor' );
 	}
 
 	public function get_icon() {
@@ -45,20 +47,21 @@ class InfoBox extends Widget_Base {
 		$this->start_controls_section(
 			'section_info_box',
 			[
-				'label'         => __( 'General', 'zeus-elementor' ),
+				'label'         => esc_html__('General', 'zeus-elementor' ),
 			]
 		);
 
 		$this->add_control(
 			'type',
 			[
-				'label'         => __( 'Type', 'zeus-elementor' ),
+				'label'         => esc_html__('Type', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SELECT,
 				'default'       => 'icon',
 				'options'       => [
-					'none'      => __( 'None', 'zeus-elementor' ),
-					'icon'      => __( 'Icon', 'zeus-elementor' ),
-					'text'      => __( 'Text', 'zeus-elementor' ),
+					'none'      => esc_html__('None', 'zeus-elementor' ),
+					'icon'      => esc_html__('Icon', 'zeus-elementor' ),
+					'text'      => esc_html__('Text', 'zeus-elementor' ),
+					'img'      	=> esc_html__('Image', 'zeus-elementor' ),
 				],
 			]
 		);
@@ -66,7 +69,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'selected_icon',
 			[
-				'label'         => __( 'Icon', 'zeus-elementor' ),
+				'label'         => esc_html__('Icon', 'zeus-elementor' ),
 				'type'          => Controls_Manager::ICONS,
 				'default'       => [
 					'value'     => 'fas fa-snowflake',
@@ -81,7 +84,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'text',
 			[
-				'label'         => __( 'Text', 'zeus-elementor' ),
+				'label'         => esc_html__('Text', 'zeus-elementor' ),
 				'type'          => Controls_Manager::TEXT,
 				'default'       => '1',
 				'condition'     => [
@@ -91,23 +94,40 @@ class InfoBox extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'image',
+			[
+				'label' 		=> esc_html__('Choose Image', 'elementor' ),
+				'type' 			=> Controls_Manager::MEDIA,
+				'dynamic' 		=> [
+					'active' => true,
+				],
+				'condition'     => [
+					'type' => 'img',
+				],
+				'default' 		=> [
+					'url' => Utils::get_placeholder_image_src(),
+				],
+			]
+		);
+
 		$this->add_responsive_control(
 			'position',
 			[
-				'label'         => __( 'Position', 'zeus-elementor' ),
+				'label'         => esc_html__('Position', 'zeus-elementor' ),
 				'type'          => Controls_Manager::CHOOSE,
 				'default'       => 'top',
 				'options'       => [
 					'left' => [
-						'title'   => __( 'Left', 'zeus-elementor' ),
+						'title'   => esc_html__('Left', 'zeus-elementor' ),
 						'icon'    => 'eicon-text-align-left',
 					],
 					'top' => [
-						'title'   => __( 'Top', 'zeus-elementor' ),
+						'title'   => esc_html__('Top', 'zeus-elementor' ),
 						'icon'    => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title'   => __( 'Right', 'zeus-elementor' ),
+						'title'   => esc_html__('Right', 'zeus-elementor' ),
 						'icon'    => 'eicon-text-align-right',
 					],
 				],
@@ -119,19 +139,19 @@ class InfoBox extends Widget_Base {
 		$this->add_responsive_control(
 			'align',
 			[
-				'label'         => __( 'Content Alignment', 'zeus-elementor' ),
+				'label'         => esc_html__('Content Alignment', 'zeus-elementor' ),
 				'type'          => Controls_Manager::CHOOSE,
 				'options'       => [
 					'left'    => [
-						'title' => __( 'Left', 'zeus-elementor' ),
+						'title' => esc_html__('Left', 'zeus-elementor' ),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'zeus-elementor' ),
+						'title' => esc_html__('Center', 'zeus-elementor' ),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'zeus-elementor' ),
+						'title' => esc_html__('Right', 'zeus-elementor' ),
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
@@ -156,20 +176,20 @@ class InfoBox extends Widget_Base {
 		$this->add_responsive_control(
 			'vertical_position',
 			[
-				'label'         => __( 'Vertical Position', 'zeus-elementor' ),
+				'label'         => esc_html__('Vertical Position', 'zeus-elementor' ),
 				'type'          => Controls_Manager::CHOOSE,
 				'default'       => 'top',
 				'options'       => [
 					'top' => [
-						'title'   => __( 'Top', 'zeus-elementor' ),
+						'title'   => esc_html__('Top', 'zeus-elementor' ),
 						'icon'    => 'eicon-v-align-top',
 					],
 					'middle' => [
-						'title'   => __( 'Middle', 'zeus-elementor' ),
+						'title'   => esc_html__('Middle', 'zeus-elementor' ),
 						'icon'    => 'eicon-v-align-middle',
 					],
 					'bottom' => [
-						'title'   => __( 'Bottom', 'zeus-elementor' ),
+						'title'   => esc_html__('Bottom', 'zeus-elementor' ),
 						'icon'    => 'eicon-v-align-bottom',
 					],
 				],
@@ -201,16 +221,16 @@ class InfoBox extends Widget_Base {
 		$this->start_controls_section(
 			'section_content',
 			[
-				'label'         => __( 'Content', 'zeus-elementor' ),
+				'label'         => esc_html__('Content', 'zeus-elementor' ),
 			]
 		);
 
 		$this->add_control(
 			'title',
 			[
-				'label'         => __( 'Title', 'zeus-elementor' ),
+				'label'         => esc_html__('Title', 'zeus-elementor' ),
 				'type'          => Controls_Manager::TEXT,
-				'default'       => __( 'This is the heading', 'zeus-elementor' ),
+				'default'       => esc_html__('This is the heading', 'zeus-elementor' ),
 				'label_block'   => true,
 				'dynamic'       => [ 'active' => true ],
 			]
@@ -219,10 +239,10 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'description',
 			[
-				'label'         => __( 'Description', 'zeus-elementor' ),
+				'label'         => esc_html__('Description', 'zeus-elementor' ),
 				'type'          => Controls_Manager::TEXTAREA,
-				'default'       => __( 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'zeus-elementor' ),
-				'placeholder'   => __( 'Enter your description', 'zeus-elementor' ),
+				'default'       => esc_html__('Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'zeus-elementor' ),
+				'placeholder'   => esc_html__('Enter your description', 'zeus-elementor' ),
 				'rows'          => 10,
 				'dynamic'       => [ 'active' => true ],
 			]
@@ -231,7 +251,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'title_divider',
 			[
-				'label'         => __( 'Title Separator', 'zeus-elementor' ),
+				'label'         => esc_html__('Title Separator', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SWITCHER,
 				'default'       => 'no',
 			]
@@ -240,19 +260,19 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'title_tag',
 			[
-				'label'         => __( 'Title Tag', 'zeus-elementor' ),
+				'label'         => esc_html__('Title Tag', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SELECT,
 				'default'       => 'h3',
 				'options'       => [
-					'h1'     => __( 'H1', 'zeus-elementor' ),
-					'h2'     => __( 'H2', 'zeus-elementor' ),
-					'h3'     => __( 'H3', 'zeus-elementor' ),
-					'h4'     => __( 'H4', 'zeus-elementor' ),
-					'h5'     => __( 'H5', 'zeus-elementor' ),
-					'h6'     => __( 'H6', 'zeus-elementor' ),
-					'div'    => __( 'div', 'zeus-elementor' ),
-					'span'   => __( 'span', 'zeus-elementor' ),
-					'p'      => __( 'p', 'zeus-elementor' ),
+					'h1'     => esc_html__('H1', 'zeus-elementor' ),
+					'h2'     => esc_html__('H2', 'zeus-elementor' ),
+					'h3'     => esc_html__('H3', 'zeus-elementor' ),
+					'h4'     => esc_html__('H4', 'zeus-elementor' ),
+					'h5'     => esc_html__('H5', 'zeus-elementor' ),
+					'h6'     => esc_html__('H6', 'zeus-elementor' ),
+					'div'    => esc_html__('div', 'zeus-elementor' ),
+					'span'   => esc_html__('span', 'zeus-elementor' ),
+					'p'      => esc_html__('p', 'zeus-elementor' ),
 				],
 			]
 		);
@@ -260,7 +280,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'link_heading',
 			[
-				'label'         => __( 'Link', 'zeus-elementor' ),
+				'label'         => esc_html__('Link', 'zeus-elementor' ),
 				'type'          => Controls_Manager::HEADING,
 				'separator'     => 'before',
 			]
@@ -269,14 +289,14 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'link_type',
 			[
-				'label'         => __( 'Link Type', 'zeus-elementor' ),
+				'label'         => esc_html__('Link Type', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SELECT,
 				'default'       => 'none',
 				'options'       => [
-					'none'    => __( 'None', 'zeus-elementor' ),
-					'box'     => __( 'Box', 'zeus-elementor' ),
-					'title'   => __( 'Title', 'zeus-elementor' ),
-					'button'  => __( 'Button', 'zeus-elementor' ),
+					'none'    => esc_html__('None', 'zeus-elementor' ),
+					'box'     => esc_html__('Box', 'zeus-elementor' ),
+					'title'   => esc_html__('Title', 'zeus-elementor' ),
+					'button'  => esc_html__('Button', 'zeus-elementor' ),
 				],
 			]
 		);
@@ -284,15 +304,15 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'button_size',
 			[
-				'label'         => __( 'Size', 'zeus-elementor' ),
+				'label'         => esc_html__('Size', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SELECT,
 				'default'       => 'md',
 				'options'       => [
-					'xs' => __( 'Extra Small', 'zeus-elementor' ),
-					'sm' => __( 'Small', 'zeus-elementor' ),
-					'md' => __( 'Medium', 'zeus-elementor' ),
-					'lg' => __( 'Large', 'zeus-elementor' ),
-					'xl' => __( 'Extra Large', 'zeus-elementor' ),
+					'xs' => esc_html__('Extra Small', 'zeus-elementor' ),
+					'sm' => esc_html__('Small', 'zeus-elementor' ),
+					'md' => esc_html__('Medium', 'zeus-elementor' ),
+					'lg' => esc_html__('Large', 'zeus-elementor' ),
+					'xl' => esc_html__('Extra Large', 'zeus-elementor' ),
 				],
 				'condition'     => [
 					'link_type'    => 'button',
@@ -304,9 +324,9 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'link',
 			[
-				'label'         => __( 'Link', 'zeus-elementor' ),
+				'label'         => esc_html__('Link', 'zeus-elementor' ),
 				'type'          => Controls_Manager::URL,
-				'placeholder'   => __( 'https://your-link.com', 'zeus-elementor' ),
+				'placeholder'   => esc_html__('https://your-link.com', 'zeus-elementor' ),
 				'condition'     => [
 					'link_type!'   => 'none',
 				],
@@ -316,9 +336,9 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'button_text',
 			[
-				'label'         => __( 'Button Text', 'zeus-elementor' ),
+				'label'         => esc_html__('Button Text', 'zeus-elementor' ),
 				'type'          => Controls_Manager::TEXT,
-				'default'       => __( 'Learn More', 'zeus-elementor' ),
+				'default'       => esc_html__('Learn More', 'zeus-elementor' ),
 				'condition'     => [
 					'link_type' => 'button',
 				],
@@ -329,7 +349,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'button_icon',
 			[
-				'label'         => __( 'Button Icon', 'zeus-elementor' ),
+				'label'         => esc_html__('Button Icon', 'zeus-elementor' ),
 				'type'          => Controls_Manager::ICONS,
 				'default'       => [
 					'value'   => '',
@@ -344,12 +364,12 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'button_icon_position',
 			[
-				'label'         => __( 'Icon Position', 'zeus-elementor' ),
+				'label'         => esc_html__('Icon Position', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SELECT,
 				'default'       => 'left',
 				'options'       => [
-					'left'     => __( 'Before', 'zeus-elementor' ),
-					'right'    => __( 'After', 'zeus-elementor' ),
+					'left'     => esc_html__('Before', 'zeus-elementor' ),
+					'right'    => esc_html__('After', 'zeus-elementor' ),
 				],
 				'condition'     => [
 					'link_type'     => 'button',
@@ -361,7 +381,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'button_icon_spacing',
 			[
-				'label'         => __( 'Icon Spacing', 'zeus-elementor' ),
+				'label'         => esc_html__('Icon Spacing', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SLIDER,
 				'range'         => [
 					'px' => [
@@ -382,7 +402,7 @@ class InfoBox extends Widget_Base {
 		$this->add_responsive_control(
 			'button_icon_size',
 			[
-				'label'         => __( 'Button Icon Size', 'zeus-elementor' ),
+				'label'         => esc_html__('Button Icon Size', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SLIDER,
 				'range'         => [
 					'px' => [
@@ -406,7 +426,7 @@ class InfoBox extends Widget_Base {
 		$this->start_controls_section(
 			'section_style',
 			[
-				'label'         => __( 'Info Box', 'zeus-elementor' ),
+				'label'         => esc_html__('Info Box', 'zeus-elementor' ),
 				'tab'           => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -416,7 +436,7 @@ class InfoBox extends Widget_Base {
 		$this->start_controls_tab(
 			'tab_info_box_normal',
 			[
-				'label'         => __( 'Normal', 'zeus-elementor' ),
+				'label'         => esc_html__('Normal', 'zeus-elementor' ),
 			]
 		);
 
@@ -439,7 +459,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'info_box_border_radius',
 			[
-				'label'         => __( 'Border Radius', 'zeus-elementor' ),
+				'label'         => esc_html__('Border Radius', 'zeus-elementor' ),
 				'type'          => Controls_Manager::DIMENSIONS,
 				'size_units'    => [ 'px', '%' ],
 				'selectors'     => [
@@ -461,7 +481,7 @@ class InfoBox extends Widget_Base {
 		$this->start_controls_tab(
 			'tab_info_box_hover',
 			[
-				'label'         => __( 'Hover', 'zeus-elementor' ),
+				'label'         => esc_html__('Hover', 'zeus-elementor' ),
 			]
 		);
 
@@ -484,7 +504,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'info_box_border_radius_hover',
 			[
-				'label'         => __( 'Border Radius', 'zeus-elementor' ),
+				'label'         => esc_html__('Border Radius', 'zeus-elementor' ),
 				'type'          => Controls_Manager::DIMENSIONS,
 				'size_units'    => [ 'px', '%' ],
 				'selectors'     => [
@@ -496,7 +516,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'info_box_hover_animation',
 			[
-				'label'         => __( 'Animation', 'zeus-elementor' ),
+				'label'         => esc_html__('Animation', 'zeus-elementor' ),
 				'type'          => Controls_Manager::HOVER_ANIMATION,
 			]
 		);
@@ -516,7 +536,7 @@ class InfoBox extends Widget_Base {
 		$this->add_responsive_control(
 			'info_box_padding',
 			[
-				'label'         => __( 'Padding', 'zeus-elementor' ),
+				'label'         => esc_html__('Padding', 'zeus-elementor' ),
 				'type'          => Controls_Manager::DIMENSIONS,
 				'size_units'    => [ 'px', '%' ],
 				'separator'     => 'before',
@@ -531,7 +551,7 @@ class InfoBox extends Widget_Base {
 		$this->start_controls_section(
 			'section_icon_style',
 			[
-				'label'         => __( 'Icon Style', 'zeus-elementor' ),
+				'label'         => esc_html__('Icon Style', 'zeus-elementor' ),
 				'tab'           => Controls_Manager::TAB_STYLE,
 				'condition'     => [
 					'type!' => 'none',
@@ -542,7 +562,7 @@ class InfoBox extends Widget_Base {
 		$this->add_responsive_control(
 			'icon_size',
 			[
-				'label'         => __( 'Icon Size', 'zeus-elementor' ),
+				'label'         => esc_html__('Icon Size', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SLIDER,
 				'range'         => [
 					'px' => [
@@ -565,11 +585,33 @@ class InfoBox extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'          => 'text_typography',
-				'label'         => __( 'Typography', 'zeus-elementor' ),
+				'label'         => esc_html__('Typography', 'zeus-elementor' ),
 				'condition'     => [
 					'type' => 'text',
 				],
 				'selector'      => '{{WRAPPER}} .zeus-info-box-icon',
+			]
+		);
+
+		$this->add_responsive_control(
+			'img_size',
+			[
+				'label'         => esc_html__('Image Size', 'zeus-elementor' ),
+				'type'          => Controls_Manager::SLIDER,
+				'range'         => [
+					'px' => [
+						'min'   => 5,
+						'max'   => 500,
+						'step'  => 1,
+					],
+				],
+				'size_units'    => [ 'px' ],
+				'condition'     => [
+					'type' => 'img',
+				],
+				'selectors'     => [
+					'{{WRAPPER}} .zeus-info-box img' => 'width: {{SIZE}}{{UNIT}}',
+				],
 			]
 		);
 
@@ -578,14 +620,14 @@ class InfoBox extends Widget_Base {
 		$this->start_controls_tab(
 			'tab_icon_normal',
 			[
-				'label'         => __( 'Normal', 'zeus-elementor' ),
+				'label'         => esc_html__('Normal', 'zeus-elementor' ),
 			]
 		);
 
 		$this->add_control(
 			'icon_background',
 			[
-				'label'         => __( 'Background Color', 'zeus-elementor' ),
+				'label'         => esc_html__('Background Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-info-box-icon' => 'background-color: {{VALUE}}',
@@ -596,7 +638,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'icon_color',
 			[
-				'label'         => __( 'Icon Color', 'zeus-elementor' ),
+				'label'         => esc_html__('Icon Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-info-box-icon' => 'color: {{VALUE}}',
@@ -609,14 +651,14 @@ class InfoBox extends Widget_Base {
 		$this->start_controls_tab(
 			'tab_icon_hover',
 			[
-				'label'         => __( 'Hover', 'zeus-elementor' ),
+				'label'         => esc_html__('Hover', 'zeus-elementor' ),
 			]
 		);
 
 		$this->add_control(
 			'icon_background_hover',
 			[
-				'label'         => __( 'Background Color', 'zeus-elementor' ),
+				'label'         => esc_html__('Background Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
 				'condition'     => [
 					'type!' => 'none',
@@ -630,7 +672,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'icon_color_hover',
 			[
-				'label'         => __( 'Icon Color', 'zeus-elementor' ),
+				'label'         => esc_html__('Icon Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-info-box-icon:hover' => 'color: {{VALUE}}',
@@ -641,7 +683,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'icon_border_color_hover',
 			[
-				'label'         => __( 'Border Color', 'zeus-elementor' ),
+				'label'         => esc_html__('Border Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
 				'condition'     => [
 					'type!' => 'none',
@@ -655,7 +697,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'icon_hover_animation',
 			[
-				'label'         => __( 'Icon Animation', 'zeus-elementor' ),
+				'label'         => esc_html__('Icon Animation', 'zeus-elementor' ),
 				'type'          => Controls_Manager::HOVER_ANIMATION,
 			]
 		);
@@ -668,7 +710,7 @@ class InfoBox extends Widget_Base {
 			Group_Control_Border::get_type(),
 			[
 				'name'          => 'icon_border',
-				'label'         => __( 'Border', 'zeus-elementor' ),
+				'label'         => esc_html__('Border', 'zeus-elementor' ),
 				'condition'     => [
 					'type!' => 'none',
 				],
@@ -679,7 +721,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'icon_border_radius',
 			[
-				'label'         => __( 'Border Radius', 'zeus-elementor' ),
+				'label'         => esc_html__('Border Radius', 'zeus-elementor' ),
 				'type'          => Controls_Manager::DIMENSIONS,
 				'size_units'    => [ 'px', '%' ],
 				'condition'     => [
@@ -694,7 +736,7 @@ class InfoBox extends Widget_Base {
 		$this->add_responsive_control(
 			'icon_rotation',
 			[
-				'label'         => __( 'Icon Rotation', 'zeus-elementor' ),
+				'label'         => esc_html__('Icon Rotation', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SLIDER,
 				'range'         => [
 					'px' => [
@@ -716,7 +758,7 @@ class InfoBox extends Widget_Base {
 		$this->add_responsive_control(
 			'icon_padding',
 			[
-				'label'         => __( 'Padding', 'zeus-elementor' ),
+				'label'         => esc_html__('Padding', 'zeus-elementor' ),
 				'type'          => Controls_Manager::DIMENSIONS,
 				'size_units'    => [ 'px', '%' ],
 				'selectors'     => [
@@ -728,7 +770,7 @@ class InfoBox extends Widget_Base {
 		$this->add_responsive_control(
 			'icon_margin',
 			[
-				'label'         => __( 'Margin', 'zeus-elementor' ),
+				'label'         => esc_html__('Margin', 'zeus-elementor' ),
 				'type'          => Controls_Manager::DIMENSIONS,
 				'size_units'    => [ 'px', '%' ],
 				'placeholder'   => [
@@ -748,7 +790,7 @@ class InfoBox extends Widget_Base {
 		$this->start_controls_section(
 			'section_title_style',
 			[
-				'label'         => __( 'Title & Description', 'zeus-elementor' ),
+				'label'         => esc_html__('Title & Description', 'zeus-elementor' ),
 				'tab'           => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -756,7 +798,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			[
-				'label'         => __( 'Color', 'zeus-elementor' ),
+				'label'         => esc_html__('Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-info-box-title' => 'color: {{VALUE}}',
@@ -768,7 +810,7 @@ class InfoBox extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'          => 'title_typography',
-				'label'         => __( 'Typography', 'zeus-elementor' ),
+				'label'         => esc_html__('Typography', 'zeus-elementor' ),
 				'selector'      => '{{WRAPPER}} .zeus-info-box-title',
 			]
 		);
@@ -776,7 +818,7 @@ class InfoBox extends Widget_Base {
 		$this->add_responsive_control(
 			'title_margin',
 			[
-				'label'         => __( 'Margin Bottom', 'zeus-elementor' ),
+				'label'         => esc_html__('Margin Bottom', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SLIDER,
 				'default'       => [
 					'size'  => 15,
@@ -803,7 +845,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'description_heading',
 			[
-				'label'         => __( 'Description', 'zeus-elementor' ),
+				'label'         => esc_html__('Description', 'zeus-elementor' ),
 				'type'          => Controls_Manager::HEADING,
 				'separator'     => 'before',
 			]
@@ -812,7 +854,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'description_color',
 			[
-				'label'         => __( 'Color', 'zeus-elementor' ),
+				'label'         => esc_html__('Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-info-box-description' => 'color: {{VALUE}}',
@@ -824,7 +866,7 @@ class InfoBox extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'          => 'description_typography',
-				'label'         => __( 'Typography', 'zeus-elementor' ),
+				'label'         => esc_html__('Typography', 'zeus-elementor' ),
 				'selector'      => '{{WRAPPER}} .zeus-info-box-description',
 			]
 		);
@@ -834,7 +876,7 @@ class InfoBox extends Widget_Base {
 		$this->start_controls_section(
 			'section_title_divider_style',
 			[
-				'label'         => __( 'Title Separator', 'zeus-elementor' ),
+				'label'         => esc_html__('Title Separator', 'zeus-elementor' ),
 				'tab'           => Controls_Manager::TAB_STYLE,
 				'condition'     => [
 					'title_divider' => 'yes',
@@ -845,15 +887,15 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'divider_title_border_type',
 			[
-				'label'         => __( 'Border Type', 'zeus-elementor' ),
+				'label'         => esc_html__('Border Type', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SELECT,
 				'default'       => 'solid',
 				'options'       => [
-					'none'      => __( 'None', 'zeus-elementor' ),
-					'solid'     => __( 'Solid', 'zeus-elementor' ),
-					'double'    => __( 'Double', 'zeus-elementor' ),
-					'dotted'    => __( 'Dotted', 'zeus-elementor' ),
-					'dashed'    => __( 'Dashed', 'zeus-elementor' ),
+					'none'      => esc_html__('None', 'zeus-elementor' ),
+					'solid'     => esc_html__('Solid', 'zeus-elementor' ),
+					'double'    => esc_html__('Double', 'zeus-elementor' ),
+					'dotted'    => esc_html__('Dotted', 'zeus-elementor' ),
+					'dashed'    => esc_html__('Dashed', 'zeus-elementor' ),
 				],
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-info-box-divider' => 'border-bottom-style: {{VALUE}}',
@@ -867,7 +909,7 @@ class InfoBox extends Widget_Base {
 		$this->add_responsive_control(
 			'divider_title_width',
 			[
-				'label'         => __( 'Border Width', 'zeus-elementor' ),
+				'label'         => esc_html__('Border Width', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SLIDER,
 				'default'       => [
 					'size'  => 30,
@@ -897,7 +939,7 @@ class InfoBox extends Widget_Base {
 		$this->add_responsive_control(
 			'divider_title_border_height',
 			[
-				'label'         => __( 'Border Height', 'zeus-elementor' ),
+				'label'         => esc_html__('Border Height', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SLIDER,
 				'default'       => [
 					'size'  => 2,
@@ -922,7 +964,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'divider_title_border_color',
 			[
-				'label'         => __( 'Border Color', 'zeus-elementor' ),
+				'label'         => esc_html__('Border Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-info-box-divider' => 'border-bottom-color: {{VALUE}}',
@@ -936,19 +978,19 @@ class InfoBox extends Widget_Base {
 		$this->add_responsive_control(
 			'divider_title_align',
 			[
-				'label'         => __( 'Alignment', 'zeus-elementor' ),
+				'label'         => esc_html__('Alignment', 'zeus-elementor' ),
 				'type'          => Controls_Manager::CHOOSE,
 				'options'       => [
 					'flex-start' => [
-						'title' => __( 'Left', 'zeus-elementor' ),
+						'title' => esc_html__('Left', 'zeus-elementor' ),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center'    => [
-						'title' => __( 'Center', 'zeus-elementor' ),
+						'title' => esc_html__('Center', 'zeus-elementor' ),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'flex-end'  => [
-						'title' => __( 'Right', 'zeus-elementor' ),
+						'title' => esc_html__('Right', 'zeus-elementor' ),
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
@@ -965,7 +1007,7 @@ class InfoBox extends Widget_Base {
 		$this->add_responsive_control(
 			'divider_title_margin',
 			[
-				'label'         => __( 'Margin Bottom', 'zeus-elementor' ),
+				'label'         => esc_html__('Margin Bottom', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SLIDER,
 				'default'       => [
 					'size'  => 20,
@@ -997,7 +1039,7 @@ class InfoBox extends Widget_Base {
 		$this->start_controls_section(
 			'section_button_style',
 			[
-				'label'         => __( 'Button', 'zeus-elementor' ),
+				'label'         => esc_html__('Button', 'zeus-elementor' ),
 				'tab'           => Controls_Manager::TAB_STYLE,
 				'condition'     => [
 					'link_type'    => 'button',
@@ -1011,7 +1053,7 @@ class InfoBox extends Widget_Base {
 		$this->start_controls_tab(
 			'tab_button_normal',
 			[
-				'label'         => __( 'Normal', 'zeus-elementor' ),
+				'label'         => esc_html__('Normal', 'zeus-elementor' ),
 				'condition'     => [
 					'link_type'    => 'button',
 					'button_text!' => '',
@@ -1022,7 +1064,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'button_background',
 			[
-				'label'         => __( 'Background Color', 'zeus-elementor' ),
+				'label'         => esc_html__('Background Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-info-box-button' => 'background-color: {{VALUE}}',
@@ -1037,7 +1079,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'button_text_color',
 			[
-				'label'         => __( 'Text Color', 'zeus-elementor' ),
+				'label'         => esc_html__('Text Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-info-box-button' => 'color: {{VALUE}}',
@@ -1066,7 +1108,7 @@ class InfoBox extends Widget_Base {
 		$this->start_controls_tab(
 			'tab_button_hover',
 			[
-				'label'         => __( 'Hover', 'zeus-elementor' ),
+				'label'         => esc_html__('Hover', 'zeus-elementor' ),
 				'condition'     => [
 					'link_type'    => 'button',
 					'button_text!' => '',
@@ -1077,7 +1119,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'button_hover_background',
 			[
-				'label'         => __( 'Background Color', 'zeus-elementor' ),
+				'label'         => esc_html__('Background Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-info-box-button:hover' => 'background-color: {{VALUE}}',
@@ -1092,7 +1134,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'button_hover_color',
 			[
-				'label'         => __( 'Text Color', 'zeus-elementor' ),
+				'label'         => esc_html__('Text Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-info-box-button:hover' => 'color: {{VALUE}}',
@@ -1107,7 +1149,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'button_hover_border_color',
 			[
-				'label'         => __( 'Border Color', 'zeus-elementor' ),
+				'label'         => esc_html__('Border Color', 'zeus-elementor' ),
 				'type'          => Controls_Manager::COLOR,
 				'selectors'     => [
 					'{{WRAPPER}} .zeus-info-box-button:hover' => 'border-color: {{VALUE}}',
@@ -1122,7 +1164,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'button_animation',
 			[
-				'label'         => __( 'Animation', 'zeus-elementor' ),
+				'label'         => esc_html__('Animation', 'zeus-elementor' ),
 				'type'          => Controls_Manager::HOVER_ANIMATION,
 				'condition'     => [
 					'link_type'    => 'button',
@@ -1150,7 +1192,7 @@ class InfoBox extends Widget_Base {
 			Group_Control_Border::get_type(),
 			[
 				'name'          => 'button_border_normal',
-				'label'         => __( 'Border', 'zeus-elementor' ),
+				'label'         => esc_html__('Border', 'zeus-elementor' ),
 				'condition'     => [
 					'link_type'    => 'button',
 					'button_text!' => '',
@@ -1162,7 +1204,7 @@ class InfoBox extends Widget_Base {
 		$this->add_control(
 			'button_border_radius',
 			[
-				'label'         => __( 'Border Radius', 'zeus-elementor' ),
+				'label'         => esc_html__('Border Radius', 'zeus-elementor' ),
 				'type'          => Controls_Manager::DIMENSIONS,
 				'size_units'    => [ 'px', '%' ],
 				'selectors'     => [
@@ -1179,7 +1221,7 @@ class InfoBox extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'          => 'button_typography',
-				'label'         => __( 'Typography', 'zeus-elementor' ),
+				'label'         => esc_html__('Typography', 'zeus-elementor' ),
 				'selector'      => '{{WRAPPER}} .zeus-info-box-button',
 				'condition'     => [
 					'link_type'    => 'button',
@@ -1191,7 +1233,7 @@ class InfoBox extends Widget_Base {
 		$this->add_responsive_control(
 			'button_padding',
 			[
-				'label'         => __( 'Padding', 'zeus-elementor' ),
+				'label'         => esc_html__('Padding', 'zeus-elementor' ),
 				'type'          => Controls_Manager::DIMENSIONS,
 				'size_units'    => [ 'px', 'em', '%' ],
 				'selectors'     => [
@@ -1207,7 +1249,7 @@ class InfoBox extends Widget_Base {
 		$this->add_responsive_control(
 			'button_margin',
 			[
-				'label'         => __( 'Margin Top', 'zeus-elementor' ),
+				'label'         => esc_html__('Margin Top', 'zeus-elementor' ),
 				'type'          => Controls_Manager::SLIDER,
 				'default'       => [
 					'size'  => 15,
@@ -1302,6 +1344,8 @@ class InfoBox extends Widget_Base {
 									<?php $this->print_unescaped_setting( 'text' ); ?>
 								</span>
 								<?php
+							} elseif ( 'img' === $settings['type'] && ! empty( $settings['image']['url'] ) ) {
+								echo wp_kses_post( Group_Control_Image_Size::get_attachment_image_html( $settings, 'image' ) );
 							} ?>
 						</span>
 					</div>
@@ -1372,7 +1416,16 @@ class InfoBox extends Widget_Base {
 		var wrap_tag = 'div',
 			tag = 'h3',
 			iconHTML = elementor.helpers.renderIcon( view, settings.selected_icon, { 'aria-hidden': true }, 'i' , 'object' ),
-			buttoniconHTML = elementor.helpers.renderIcon( view, settings.button_icon, { 'aria-hidden': true }, 'i' , 'object' ); #>
+			buttoniconHTML = elementor.helpers.renderIcon( view, settings.button_icon, { 'aria-hidden': true }, 'i' , 'object' ),
+			image = {
+				id: settings.image.id,
+				url: settings.image.url,
+				size: settings.image_size,
+				dimension: settings.image_custom_dimension,
+				model: view.getEditModel()
+			};
+
+		var imageUrl = elementor.imagesManager.getImageUrl( image ); #>
 
 		<{{{wrap_tag}}} class="zeus-info-box-wrap elementor-animation-{{ settings.info_box_hover_animation }}" href="{{settings.link.url}}">
 			<div class="zeus-info-box zeus-info-box-{{ settings.icon_position }}">
@@ -1388,6 +1441,10 @@ class InfoBox extends Widget_Base {
 								<span class="zeus-icon-text elementor-inline-editing" data-elementor-setting-key="text" data-elementor-inline-editing-toolbar="none">
 									{{{ settings.text }}}
 								</span>
+							<# } else if ( 'img' == settings.type ) { #>
+								<# if ( imageUrl ) { #>
+									<img src="{{ imageUrl }}">
+								<# } #>
 							<# } #>
 						</span>
 					</div>
