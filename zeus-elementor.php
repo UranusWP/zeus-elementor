@@ -3,11 +3,11 @@
  * Plugin Name:         Zeus For Elementor
  * Plugin URI:          zeus-elementor.com
  * Description:         Provides a collection of powerful, fully customizable, and extendable widgets on top of any Elementor version and works independently with any WordPress theme.
- * Version:             1.0.2
+ * Version:             1.0.3
  * Author:              UranusWP
  * Author URI:          https://zeus-elementor.com/
  * Requires at least:   5.3
- * Tested up to:        5.8.3
+ * Tested up to:        5.9
  * WC tested up to: 6.1.1
  * Elementor tested up to: 3.5.4
  * Elementor Pro tested up to: 3.5.2
@@ -100,7 +100,7 @@ final class Zeus_Elementor {
 		$this->token        = 'zeus-elementor';
 		$this->plugin_url   = plugin_dir_url( __FILE__ );
 		$this->plugin_path  = plugin_dir_path( __FILE__ );
-		$this->version      = '1.0.2';
+		$this->version      = '1.0.3';
 		$this->template     = get_template();
 
 		define( 'ZEUS_ELEMENTOR__FILE__', __FILE__ );

@@ -1,9 +1,9 @@
 # Zeus For Elementor #
-**Contributors:** [olympuswp](https://profiles.wordpress.org/olympuswp/)  
+**Contributors:** [olympuswp](https://profiles.wordpress.org/olympuswp/), [nicolaslecocq](https://profiles.wordpress.org/nicolaslecocq/), [alexdeborba](https://profiles.wordpress.org/alexdeborba/)  
 **Tags:** elementor, widgets, elements, addons, elementor addons, elementor widget, elementor form, woocommerce elementor, page builder, builder, visual editor, wordpress page builder  
 **Requires at least:** 5.0  
-**Tested up to:** 5.8.3  
-**Stable tag:** 1.0.2  
+**Tested up to:** 5.9  
+**Stable tag:** 1.0.3  
 **Requires PHP:** 5.6  
 **License:** GPLv3  
 **License URI:** https://opensource.org/licenses/GPL-3.0  
@@ -129,6 +129,12 @@ No! Zeus Elementor is 100% and will stay that way, but we've created a templates
 5. Page Edit
 
 ## Changelog ##
+
+### 1.0.3 ###
+* Added: Image type on the Info Box widget.
+* Added: New Width option to control the Menu widget dropdown width.
+* Fixed: Styling issue on the Info Box widget.
+* Removed: Caldera Forms as no longer supported by its owner: https://calderaforms.com/2021/12/2-important-announcements-for-caldera-forms/
 
 ### 1.0.2 ###
 * Fixed: Swiper issue on carousel widgets.
