@@ -307,12 +307,12 @@ body.rtl .zeus-carousel .meta li:last-child {
 	margin-left: 0;
 }
 
-body.rtl .zeus-carousel .swiper-button-next {
+body.rtl .swiper-button-next {
 	right: auto;
 	left: 0;
 }
 
-body.rtl .zeus-carousel .swiper-button-prev {
+body.rtl .swiper-button-prev {
 	left: auto;
 	right: 0;
 }
