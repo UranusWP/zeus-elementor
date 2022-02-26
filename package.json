@@ -1,6 +1,6 @@
 {
   "name": "zeus-elementor",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Best addon for Elementor.",
   "main": "Gruntfile.js",
   "scripts": {

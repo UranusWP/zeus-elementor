@@ -1,9 +1,9 @@
 # Zeus For Elementor #
-**Contributors:** [olympuswp](https://profiles.wordpress.org/olympuswp/), [nicolaslecocq](https://profiles.wordpress.org/nicolaslecocq/), [alexdeborba](https://profiles.wordpress.org/alexdeborba/)  
+**Contributors:** [olympuswp](https://profiles.wordpress.org/olympuswp/), [alexdeborba](https://profiles.wordpress.org/alexdeborba/)  
 **Tags:** elementor, widgets, elements, addons, elementor addons, elementor widget, elementor form, woocommerce elementor, page builder, builder, visual editor, wordpress page builder  
 **Requires at least:** 5.0  
-**Tested up to:** 5.9  
-**Stable tag:** 1.0.3  
+**Tested up to:** 5.9.1  
+**Stable tag:** 1.0.4  
 **Requires PHP:** 5.6  
 **License:** GPLv3  
 **License URI:** https://opensource.org/licenses/GPL-3.0  
@@ -36,7 +36,6 @@ No messy codes to slow down your websites, Zeus Elementor has been built with sp
 - [Brands](https://widgets.zeus-elementor.com/brands/)
 - [Business Hours](https://widgets.zeus-elementor.com/business-hours/)
 - [Buttons](https://widgets.zeus-elementor.com/buttons/)
-- [Caldera Forms](https://widgets.zeus-elementor.com/caldera-forms/)
 - [Call To Action](https://widgets.zeus-elementor.com/call-to-action/)
 - [Circle Progress](https://widgets.zeus-elementor.com/circle-progress/)
 - [Contact Form 7](https://widgets.zeus-elementor.com/contact-form-7/)
@@ -129,6 +128,9 @@ No! Zeus Elementor is 100% and will stay that way, but we've created a templates
 5. Page Edit
 
 ## Changelog ##
+
+### 1.0.4 ###
+* Fixed: Testimonials carousel RTL issue.
 
 ### 1.0.3 ###
 * Added: Image type on the Info Box widget.

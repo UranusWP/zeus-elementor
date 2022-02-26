@@ -1675,10 +1675,10 @@ class Pricing_Table extends Widget_Base {
 		}
 
 		$this->add_render_attribute( 'button', 'class', 'zeus-pricing-table-button' );
-
 		if ( ! empty( $settings['link']['url'] ) ) {
 			$this->add_link_attributes( 'button', $settings['link'] );
 		}
+		$this->add_render_attribute( 'button', 'role', 'button' );
 
 		$this->add_render_attribute( 'header', 'class', 'zeus-pricing-table-header' );
 		$this->add_render_attribute( 'title', 'class', 'zeus-pricing-table-heading' );
