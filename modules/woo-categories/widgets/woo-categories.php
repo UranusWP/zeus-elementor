@@ -171,6 +171,18 @@ class WooCategories extends Widget_Base {
 			);
 
 			$this->add_control(
+				'hide_count',
+				[
+					'label'         => __( 'Hide Product Count', 'zeus-elementor' ),
+					'type'          => Controls_Manager::SWITCHER,
+					'return_value'  => 'yes',
+					'selectors'     => [
+						'{{WRAPPER}} .zeus-woo .woocommerce .woocommerce-loop-category__title .count' => 'display: none;',
+					],
+				]
+			);
+
+			$this->add_control(
 				'orderby',
 				[
 					'label'         => __( 'Order by', 'zeus-elementor' ),

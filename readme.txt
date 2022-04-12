@@ -2,8 +2,8 @@
 Contributors: olympuswp, alexdeborba
 Tags: elementor, widgets, elements, addons, elementor addons, elementor widget, elementor form, woocommerce elementor, page builder, builder, visual editor, wordpress page builder
 Requires at least: 5.0
-Tested up to: 5.9.1
-Stable tag: 1.0.4
+Tested up to: 5.9.3
+Stable tag: 1.0.7
 Requires PHP: 5.6
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
@@ -128,6 +128,20 @@ No! Zeus Elementor is 100% and will stay that way, but we've created a templates
 5. Page Edit
 
 == Changelog ==
+
+= 1.0.7 =
+* Added: Tags meta for the Blog Grid widget.
+* Added: Tags meta for the Blog Carousel widget.
+* Fixed: Schema markup error on the Logo widget.
+* Fixed: Closed text on the Business Hour widget.
+
+= 1.0.6 =
+* Fixed: File missing in the upload.
+
+= 1.0.5 =
+* Added: Setting to change text if no posts found for the Blog Grid and Blog Carousel widgets.
+* Added: Setting to hide the product count on the Woo Category widget.
+* Fixed: Carousel widgets issue when Pause on Hover was activated.
 
 = 1.0.4 =
 * Fixed: Testimonials carousel RTL issue.

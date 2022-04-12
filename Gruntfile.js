@@ -48,6 +48,10 @@ module.exports = function (grunt) {
                         src: 'assets/admin/js/admin.js',
                         dest: 'assets/admin/js/admin.min.js',
                     },
+                    {
+                        src: 'assets/admin/js/notice.js',
+                        dest: 'assets/admin/js/notice.min.js',
+                    },
                 ]
             }
         },
@@ -69,6 +73,9 @@ module.exports = function (grunt) {
                     },
                     {
                         'assets/admin/css/editor.css': 'sass/admin/editor.scss',
+                    },
+                    {
+                        'assets/admin/css/notice.css': 'sass/admin/notice.scss',
                     },
                     {
                         expand: true,
@@ -121,6 +128,10 @@ module.exports = function (grunt) {
                     {
                         src: 'assets/admin/css/editor.css',
                         dest: 'assets/admin/css/editor.min.css',
+                    },
+                    {
+                        src: 'assets/admin/css/notice.css',
+                        dest: 'assets/admin/css/notice.min.css',
                     },
                 ]
             }

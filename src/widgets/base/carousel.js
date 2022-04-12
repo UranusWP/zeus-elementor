@@ -51,7 +51,6 @@ class Zeus_Carousel extends elementorModules.frontend.handlers.Base {
 
         this.setUserSettings();
         this.initSwiper();
-        this.setupEventListeners();
     }
 
     setUserSettings() {
@@ -119,6 +118,15 @@ class Zeus_Carousel extends elementorModules.frontend.handlers.Base {
         this.setSettings({
             swiperInstance: swiperSlider,
         });
+
+        if ( this.getSettings( 'pauseOnHover' ) ) {
+            this.elements.carousel.addEventListener( 'mouseenter', function() {
+                swiperSlider.autoplay.stop();
+            } );
+            this.elements.carousel.addEventListener( 'mouseleave', function() {
+                swiperSlider.autoplay.start();
+            } );
+        }
     }
 
     swiperOptions() {
@@ -131,6 +139,7 @@ class Zeus_Carousel extends elementorModules.frontend.handlers.Base {
             speed: settings.speed,
             centeredSlides: settings.centeredSlides,
             autoHeight: true,
+            pauseOnMouseEnter: true,
             autoplay: !settings.autoplay
                 ? false
                 : {
@@ -173,21 +182,6 @@ class Zeus_Carousel extends elementorModules.frontend.handlers.Base {
         }
 
         return swiperOptions;
-    }
-
-    setupEventListeners() {
-        if (this.getSettings('pauseOnHover')) {
-            this.elements.carousel.addEventListener('mouseenter', this.pauseSwiper.bind(this));
-            this.elements.carousel.addEventListener('mouseleave', this.resumeSwiper.bind(this));
-        }
-    }
-
-    pauseSwiper(event) {
-        this.getSettings('swiperInstance').autoplay.stop();
-    }
-
-    resumeSwiper(event) {
-        this.getSettings('swiperInstance').autoplay.start();
     }
 }
 
