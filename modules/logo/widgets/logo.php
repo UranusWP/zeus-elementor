@@ -448,9 +448,14 @@ class Logo extends Widget_Base {
 		// Description.
 		$tag = $settings['desc_tag'];
 
+		$this->add_render_attribute( 'wrapper', 'class', 'zeus-logo' );
+
 		// Schema markup
 		if ( 'yes' === $settings['schema'] ) {
-			$schema = ' itemscope itemtype="https://schema.org/Brand"';
+			$this->add_render_attribute( 'wrapper', [
+				'itemscope' => '',
+				'itemtype' => 'https://schema.org/Brand',
+			] );
 		}
 
 		// Logo URL
@@ -465,7 +470,7 @@ class Logo extends Widget_Base {
 		$this->add_render_attribute( 'description', 'class', 'zeus-logo-description' );
 		$this->add_inline_editing_attributes( 'description', 'basic' ); ?>
 
-		<div class="zeus-logo"<?php echo esc_attr( $schema ); ?>>
+		<div <?php $this->print_render_attribute_string( 'wrapper' ); ?>>
 
 			<div class="zeus-logo-inner">
 				<a <?php $this->print_render_attribute_string( 'link' ); ?>>
