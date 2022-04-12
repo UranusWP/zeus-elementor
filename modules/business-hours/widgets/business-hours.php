@@ -855,8 +855,7 @@ class BusinessHours extends Widget_Base {
 					<span class="zeus-business-timing">
 						<?php
 						if ( 'yes' === $item['closed'] ) {
-							esc_attr_e( 'Closed', 'zeus-elementor' ); ?>
-							<?php
+							echo esc_attr( $item['closed_text'] );
 						} else { ?>
 							<span class="zeus-opening-hours">
 								<?php
@@ -929,7 +928,7 @@ class BusinessHours extends Widget_Base {
 
 					<span class="zeus-business-timing">
 						<# if ( 'yes' == item.closed ) { #>
-							<?php esc_attr_e( 'Closed', 'zeus-elementor' ); ?>
+							{{{ item.closed_text }}}
 						<# } else { #>
 							<span class="zeus-opening-hours">
 								<# if ( 'yes' == settings.hours_format ) { #>
