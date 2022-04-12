@@ -433,6 +433,21 @@ class Blog_Carousel extends Widget_Base {
 		);
 
 		$this->add_control(
+			'tags',
+			[
+				'label'        => __( 'Tags Meta', 'zeus-elementor' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'default'      => 'no',
+				'label_on'     => __( 'Yes', 'zeus-elementor' ),
+				'label_off'    => __( 'No', 'zeus-elementor' ),
+				'return_value' => 'yes',
+				'condition'     => [
+					'meta' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
 			'excerpt',
 			[
 				'label'        => __( 'Excerpt', 'zeus-elementor' ),
@@ -461,6 +476,17 @@ class Blog_Carousel extends Widget_Base {
 				'default'       => __( 'Learn More', 'zeus-elementor' ),
 				'label_block'   => true,
 			]
+		);
+
+		$this->add_control(
+			'no_posts_text',
+			array(
+				'label'       => __( 'No Posts Text', 'zeus-elementor' ),
+				'type'        => Controls_Manager::TEXT,
+				'default'     => __( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', 'zeus-elementor' ),
+				'label_block' => true,
+				'dynamic'     => array( 'active' => true ),
+			)
 		);
 
 		$this->end_controls_section();
@@ -1168,6 +1194,26 @@ class Blog_Carousel extends Widget_Base {
 															</li>
 															<?php
 														}
+
+														if ( 'yes' === $settings['tags'] ) {
+															$term_separator = apply_filters( 'zeus_elementor_term_separator', _x( ', ', 'Used between list items, there is a space after the comma.', 'zeus-elementor' ), 'tags' );
+															$tags_list = get_the_tag_list( '', $term_separator );
+			
+															if ( $tags_list ) {
+																echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+																	'zeus_elementor_tag_list_output',
+																	sprintf(
+																		'<li class="zeus-meta-tags">
+																		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"><path d="M444.07,67.946H302.344c-13.613,0-26.409,5.301-36.034,14.927L65.872,283.312c-9.626,9.625-14.927,22.422-14.927,36.034 s5.301,26.409,14.927,36.034L207.596,497.1c9.934,9.934,22.984,14.9,36.033,14.9s26.099-4.967,36.033-14.902l200.44-200.44 c9.626-9.626,14.927-22.422,14.927-36.034v-141.72C495.029,90.806,472.169,67.946,444.07,67.946z M376.124,237.81 c-28.099,0-50.959-22.86-50.959-50.959s22.86-50.959,50.959-50.959s50.959,22.86,50.959,50.959S404.223,237.81,376.124,237.81z"/><path d="M410.097,0H268.371c-13.613,0-26.409,5.301-36.034,14.927L31.899,215.366c-9.626,9.625-14.927,22.422-14.927,36.034 c0,10.647,3.256,20.788,9.276,29.31c3.999-7.81,9.219-15.04,15.603-21.422L242.288,58.849 c16.041-16.041,37.369-24.876,60.056-24.876h141.724c4.942,0,9.78,0.448,14.493,1.263C451.918,14.81,432.709,0,410.097,0z"/></svg>
+																		<span class="screen-reader-text">%1$s</span>
+																		%2$s
+																		</li> ',
+																		esc_html_x( 'Tags', 'Used before tag names.', 'zeus-elementor' ),
+																		$tags_list
+																	)
+																);
+															}
+														}
 														?>
 													</ul>
 
@@ -1246,9 +1292,12 @@ class Blog_Carousel extends Widget_Base {
 			</div><!-- .zeus-carousel -->
 			<?php
 		else :
-			?>
-			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', 'zeus-elementor' ); ?></p>
-			<?php
+			$no_posts_text = $settings['no_posts_text'];
+			if ( '' !== $no_posts_text ) {
+				?>
+				<p><?php echo esc_attr( $no_posts_text ); ?></p>
+				<?php
+			}
 		endif;
 	}
 }

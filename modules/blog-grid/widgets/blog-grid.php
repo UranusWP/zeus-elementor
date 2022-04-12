@@ -415,6 +415,21 @@ class Blog_Grid extends Widget_Base {
 		);
 
 		$this->add_control(
+			'tags',
+			[
+				'label'        => __( 'Tags Meta', 'zeus-elementor' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'default'      => 'no',
+				'label_on'     => __( 'Yes', 'zeus-elementor' ),
+				'label_off'    => __( 'No', 'zeus-elementor' ),
+				'return_value' => 'yes',
+				'condition'     => [
+					'meta' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
 			'excerpt',
 			array(
 				'label'     => __( 'Display Excerpt', 'zeus-elementor' ),
@@ -459,6 +474,17 @@ class Blog_Grid extends Widget_Base {
 				'condition'     => [
 					'readmore' => 'yes',
 				],
+			)
+		);
+
+		$this->add_control(
+			'no_posts_text',
+			array(
+				'label'       => __( 'No Posts Text', 'zeus-elementor' ),
+				'type'        => Controls_Manager::TEXT,
+				'default'     => __( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', 'zeus-elementor' ),
+				'label_block' => true,
+				'dynamic'     => array( 'active' => true ),
 			)
 		);
 
@@ -1081,8 +1107,10 @@ class Blog_Grid extends Widget_Base {
 			$meta           = $settings['meta'];
 			$excerpt        = $settings['excerpt'];
 			$author         = $settings['author'];
-			$comments       = $settings['comments'];
+			$date         	= $settings['date'];
 			$cat            = $settings['cat'];
+			$comments       = $settings['comments'];
+			$tags       	= $settings['tags'];
 			$readmore       = $settings['readmore'];
 			$readmoretext   = $settings['readmore_text'];
 
@@ -1203,7 +1231,7 @@ class Blog_Grid extends Widget_Base {
 
 												<ul class="zeus-grid-meta">
 													<?php
-													if ( 'yes' === $settings['author'] ) { ?>
+													if ( 'yes' === $author ) { ?>
 														<li class="zeus-meta-author" itemprop="name">
 															<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve"><path d="M256,288.389c-153.837,0-238.56,72.776-238.56,204.925c0,10.321,8.365,18.686,18.686,18.686h439.747 c10.321,0,18.686-8.365,18.686-18.686C494.56,361.172,409.837,288.389,256,288.389z M55.492,474.628 c7.35-98.806,74.713-148.866,200.508-148.866s193.159,50.06,200.515,148.866H55.492z"/><path d="M256,0c-70.665,0-123.951,54.358-123.951,126.437c0,74.19,55.604,134.54,123.951,134.54s123.951-60.35,123.951-134.534 C379.951,54.358,326.665,0,256,0z M256,223.611c-47.743,0-86.579-43.589-86.579-97.168c0-51.611,36.413-89.071,86.579-89.071 c49.363,0,86.579,38.288,86.579,89.071C342.579,180.022,303.743,223.611,256,223.611z"/></svg>
 															<?php echo esc_attr( the_author_posts_link() ); ?>
@@ -1211,7 +1239,7 @@ class Blog_Grid extends Widget_Base {
 														<?php
 													}
 
-													if ( 'yes' === $settings['date'] ) { ?>
+													if ( 'yes' === $date ) { ?>
 														<li class="zeus-meta-date" itemprop="datePublished" pubdate>
 															<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve"><path d="M256,0C114.845,0,0,114.839,0,256s114.845,256,256,256c141.161,0,256-114.839,256-256S397.155,0,256,0z M256,474.628 C135.45,474.628,37.372,376.55,37.372,256S135.45,37.372,256,37.372s218.628,98.077,218.628,218.622 C474.628,376.55,376.55,474.628,256,474.628z"/><path d="M343.202,256h-80.973V143.883c0-10.321-8.365-18.686-18.686-18.686s-18.686,8.365-18.686,18.686v130.803 c0,10.321,8.365,18.686,18.686,18.686h99.659c10.321,0,18.686-8.365,18.686-18.686S353.523,256,343.202,256z"/></svg>
 															<?php echo esc_attr( get_the_date( 'M j, Y' ) ); ?>
@@ -1219,7 +1247,7 @@ class Blog_Grid extends Widget_Base {
 														<?php
 													}
 
-													if ( 'yes' === $settings['cat'] ) { ?>
+													if ( 'yes' === $cat ) { ?>
 														<li class="zeus-meta-cat">
 															<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve"><path d="M480,105.6H244.909L182.08,41.011c-3.616-3.712-8.576-5.811-13.76-5.811H32c-17.645,0-32,14.355-32,32v377.6 c0,17.645,14.355,32,32,32h448c17.645,0,32-14.355,32-32V137.6C512,119.955,497.645,105.6,480,105.6z M473.6,438.4H38.4V73.6 h121.811l62.829,64.589c3.616,3.712,8.576,5.811,13.76,5.811h236.8V438.4z"/></svg>
 															<?php the_category( ' / ', get_the_ID() ); ?>
@@ -1227,7 +1255,7 @@ class Blog_Grid extends Widget_Base {
 														<?php
 													}
 
-													if ( 'yes' === $settings['comments'] && comments_open() && ! post_password_required() ) { ?>
+													if ( 'yes' === $comments && comments_open() && ! post_password_required() ) { ?>
 														<li class="zeus-meta-comments">
 															<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve"><path d="M345.154,160.478H166.846c-10.552,0-19.104,8.552-19.104,19.104s8.552,19.104,19.104,19.104h178.308 c10.552,0,19.104-8.552,19.104-19.104S355.706,160.478,345.154,160.478z"/><path d="M345.154,236.896H166.846c-10.552,0-19.104,8.552-19.104,19.104s8.552,19.104,19.104,19.104h178.308 c10.552,0,19.104-8.552,19.104-19.104S355.706,236.896,345.154,236.896z"/><path d="M345.154,313.313H166.846c-10.552,0-19.104,8.552-19.104,19.104s8.552,19.104,19.104,19.104h178.308 c10.552,0,19.104-8.552,19.104-19.104S355.706,313.313,345.154,313.313z"/><path d="M256,0C117.302,0,4.458,112.844,4.458,251.542c0,31.516,5.795,62.351,17.251,91.708 c8.903,22.55,20.697,43.265,35.133,61.746L22.55,485.4c-2.751,6.445-1.751,13.87,2.598,19.359C28.81,509.383,34.35,512,40.119,512 c1.089,0,2.191-0.089,3.286-0.287l129.917-22.671c26.02,9.323,53.805,14.042,82.678,14.042 c138.699,0,251.542-112.844,251.542-251.542S394.699,0,256,0z M256,464.876c-26.039,0-50.945-4.496-74.023-13.367 c-3.229-1.242-6.737-1.592-10.138-0.987L71.495,468.034l25.04-58.708c2.866-6.718,1.649-14.488-3.133-20.009 c-15.143-17.474-27.307-37.693-36.12-60.026c-9.699-24.842-14.615-51.003-14.615-77.749C42.667,133.91,138.367,38.209,256,38.209 s213.333,95.701,213.333,213.333S373.633,464.876,256,464.876z"/></svg>
 															<?php
@@ -1239,6 +1267,26 @@ class Blog_Grid extends Widget_Base {
 															); ?>
 														</li>
 														<?php
+													}
+
+													if ( 'yes' === $tags ) {
+														$term_separator = apply_filters( 'zeus_elementor_term_separator', _x( ', ', 'Used between list items, there is a space after the comma.', 'zeus-elementor' ), 'tags' );
+														$tags_list = get_the_tag_list( '', $term_separator );
+		
+														if ( $tags_list ) {
+															echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+																'zeus_elementor_tag_list_output',
+																sprintf(
+																	'<li class="zeus-meta-tags">
+																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"><path d="M444.07,67.946H302.344c-13.613,0-26.409,5.301-36.034,14.927L65.872,283.312c-9.626,9.625-14.927,22.422-14.927,36.034 s5.301,26.409,14.927,36.034L207.596,497.1c9.934,9.934,22.984,14.9,36.033,14.9s26.099-4.967,36.033-14.902l200.44-200.44 c9.626-9.626,14.927-22.422,14.927-36.034v-141.72C495.029,90.806,472.169,67.946,444.07,67.946z M376.124,237.81 c-28.099,0-50.959-22.86-50.959-50.959s22.86-50.959,50.959-50.959s50.959,22.86,50.959,50.959S404.223,237.81,376.124,237.81z"/><path d="M410.097,0H268.371c-13.613,0-26.409,5.301-36.034,14.927L31.899,215.366c-9.626,9.625-14.927,22.422-14.927,36.034 c0,10.647,3.256,20.788,9.276,29.31c3.999-7.81,9.219-15.04,15.603-21.422L242.288,58.849 c16.041-16.041,37.369-24.876,60.056-24.876h141.724c4.942,0,9.78,0.448,14.493,1.263C451.918,14.81,432.709,0,410.097,0z"/></svg>
+																	<span class="screen-reader-text">%1$s</span>
+																	%2$s
+																	</li> ',
+																	esc_html_x( 'Tags', 'Used before tag names.', 'zeus-elementor' ),
+																	$tags_list
+																)
+															);
+														}
 													}
 													?>
 												</ul>
@@ -1291,11 +1339,12 @@ class Blog_Grid extends Widget_Base {
 
 			// If no posts are found display message
 		else :
-			?>
-
-			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', 'zeus-elementor' ); ?></p>
-
-			<?php
+			$no_posts_text = $settings['no_posts_text'];
+			if ( '' !== $no_posts_text ) {
+				?>
+				<p><?php echo esc_attr( $no_posts_text ); ?></p>
+				<?php
+			}
 			// End post check
 		endif;
 		?>
