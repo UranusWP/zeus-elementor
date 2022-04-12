@@ -2,8 +2,8 @@
 **Contributors:** [olympuswp](https://profiles.wordpress.org/olympuswp/), [alexdeborba](https://profiles.wordpress.org/alexdeborba/)  
 **Tags:** elementor, widgets, elements, addons, elementor addons, elementor widget, elementor form, woocommerce elementor, page builder, builder, visual editor, wordpress page builder  
 **Requires at least:** 5.0  
-**Tested up to:** 5.9.1  
-**Stable tag:** 1.0.4  
+**Tested up to:** 5.9.3  
+**Stable tag:** 1.0.7  
 **Requires PHP:** 5.6  
 **License:** GPLv3  
 **License URI:** https://opensource.org/licenses/GPL-3.0  
@@ -126,31 +126,3 @@ No! Zeus Elementor is 100% and will stay that way, but we've created a templates
 3. Integration Panel
 4. Header/Footer Panel
 5. Page Edit
-
-## Changelog ##
-
-### 1.0.4 ###
-* Fixed: Testimonials carousel RTL issue.
-
-### 1.0.3 ###
-* Added: Image type on the Info Box widget.
-* Added: New Width option to control the Menu widget dropdown width.
-* Fixed: Styling issue on the Info Box widget.
-* Removed: Caldera Forms as no longer supported by its owner: https://calderaforms.com/2021/12/2-important-announcements-for-caldera-forms/
-
-### 1.0.2 ###
-* Fixed: Swiper issue on carousel widgets.
-
-### 1.0.1 ###
-* Added: Two filters have been added for the Menu widget to allow you to change the search and cart icon via a child theme. The filters are, zeus_elementor_menu_search_icon and zeus_elementor_menu_cart_icon.
-* Added: Custom Icons option for each Accordion repeater so you can add different icons for each accordion.
-* Added: New Column option for the Price List widget to allow you to show your list in columns.
-* Added: Alignment for scroll up widget if not fixed position.
-* Added: Padding for the Search Icon widget.
-* Fixed: Breakpoint issue on the Menu widget.
-* Fixed: Lightbox issue on the Image Gallery widget.
-* Fixed: Buttons issue with the Google Map widget.
-* Fixed: Input issue on the admin panel.
-
-### 1.0.0 ###
-* Initial release.
